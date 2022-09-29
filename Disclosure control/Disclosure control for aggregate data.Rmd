@@ -1,0 +1,269 @@
+---
+title: "Statistical Disclosure Control - Aggregate Data"
+author: "Ben Cuff"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+draft: false
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    number_sections: false
+    template: "../- assets/Templates/html_template.html"
+  word_document:
+    reference_docx: "../- assets/Templates/UKHSA plain document template.dotx"
+knit: (function(inputFile, encoding){rmarkdown::render(inputFile, envir = globalenv(), encoding = encoding, output_dir = "./", output_format = "all")})
+---
+
+
+```{r versionHistory, echo=F, include=F}
+
+#Add a new row (c list) for each version update
+vh <- data.frame(rbind(
+  c("29/09/2022", "Initial release")
+))
+
+
+
+names(vh) <- c("Date", "Notes")
+vh_out <- "<table><tr><th>Date</th><th>Notes</th></tr>"
+for(i in 1:nrow(vh)){
+  assign("vh_out", paste0(vh_out, "<tr><td>", vh[i,1], "</td><td>", vh[i,2], "</td></tr>"), envir = .GlobalEnv)
+}
+vh_out <- paste0(vh_out, "</table>")
+
+```
+
+---
+versioncontrol: "`r vh_out`"
+---
+
+
+
+```{r setup, echo=F, include=F}
+library(tidyverse)
+knitr::opts_chunk$set(echo = F)
+
+
+#The following creates a reference list from a .xlsx file - this is not made available on GitHub
+#The spreadsheet should have titles in the first column and URLs in the second
+refs <- readxl::read_xlsx("../- assets/QPD knowledge bank.xlsx", sheet=1)
+
+ref_list <- data.frame("Row" = integer(), "Name" = character(), "Link" = character())
+
+add_ref <- function(.StableID){
+  
+  if(nrow(refs[which(refs$StableID==.StableID),])==0){
+    warning(paste("Check your references! There is no reference number", .StableID))
+  }
+  
+  .Name <- refs[which(refs$StableID==.StableID), 'Name'][[1]]
+  .Link <- refs[which(refs$StableID==.StableID), 'Link'][[1]]
+  
+  
+  if(!.Name %in% ref_list$Name){
+    ref_list[nrow(ref_list)+1, 1:3] <- c(nrow(ref_list)+1, .Name, .Link)
+  }
+
+  assign("ref_list", ref_list, envir = .GlobalEnv)
+  
+  return(ref_list %>% filter(Name == .Name) %>% pull(Row))
+}
+
+ref_list_out <- function(){
+  list_out=""
+  for(i in 1:nrow(ref_list)){
+    list_out <- paste(list_out, i, '. [', ref_list[i,2], '](', ref_list[i,3], ')\n', sep="")
+  }
+  return(list_out)
+}
+
+
+```
+
+
+## Coverage
+
+This guidance applies to all external releases of aggregate numerical information. 
+
+By releases, we mean publications of any kind, as well as responses to Freedom of Information (FOI) requests and ad-hoc other requests for information. 
+
+By aggregate numerical information, we refer to any form in which aggregate numbers (for example, counts by demographic groups or geographical areas) are presented, including within text, tables, charts and datasets. 
+
+For disclosure control relating to individual-level (micro) data (for example, genome data), please see our separate guidance on [statistical disclosure control for microdata](...). 
+
+This guidance is not necessarily intended to replace any existing policies statistics producers may have in place that outline specific approaches for their outputs. It is intended to provide general guidance on this topic, in order to inform those policies, should producers wish to create them. 
+
+
+## Summary of recommendations
+
+1. A Responsible Statistician should ensure that the following steps are undertaken for all releases.
+1. Prior to any release of numerical information, a risk assessment should be conducted to determine the likelihood and impact of any disclosure risks.
+1. Where a risk is identified, disclosure control methods such as table redesign, rounding or suppression should be employed. The purpose of this is to reduce the disclosure risk to acceptable levels whilst maintaining utility of the release for users. 
+1. After applying disclosure control methods, outputs should be re-assessed to ensure that risks have been successfully mitigated.
+
+
+## Introduction
+
+Disclosure control is the protection of individuals' confidentiality through the careful presentation of numerical information. Accidental disclosure of personal information could cause harm and distress to individuals, and cause reputational damage for UKHSA, as well as legal implications such as those described by various Acts of Parliament^`r add_ref(16)`,`r add_ref(14)`^. 
+
+For Official and National Statistics, and for voluntary adopters of the same principles, the need for appropriate disclosure control is also required under The Code of Practice for Statistics^`r add_ref(1)`^, under Principle T6.4 of the Trustworthiness Pillar. 
+
+Disclosure may occur inadvertently (where a user spontaneously recognises a data subject) or in a motivated manner (where a user deliberately seeks to identify a data subject). Due to its often sensitive nature, health data can in particular present a motivating factor for the latter scenario, meaning extra care is often needed^`r add_ref(14)`^.
+
+To protect against these risks, the Data Protection Act (2018)^`r add_ref(4)`^ highlights the need for "data protection by design and default". Disclosure control should not be seen as an afterthought - rather, the principles outlined throughout this guidance should be built into standard ways of working, as part of usual quality assurance processes. To help with this, every publication should have a Responsible Statistician who is responsible for ensuring confidentiality protection^`r add_ref(2)`^. 
+
+While disclosure control is highly important, it is usually not possible to completely remove all risk. It is also important that disclosure control does not unnecessarily limit the usefulness of a release for users, as this would limit the public good the release is intended to have. As such, a careful balance should be sought between the need for good disclosure control against the need for good utility^`r add_ref(2)`,`r add_ref(3)`,`r add_ref(5)`,`r add_ref(12)`^. In practice, this means applying methods to reduce risk to acceptable levels, whilst not removing too much information that would be important for users. It is often better to err on the side of caution - Releasing too little information tends to be less damaging than releasing too much, and while more information can always be released later on, already released information often cannot be easily withdrawn^`r add_ref(12)`^.
+
+As will become apparent, it is not possible to provide one-size-fits-all rules for the application of disclosure control. Instead, this guidance seeks to provide analysts with a tool set for conducting risk assessments on numerical information prior to their release, and for addressing any risks in a way that achieves the above balance. 
+
+### A note on Freedom of Information (FOI) requests
+
+Individuals have the right to access information held by public authorities through Freedom of Information (FOI) requests. However, the confidentiality of data subjects should still be protected, meaning you should not contravene other laws in favour of releasing information under an FOI^`r add_ref(2)`,`r add_ref(11)`^. For this reason, various exemptions exist in the Freedom of Information Act. For example, Section 40(2) outlines an exemption stating that personal data should be protected wherever complying with the FOI request would result in a breach of the UK General Data Protection Act, for example^`r add_ref(11)`^. Note that this particular exemption only offers protection for living individuals^`r add_ref(11)`^. Section 41, however, offers more general confidentiality protection for information received from outside UKHSA that can apply to deceased individuals^`r add_ref(11)`^. The common law duty of confidentiality also applies to deceased individuals^`r add_ref(17)`^. 
+
+
+## Guidelines for identifying and controlling disclosure risk
+
+The key source of guidance on this topic comes from the Government Statistical Service (GSS) publication: disclosure control for tables produced from administrative sources^`r add_ref(2)`^. An associated publication also covers some specific guidance relating to social surveys: disclosure control for tables produced from surveys^`r add_ref(3)`^, although much as the same principles are used. Both of these publications include some case studies that can offer useful exemplification of this guidance. Some examples are also given here at the end of this document. 
+
+The Office for National Statistics (ONS) has also published more specific guidance for the release of data concerning birth and death statistics^`r add_ref(5)`^, as well as those concerning health statistics more broadly^`r add_ref(14)`^. Other guidance specific to the health sector has been published by NHS Digital^`r add_ref(12)`^. The broad principles of these sources have also been taken into account below. 
+
+
+### Steps 1 to 3: Understanding your data and conducting a risk assessment
+
+When preparing numerical information for publication, a number of steps should be taken to assess the risk of accidental disclosure (based on those outlined by the GSS^`r add_ref(2)`^). These are as follows:
+
+1. Determine user requirements
+    a. The following questions might be considered. Who are your main users? What are your reasons for publishing this data? Why do users need these statistics and what do they intend to do with them? What level of detail or geography is required to meet these needs? 
+    b. The answers to the above questions will help you understand what is and what is not necessary in your release. This will in turn help you understand potential risks, and will ultimately help you understand what level of impact each disclosure control method might have on the usefulness of the release for users^`r add_ref(2)`,`r add_ref(12)`,`r add_ref(13)`^. In other words, it will help you understand what information would need to be retained in order for the release to still be useful for users. 
+    
+2. Understand the characteristics of the data and where disclosure risks may be present
+    a. Consider the following questions:
+        i. <input type="checkbox"> Is this data of a sensitive nature?<br>More highly sensitive data could increase the likelihood of a disclosure risk as individuals may be motivated to discover the identity of data subjects. It can also increase the potential impact due to the heightened sensitivity for the data subjects concerned^`r add_ref(14)`,`r add_ref(12)`^.
+        i. <input type="checkbox"> Does the data contain 'key identifying variables'?<br>These are variables that make data subjects more identifiable, such as Age, sex, health condition, ethnic group, religion, marital status. The presence of these might increase the likelihood of a disclosure risk^`r add_ref(13)`^.
+        i. <input type="checkbox"> Are there any table cells or data points that have small values?<br>Values of 1 or 2 are usually considered to be 'unsafe cells'. They carry a particularly high risk of identification (both self-identification and identification by others) and may motivate intruders to try and identify data subjects because of their uniqueness or rarity^`r add_ref(14)`^. For added protection, which may be wise when dealing with sensitive data such as health data, other guidance recommends treating any values of less than 5 as being unsafe^`r add_ref(5)`,`r add_ref(12)`^.[^note1] [^note2]
+        i. <input type="checkbox"> Are there any small 'populations at risk'?<br>The population at risk is defined as the underlying number of people that could have contributed to a particular data point or table cell; in other words, it is those with the same characteristics as those in that data point or cell^`r add_ref(2)`,`r add_ref(12)`^. For example, for a table cell showing the number of infections in 18-24 year old females in a particular hospital, the population at risk would be the total number of 18-24 year old females in that hospital. Smaller populations carry a greater risk of disclosure.[^note3]<br>Note that in most cases it may not be possible or practical to exactly determine the size of the population at risk, but estimates should be used to approximate^`r add_ref(12)`^.
+        i. <input type="checkbox"> Are there many non-structural zeros?<br>A structural zero is where it is not possible for that cell to contain values (for example, females under 5 in birth statistics). These would be considered non-disclosive and do not need attention^`r add_ref(14)`^, but these can be presented as '-' to differentiate them from non-structural zeros.<br>A non-structural zero is where cell values or data points can theoretically appear, but there happens to be no individuals with those characteristics in the data. The problem with non-structural zeros, particularly where tables are dominated by them, is that they can lead to group disclosure: either showing that only 1 group of individuals had a certain characteristic or that nobody from a group of individuals had that characteristic, thus leading to personal disclosure for members of those groups.[^note4] 
+        i. <input type="checkbox"> Might users have other information available to them that could increase their likelihood of identifying data subjects?<br>For example, could users make use of personal knowledge, or link your data to other datasets or tables either within the same report or others?^`r add_ref(14)`,`r add_ref(5)`,`r add_ref(12)`,`r add_ref(13)`^<br>Personal knowledge of any data subjects could help users identify those individuals. That risk is heightened if data subjects are clustered somehow (for example, within the same household or clinic) as that could increase the level of knowledge data subjects have of one another^`r add_ref(14)`,`r add_ref(2)`^.<br>Linked tables within the same report could lead to disclosure via differencing: where the underlying value of rounded or suppressed cells in one table can be determined by taking the difference between information already given and the information given in other tables^`r add_ref(2)`^. Linkable third-party datasets that are publicly available might also increase this risk.[^note5] 
+        i. <input type="checkbox"> Is the data quite recent?<br>Older data might be less identifiable because populations and characteristics change over time^`r add_ref(2)`^. Newer, more current data might be more identifiable due to its recency. 
+        i. <input type="checkbox"> Are raw values presented?<br>For example, percentages carry lower risk as raw numbers are not know, so long as those underlying values cannot be calculated from totals^`r add_ref(14)`,`r add_ref(3)`^.<br>When survey estimates are weighted, as is also often done to account for sampling bias, this introduces uncertainty which also offers greater protection for confidentiality. Publishing unweighted survey values carries greater risk (as does the publication of weighting factors which may allow the calculation of unweighted values from weighted values)^`r add_ref(3)`^.
+
+        
+[^note1]: Counts of 3 or more are generally considered safer as no single individuals are isolated and counts of 2 might mean one party identifies the other^`r add_ref(2)`,`r add_ref(3)`^. However, while it is generally assumed that individuals are less likely to be able to identify more than 1 other individual, there may be certain situations where this does not hold true, such as where respondents are clustered in some way (for example, within the same family or clinic)^`r add_ref(2)`,`r add_ref(3)`^. 
+
+[^note2]: In social surveys, some protection against small numbers can be added by the fact that outputs are based on samples rather than populations, making identification less likely as most users will not know who was in the sample. However, any individuals that do have knowledge of who took part in the survey (including the survey respondents themselves) may still have an increased chance of identifying data subjects^`r add_ref(3)`^.
+
+[^note3]: For larger populations at risk, the amount of effort needed to successfully identify an individual might be considered disproportionate^`r add_ref(12)`^. As the population at risk gets smaller, for example by presenting data at a lower-level geographical area or including other breakdowns such as by sexuality, etc., the risk of disclosure becomes greater because the pool of people from which to identify individuals is smaller.
+
+[^note4]: Non-structural zeros are perhaps less of an issue for social surveys based on samples, as there may be population units with that characteristic that just were not sampled - however it may still be wise to be cautious^`r add_ref(3)`^.
+
+[^note5]: To give an example, if a table of conceptions by age could be linked with a separate table on abortions, it might be possible to identify an individual that had had an abortion, via knowledge of those who had conceived, particularly when small counts are involved^`r add_ref(14)`^.
+  
+3. Assess the likelihood and impact of a disclosure risk
+    a. Each 'yes' given in answer to the above questions may increase the number of unsafe cells in the intended output as well as the likelihood and potential impact of any accidental disclosure. Note that these are not equally weighted. For example, small cell values (particularly of 1 or 2, but also those of less than 5) pose a particular risk, and topic sensitivity particularly increases the potential impact.
+    a. Some sources suggest that disclosure control for small cell values might not be necessary when the populations at risk are very large (for example, those exceeding 50,000). This is because it would be very difficult for users to identify any individuals within a population of that size^`r add_ref(2)`,`r add_ref(12)`^. However, it may be prudent to err on the side of caution where practical. The ONS guide on health statistics^`r add_ref(14)`^ recommends that for the majority of health statistics, disclosure control should be implemented for any cells which have values of 1 or 2, and values of 1 to 4 for more sensitive topics (for example, statistics on abortions, AIDS and HIV, STDs, etc.), regardless of population size. 
+    a. When considering impact, it is only really necessary to consider whether _new_ information is at risk of disclosure as simple recognition would not usually constitute unlawful disclosure^`r add_ref(4)`,`r add_ref(5)`,`r add_ref(12)`^ - the key point is whether any new attributes are disclosed about data subjects or individuals connected to them^`r add_ref(5)`^. For example, identifying that an individual contributed to a count of infections would not necessarily constitute unlawful disclosure in of itself - in order to positively identify that data subject, users would have to have already known they had been infected for example, thus they are not learning anything new. It only becomes unlawful when any new attributes are disclosed^`r add_ref(5)`^. However, care should again be taken to err on the side of caution here.  
+
+  
+### Step 4: Choosing and applying disclosure control methods
+
+If a potential risk is identified through your risk assessment, options for mitigating that risk should be explored. The appropriate choice of method follows from those earlier steps of understanding the users' needs and the risks present in the data. 
+
+Again, the aim here is to choose a method that would sufficiently bring disclosure risks down to acceptable levels, while still ensuring that the release would be useful to users. If it is not possible to achieve this balance, then it should be considered whether the release of this data is appropriate. Whether that balance has been achieved is largely a subjective matter of judgement^`r add_ref(16)`,`r add_ref(2)`^, differing with each new report. 
+
+The following options should be explored, in order of preference from most preferred to least preferred (examples of applying these methods are given towards the end of this document):
+
+1. Table redesign<br>The point here is to increase the size of the populations at risk. This is usually preferred as a first option as it does not suppress or alter the underlying data in the same way that rounding or suppression would, just the manner in which it is presented^`r add_ref(2)`,`r add_ref(5)`^.<br>Groups can be collapsed (for example, across table rows or columns), leading to a higher level of aggregation. For example, age groups can be combined, categorical variables can be combined, or data could be presented at a higher geographical area^`r add_ref(14)`,`r add_ref(2)`,`r add_ref(5)`,`r add_ref(13)`^.<br>'Top or bottom coding' can be useful in masking outliers, by creating an 'under 10' or '60+' age category, for example^`r add_ref(14)`^.<br>For longitudinal data, years could be combined to derive 3-year aggregates, for example, which adds uncertainty both in terms of the total value in each year and in which year each data subject appeared^`r add_ref(14)`^.<br>A table with multiple different dimensions could be split into separate tables^`r add_ref(5)`^, although care needs to be taken to not allow those tables to be easily re-linked, which might allow for re-calculation of original values via differencing^`r add_ref(2)`^.
+
+1. Rounding/Controlled rounding<br>The purpose of rounding is to introduce uncertainty in data by rounding all values (for example, within a table) to a specified base (for example, to the nearest 3, 5 or 10).<br>Rounding to base 3 is one option, which avoids isolating individuals in counts of 1 or counts of 2 where one individual might recognise the other^`r add_ref(2)`^. Rounding to base 5 has been advised elsewhere for greater protection^`r add_ref(14)`,`r add_ref(12)`^. In surveys, another suggestion has been given to round values to base 10 for unweighted sample bases^`r add_ref(3)`^. Which base is chosen may depend on the level of risk involved and what would be acceptable to users.<br>Simple rounding may mean that totals no longer equal the sum of values. Controlled rounding, which is preferred if feasible^`r add_ref(2)`^, means that the additivity of totals are preserved.[^note6]<br>Care should be taken when rounding small numbers. Guidance states that zero should only be used for true zero, separated from values that are rounded to zero. However, this means that when rounding to base 5, for example, values of 1 and 2 would be easily identifiable as being the only values that round to zero. We would suggest that all small values are reported as "1 to 4", "fewer than 5", or similar, to avoid this scenario. Writing in words like this is also preferred to the use of symbols (for example, 0~ or <5), as has been suggested elsewhere^`r add_ref(2)`^, as symbols are not always rendered correctly by screen-readers, presenting an accessibility issue. 
+
+1. Primary and secondary cell suppression<br>Where neither of the above methods are suitable, or where they would still lead to the presence of unsafe cells, suppression could be explored. This can involve replacing small numbers with a symbol such as 'c' (for confidential), to hide their true values^`r add_ref(5)`^, or presenting values of less than 5 as "1 to 4" or "fewer than 5", as above. It is important to note that the suppression of other cells in the same table (known as 'secondary suppression') may be needed to prevent disclosure by differencing^`r add_ref(14)`,`r add_ref(2)`,`r add_ref(5)`,`r add_ref(12)`,`r add_ref(13)`^. Suppression might not lead to too much information loss when there are only a few unsafe cells but might impact on utility too much when there are a larger number^`r add_ref(14)`^.
+
+1. Other methods such as record swapping, record removal and Barnardisation (adjusting all values to introduce noise) are also suggested by some^`r add_ref(14)`,`r add_ref(2)`,`r add_ref(13)`^. However, these are more destructive methods and might be more difficult to explain to users. As such, they might not be advisable in most cases. Please seek guidance from [our.team.email](mailto:xxx) if you are considering these methods.   
+
+
+[^note6]:We will be aiming to produce guidance on this in due course.
+
+
+### Step 5: Assessing the outcome and disseminating
+
+After choosing and applying a disclosure control method, outputs should be re-assessed to ensure that risks have been successfully mitigated^`r add_ref(12)`^.
+
+It is good practice, where applicable, to explain as part of the release that a disclosure risk has been identified and to explain what methods have been applied, including detail on the nature and extent of any modification^`r add_ref(2)`^.
+
+As a last resort solution, if no disclosure method would be successful in mitigating the risk (for example, because they would all be too detrimental to utility), there is the possibility of releasing potentially disclosive information under a 'Non-Disclosive Data Access Arrangement' (DAA)^`r add_ref(5)`^. However, this should be done in very rare cases only, and only under the express permission of the [Head of Profession for statistics](mailto:UKHSA_HOPSTATS@ukhsa.gov.uk). 
+
+
+## Example risk assessment and disclosure control
+
+The tables below report on some hypothetical data showing treatment uptake across different age groups within a single hospital clinic. 
+
+Different examples are also provided by the GSS^`r add_ref(2)`,`r add_ref(3)`^. 
+
+
+#### Table 1a. Treatment type by age
+
+| Treatment type | 0 to 10 | 11 to 20 | 21 to 30 | 31 to 40 | 41 to 50 | Over 50 | Total |
+|----------------|---------|----------|----------|----------|----------|---------|-------|
+| A              | 0       | 7        | 3        | 1        | 0        | 0       | 11    |
+| B              | 1       | 0        | 12       | 94       | 14       | 3       | 124   |
+| C              | 1       | 0        | 14       | 2        | 3        | 12      | 32    |
+| Total          | 2       | 7        | 29       | 97       | 17       | 15      | 167   |
+
+Several potential risks exist with this table. There are several small values (of less than 5) present both inindividual data points and in a marginal total. In the 0 to 10 age group, for example, anyone with knowledge of one of the data subjects would easily work out which treatment the other data subject received. Non-structural zeros are also present, such as in the 11 to 20 age group. This means that anyone with knowledge of a 11 to 20 year old undertaking treatment will know that they received Treatment A. 
+
+These risks are increased by the fact that age is a key identifying variable, and the potential sensitivity of this data might increase the impact of any disclosure. The populations at risk might be small here, given the small overall numbers receiving treatment, and because data subjects are clustered within the same clinic, they would have increased knowledge of one another. 
+
+Note that if zeros were structural here (for example, certain age groups were not eligible for certain treatments), then those zeros could be replaced with '-' to denote that fact. 
+
+
+#### Table 1b. Treatment type by age following table redesign
+
+| Treatment type | 0 to 30 | Over 30   | Total |
+|----------------|---------|-----------|-------|
+| A              | 10      | 1         | 11    |
+| B              | 13      | 111       | 124   |
+| C              | 15      | 17        | 32    |
+| Total          | 38      | 129       | 167   |
+
+Collapsing the age groups into broader categories solves several of the above problems. There are no more non-structural zeros and most small values have been removed. It could be assumed that this table would still be useful for users, as it still shows the overall preference for Treatment B in the population, and still shows some breakdown by age. 
+
+However, there is still 1 small value in the over 30 age group which needs attention. That individual could self-identify, gaining knowledge that no other person in their age group received the same treatment as them. Other individuals may also be motivated to try and seek the identify of that rare data subject, such as to find out why that individual received this treatment and not themselves. 
+
+#### Table 1c. Treatment type by age following rounding
+
+| Treatment type | 0 to 30 | Over 30    |
+|----------------|---------|------------|
+| A              | 10      | 1 to 4     | 
+| B              | 15      | 110        | 
+| C              | 15      | 15         | 
+| Total          | 40      | 130        |
+
+In this table, values have been rounded to base 5. Base 5 was chosen in favour of base 3 due to the sensitive nature of the data and the fact that data subjects have increased knowledge of one another (because they attend the same clinic). The 'Total' column has also been removed to offer greater protection to the 'Treatment A' group which has a small marginal total.
+
+As you can see, the rounding has introduced enough uncertainty as to mask the uniqueness of the aged over 30 data subject undergoing Treatment A. Note that the small value is presented as "1 to 4" here. This is done in favour of simply rounding to the nearest 5 as that might give greater clues as to the real value: values of 1 or 2 would round down to 0, and the advice is to identify those values as 0~ rather than true zero^`r add_ref(2)`^, thus small numbers would be identifiable. "1 to 4" is also more accessible than the use of a symbol (for example, 0~), which might not always be rendered correctly by screen readers. 
+
+Note that it should be made clear in any reporting of this data how and why rounding has been applied. 
+
+
+#### Table 1d. Treatment type by age following suppression
+
+| Treatment type | 0 to 30 | Over 30   | Total |
+|----------------|---------|-----------|-------|
+| A              | c       | c         | 11    |
+| B              | c       | 111       | 124   |
+| C              | c       | 17        | 32    |
+| Total          | 38      | 129       | 167   |
+
+It might be decided that the rounding example above might be too detrimental to users, if exact totals are important. An alternative might be to suppress small values instead - in this example, to focus on the suppression of that over 30 age group receiving Treatment A. In this case, we have used 'c' (for confidential) to denote that values have been suppressed. 
+
+If we just suppressed that single value, it would be very easy to re-calculate it based on other information given in the table. As such, secondary suppression has also been applied to the 0 to 30 group to prevent that. 
+
+Note that it should be made clear in any reporting of this data how and why suppression has been applied. 
+
+This approach might seem more destructive than the rounding example given above, but the benefit here is that the actual values of the marginal totals are preserved. Which method is preferred may depend on why users need this information and what they intend to do with it.  
+
+
+## References
+
+`r ref_list_out()`
+
