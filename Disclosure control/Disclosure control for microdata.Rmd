@@ -12,78 +12,25 @@ output:
   word_document:
     reference_docx: "../- assets/Templates/UKHSA plain document template.dotx"
 knit: (function(inputFile, encoding){rmarkdown::render(inputFile, envir = globalenv(), encoding = encoding, output_dir = "./", output_format = "all")})
+
+
+versioncontrol: "`r guidanceDocs::VersionHistory(  c('30/09/2022', 'Initial release')  )`"
 ---
-
-
-```{r versionHistory, echo=F, include=F}
-
-#Add a new row (c list) for each version update
-vh <- data.frame(rbind(
-  c("29/09/2022", "Initial release")
-))
-
-
-
-names(vh) <- c("Date", "Notes")
-vh_out <- "<table><tr><th>Date</th><th>Notes</th></tr>"
-for(i in 1:nrow(vh)){
-  assign("vh_out", paste0(vh_out, "<tr><td>", vh[i,1], "</td><td>", vh[i,2], "</td></tr>"), envir = .GlobalEnv)
-}
-vh_out <- paste0(vh_out, "</table>")
-
-```
-
----
-versioncontrol: "`r vh_out`"
----
-
 
 
 ```{r setup, echo=F, include=F}
 library(tidyverse)
+library(guidanceDocs)
 knitr::opts_chunk$set(echo = F)
 
-
-#The following creates a reference list from a .xlsx file - this is not made available on GitHub
-#The spreadsheet should have titles in the first column and URLs in the second
-refs <- readxl::read_xlsx("../- assets/QPD knowledge bank.xlsx", sheet=1)
-
-ref_list <- data.frame("Row" = integer(), "Name" = character(), "Link" = character())
-
-add_ref <- function(.StableID){
-  
-  if(nrow(refs[which(refs$StableID==.StableID),])==0){
-    warning(paste("Check your references! There is no reference number", .StableID))
-  }
-  
-  .Name <- refs[which(refs$StableID==.StableID), 'Name'][[1]]
-  .Link <- refs[which(refs$StableID==.StableID), 'Link'][[1]]
-  
-  
-  if(!.Name %in% ref_list$Name){
-    ref_list[nrow(ref_list)+1, 1:3] <- c(nrow(ref_list)+1, .Name, .Link)
-  }
-
-  assign("ref_list", ref_list, envir = .GlobalEnv)
-  
-  return(ref_list %>% filter(Name == .Name) %>% pull(Row))
-}
-
-ref_list_out <- function(){
-  list_out=""
-  for(i in 1:nrow(ref_list)){
-    list_out <- paste(list_out, i, '. [', ref_list[i,2], '](', ref_list[i,3], ')\n', sep="")
-  }
-  return(list_out)
-}
-
+SetUpReferenceList("../- assets/QPD knowledge bank.xlsx")
 
 ```
 
 
 ## Coverage
 
-This guidance applies to all external releases of microdata, defined as record-level data with each row defining an individual, or individual household or employer, for example^`r add_ref(15)`^. 
+This guidance applies to all external releases of microdata, defined as record-level data with each row defining an individual, or individual household or employer, for example^`r addRef(15)`^. 
 
 This document should be seen as a supplement to our guidance on [statistical disclosure control for aggregate data](...). Many of the same principles covered there apply to microdata as well and so shall only be repeated in brief here. As such, it is recommended that readers familiarise themselves with that guidance first.
 
@@ -102,11 +49,11 @@ This guidance is not necessarily intended to replace any existing policies stati
 
 ##Introduction
 
-While data is more commonly released in aggregated formats, individual-level (micro) data can provide a rich opportunity for opening up access to the research community^`r add_ref(15)`,`r add_ref(10)`^. Compared to aggregate data, however, the fact that microdata is presented at that individual level means that there is a heightened risk that personal information might be disclosed. Strong controls are therefore needed to prevent identification^`r add_ref(12)`^. 
+While data is more commonly released in aggregated formats, individual-level (micro) data can provide a rich opportunity for opening up access to the research community^`r addRef(15)`,`r addRef(10)`^. Compared to aggregate data, however, the fact that microdata is presented at that individual level means that there is a heightened risk that personal information might be disclosed. Strong controls are therefore needed to prevent identification^`r addRef(12)`^. 
 
-As with aggregate data, if personal information is accidentally disclosed, that can cause harm and distress to data subjects, as well as reputational damage and legal implications for UKHSA^`r add_ref(14)`^. Disclosure could occur both spontaneously or through motivated attacks, via the use of personal knowledge or linked datasets or other sources (for example, information found on social media platforms)^`r add_ref(15)`^.
+As with aggregate data, if personal information is accidentally disclosed, that can cause harm and distress to data subjects, as well as reputational damage and legal implications for UKHSA^`r addRef(14)`^. Disclosure could occur both spontaneously or through motivated attacks, via the use of personal knowledge or linked datasets or other sources (for example, information found on social media platforms)^`r addRef(15)`^.
 
-As with aggregate data, there is a need to balance disclosure control against utility^`r add_ref(15)`,`r add_ref(10)`^. A Responsible Statistician should be in place to ensure that balance is appropriately achieved^`r add_ref(15)`^. The aim again here is to reduce risk to acceptable levels (such that it would take disproportionate time, effort and expertise to identify data subjects), while maintaining utility for users^`r add_ref(15)`^. 
+As with aggregate data, there is a need to balance disclosure control against utility^`r addRef(15)`,`r addRef(10)`^. A Responsible Statistician should be in place to ensure that balance is appropriately achieved^`r addRef(15)`^. The aim again here is to reduce risk to acceptable levels (such that it would take disproportionate time, effort and expertise to identify data subjects), while maintaining utility for users^`r addRef(15)`^. 
 
 
 ## Guidelines for identifying and controlling disclosure risk
@@ -125,54 +72,54 @@ Some repeated information will only be covered briefly here.
         * the data concerns more sensitive topics 
         * the data contains key identifying variables (for example, demographics, location, salary)
         * the data has been drawn from small populations
-        * the data contains data subjects that are rare or unique within the dataset (although samples might carry a smaller risk here as users often cannot be sure a person was in the sample^`r add_ref(12)`^)
-        * it is likely that users might have personal knowledge or third-party datasets (such as the electoral register) available to them which can help them identify data subjects^`r add_ref(15)`,`r add_ref(13)`^
+        * the data contains data subjects that are rare or unique within the dataset (although samples might carry a smaller risk here as users often cannot be sure a person was in the sample^`r addRef(12)`^)
+        * it is likely that users might have personal knowledge or third-party datasets (such as the electoral register) available to them which can help them identify data subjects^`r addRef(15)`,`r addRef(13)`^
         * the data was collected recently
         
     a. Some more specific considerations might also be made in the case of microdata:
-        i. Microdata might naturally contain direct identifiers such as name, postcode, NHS number, etc. In most cases it will be crucial that these are identified and removed prior to data release^`r add_ref(15)`^.
-        i. As data is presented at the level of individuals, the presence of key identifying variables (for example, age, sex, health condition, ethnicity, religion, martial status, among others)^`r add_ref(13)`^ becomes all the more important, particularly when some combinations of characteristics might be rare or unique^`r add_ref(15)`^. 
-        i. The presence of longitudinal data might increase risk levels where changing characteristics might be disclosive^`r add_ref(15)`^.
+        i. Microdata might naturally contain direct identifiers such as name, postcode, NHS number, etc. In most cases it will be crucial that these are identified and removed prior to data release^`r addRef(15)`^.
+        i. As data is presented at the level of individuals, the presence of key identifying variables (for example, age, sex, health condition, ethnicity, religion, martial status, among others)^`r addRef(13)`^ becomes all the more important, particularly when some combinations of characteristics might be rare or unique^`r addRef(15)`^. 
+        i. The presence of longitudinal data might increase risk levels where changing characteristics might be disclosive^`r addRef(15)`^.
 
 3. Assess the likelihood and impact of a disclosure risk
     a. The presence of the above factors will increase the likelihood and impact of disclosure risks. Rarity or uniqueness within the data is a particular risk factor that needs to be identified and addressed. 
-    a. It is important to bear in mind that microdata will often be tabulated by users to get summary counts. While risks should ideally be identified and resolved on the microdata itself, it is worth also looking at tabulated versions of the data (for example, across key variables) to see if any additional risks do emerge^`r add_ref(15)`,`r add_ref(10)`^. 
-    a. K-anonymity might be a useful method through which to identify rarity or uniqueness within the data, as described by NHS Digital^`r add_ref(12)`^. The idea here is to ensure that there are at least 3 ('k=3') or 5 ('k=5') records in the data set for each combination of characteristics.<br>For example, if the data contains fields for age and gender, there should be at least 3 or 5 entries for every combination of age and gender. Where these thresholds are not met, disclosure control methods (described in the following section) should be applied until they are met. In effect, this is applying the same principles as for aggregate data, where it is recommended that tabulated cell values of less than 3 or less than 5 should be avoided.
+    a. It is important to bear in mind that microdata will often be tabulated by users to get summary counts. While risks should ideally be identified and resolved on the microdata itself, it is worth also looking at tabulated versions of the data (for example, across key variables) to see if any additional risks do emerge^`r addRef(15)`,`r addRef(10)`^. 
+    a. K-anonymity might be a useful method through which to identify rarity or uniqueness within the data, as described by NHS Digital^`r addRef(12)`^. The idea here is to ensure that there are at least 3 ('k=3') or 5 ('k=5') records in the data set for each combination of characteristics.<br>For example, if the data contains fields for age and gender, there should be at least 3 or 5 entries for every combination of age and gender. Where these thresholds are not met, disclosure control methods (described in the following section) should be applied until they are met. In effect, this is applying the same principles as for aggregate data, where it is recommended that tabulated cell values of less than 3 or less than 5 should be avoided.
         i. Where sensitivity and risk is relatively low, k=3 might be sufficient. This is termed 'weak' k-anonymity, and only key identifying characteristics need normally be controlled: for example, age, gender, ethnicity, location, 'event dates' (e.g., day admitted to hospital), employer, and occupation.
         i. Where sensitivity and risk is higher, k=5 might be needed ('strong' k-anonymity). More variables should be included in the k-anonymity test here, with the advice being to control for all variables but one (with that one variable not being a key identifying characteristic). 
-    a. Intruder testing might be another useful method, as described by the Office for National Statistics^`r add_ref(10)`^.<br>Intruder testing is performed by tasking 'intruders' (usually internal colleagues, but could be external people with strict controls in place) to try to identify individuals within the dataset. The ideal candidates for this testing are those that have some background knowledge of the data similar to that of a typical user and enough technical knowledge to do a thorough test, although they are not expected to be considered experts (for example, professional hackers).<br>Intruders could be given a list of names and asked to try to identify those individuals in the dataset. They would do that through the use of publicly available datasets and by searching the internet (for example, social media sites).<br>Where correct identifications are made, disclosure control should be applied to the data. Intruders should also be asked to record the logic and variables they used to make those identifications. In this way, intruder testing can supplement your risk assessments by giving you an understanding of where risks lie, and how a motivated individual might go about trying to identify data subjects. 
+    a. Intruder testing might be another useful method, as described by the Office for National Statistics^`r addRef(10)`^.<br>Intruder testing is performed by tasking 'intruders' (usually internal colleagues, but could be external people with strict controls in place) to try to identify individuals within the dataset. The ideal candidates for this testing are those that have some background knowledge of the data similar to that of a typical user and enough technical knowledge to do a thorough test, although they are not expected to be considered experts (for example, professional hackers).<br>Intruders could be given a list of names and asked to try to identify those individuals in the dataset. They would do that through the use of publicly available datasets and by searching the internet (for example, social media sites).<br>Where correct identifications are made, disclosure control should be applied to the data. Intruders should also be asked to record the logic and variables they used to make those identifications. In this way, intruder testing can supplement your risk assessments by giving you an understanding of where risks lie, and how a motivated individual might go about trying to identify data subjects. 
  
 
 ### Step 4: Choosing and applying disclosure control methods
 
 The following steps should be taken in all cases, as they would always pose a disclosure risk:
 
-a. Any direct identifiers (for example, name, NHS number) should always be removed from the data as these will clearly identify an individual^`r add_ref(15)`,`r add_ref(12)`^.[^note1] 
+a. Any direct identifiers (for example, name, NHS number) should always be removed from the data as these will clearly identify an individual^`r addRef(15)`,`r addRef(12)`^.[^note1] 
 
-[^note1]: Pseudonymisation is sometimes used to mask directly identifiable information such as name, in a way that still allows for data to be associated with a particular individual without that individual being directly identified. However, there are still risks here as data is still presented in an individual-level format and pseudonymised values may still allow some linking between datasets. This could mean that pseudonymisation might be reversed, particiularly for detailed datasets^`r add_ref(16)`,`r add_ref(35)`^. This method should therefore be employed cautiously, if at all.
+[^note1]: Pseudonymisation is sometimes used to mask directly identifiable information such as name, in a way that still allows for data to be associated with a particular individual without that individual being directly identified. However, there are still risks here as data is still presented in an individual-level format and pseudonymised values may still allow some linking between datasets. This could mean that pseudonymisation might be reversed, particiularly for detailed datasets^`r addRef(16)`,`r addRef(35)`^. This method should therefore be employed cautiously, if at all.
 
-a. Other indirect identifiers such as exact date of birth and postcode should be reduced in detail^`r add_ref(12)`^. If important for users, these could be truncated rather than being removed entirely^`r add_ref(12)`^. The level of geography might also be increased, for example by presenting location at regional level rather than giving postcodes^`r add_ref(15)`,`r add_ref(13)`^. 
+a. Other indirect identifiers such as exact date of birth and postcode should be reduced in detail^`r addRef(12)`^. If important for users, these could be truncated rather than being removed entirely^`r addRef(12)`^. The level of geography might also be increased, for example by presenting location at regional level rather than giving postcodes^`r addRef(15)`,`r addRef(13)`^. 
 
-Other key identifying variables (age, gender, etc.) might then be addressed to reduce the amount of risk, using one or more of the following methods. Other variables that are not necessarily identifiable may not need to be controlled for when risk levels are otherwise low^`r add_ref(12)`^. Again, it is important to pay consideration to the user requirements here, which might mean applying different levels of disclosure control to different variables^`r add_ref(15)`,`r add_ref(16)`^. For example, it might be deemed important to have the exact age of data subjects, but to compensate for this risk, other variables could be collapsed and removed to add sufficient uncertainty elsewhere.
+Other key identifying variables (age, gender, etc.) might then be addressed to reduce the amount of risk, using one or more of the following methods. Other variables that are not necessarily identifiable may not need to be controlled for when risk levels are otherwise low^`r addRef(12)`^. Again, it is important to pay consideration to the user requirements here, which might mean applying different levels of disclosure control to different variables^`r addRef(15)`,`r addRef(16)`^. For example, it might be deemed important to have the exact age of data subjects, but to compensate for this risk, other variables could be collapsed and removed to add sufficient uncertainty elsewhere.
 
  
-a. Continuous variables (such as age and height) can be banded into groups (for example, into 5-year age brackets instead of actual ages)^`r add_ref(15)`,`r add_ref(12)`,`r add_ref(13)`,`r add_ref(16)`^.
-a. Categorical variables can be collapsed to reduce the level of detail^`r add_ref(15)`,`r add_ref(12)`,`r add_ref(13)`,`r add_ref(16)`^ (for example, by presenting broader occupational classifications rather than more specific job roles).
-a. Problematic variables could be removed if they are not needed by users^`r add_ref(15)`,`r add_ref(12)`^.
-a. Where there are individual 'combinations at risk' (in other words, where a data subject might be the only one with a certain set of characteristics), suppression could be used to hide an individual value, replacing it with 'c' (for confidential) or similar^`r add_ref(13)`,`r add_ref(16)`^. Note that it is important to apply this in such a way that the reason for suppression, and therefore the underlying value, is not made obvious ^`r add_ref(13)`^. 
-a. Problematic data subjects could be removed entirely^`r add_ref(10)`,`r add_ref(13)`,`r add_ref(16)`^. However, you would need to consider the impact on utility here, including what effect this would have on summary counts or averages when the data is aggregated^`r add_ref(16)`^. 
+a. Continuous variables (such as age and height) can be banded into groups (for example, into 5-year age brackets instead of actual ages)^`r addRef(15)`,`r addRef(12)`,`r addRef(13)`,`r addRef(16)`^.
+a. Categorical variables can be collapsed to reduce the level of detail^`r addRef(15)`,`r addRef(12)`,`r addRef(13)`,`r addRef(16)`^ (for example, by presenting broader occupational classifications rather than more specific job roles).
+a. Problematic variables could be removed if they are not needed by users^`r addRef(15)`,`r addRef(12)`^.
+a. Where there are individual 'combinations at risk' (in other words, where a data subject might be the only one with a certain set of characteristics), suppression could be used to hide an individual value, replacing it with 'c' (for confidential) or similar^`r addRef(13)`,`r addRef(16)`^. Note that it is important to apply this in such a way that the reason for suppression, and therefore the underlying value, is not made obvious ^`r addRef(13)`^. 
+a. Problematic data subjects could be removed entirely^`r addRef(10)`,`r addRef(13)`,`r addRef(16)`^. However, you would need to consider the impact on utility here, including what effect this would have on summary counts or averages when the data is aggregated^`r addRef(16)`^. 
 
 
-Other methods have been suggested, such as record swapping, micro-aggregation, and Barnardisation^`r add_ref(16)`^. However, these are more destructive methods and might be more difficult to explain to users. As such, they might not be advisable in most cases. Please seek guidance from [our.team.email](mailto:xxx) if you are considering these methods. 
+Other methods have been suggested, such as record swapping, micro-aggregation, and Barnardisation^`r addRef(16)`^. However, these are more destructive methods and might be more difficult to explain to users. As such, they might not be advisable in most cases. Please seek guidance from [UKHSA_HOPSTATS@ukhsa.gov.uk](mailto:UKHSA_HOPSTATS@ukhsa.gov.uk) if you are considering these methods. 
 
 
 ### Step 5: Assessing the outcome and disseminating
 
-After choosing and applying a disclosure control method, outputs should be re-assessed to ensure that risks have been successfully mitigated^`r add_ref(12)`^. This might include re-tabulating the data to check for small table cell values, re-checking that k-anonymity thresholds are being met, and re-conducting intruder testing exercises. 
+After choosing and applying a disclosure control method, outputs should be re-assessed to ensure that risks have been successfully mitigated^`r addRef(12)`^. This might include re-tabulating the data to check for small table cell values, re-checking that k-anonymity thresholds are being met, and re-conducting intruder testing exercises. 
 
-It is good practice, where applicable, to explain as part of the data release that a disclosure risk has been identified and to explain what methods have been applied, including detail on the nature and extent of any modification^`r add_ref(2)`^.
+It is good practice, where applicable, to explain as part of the data release that a disclosure risk has been identified and to explain what methods have been applied, including detail on the nature and extent of any modification^`r addRef(2)`^.
 
-As a last resort solution, if no disclosure method would be successful in mitigating the risk (for example, because they would all be too detrimental to utility), there is the possibility of releasing potentially disclosive information under a 'Non-Disclosive Data Access Arrangement' (DAA)^`r add_ref(5)`^. However, this should be done in very rare cases only, and only under the express permission of the [Head of Profession for statistics](mailto:UKHSA_HOPSTATS@ukhsa.gov.uk).
+As a last resort solution, if no disclosure method would be successful in mitigating the risk (for example, because they would all be too detrimental to utility), there is the possibility of releasing potentially disclosive information under a 'Non-Disclosive Data Access Arrangement' (DAA)^`r addRef(5)`^. However, this should be done in very rare cases only, and only under the express permission of the [Head of Profession for statistics](mailto:UKHSA_HOPSTATS@ukhsa.gov.uk).
 
 
 ## Example risk assessment and disclosure control
@@ -241,4 +188,4 @@ However, with Emir's age suppressed, there is a new risk here that users might p
 
 ## References
 
-`r ref_list_out()`
+`r AddReferenceList()`
