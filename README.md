@@ -1,4 +1,14 @@
-# Welcome to the UKHSA statistics production team hub! 
+<h1 align="center">Welcome to the UKHSA statistics production team hub!</h1>
+
+
+<p align="center">
+    <img src="https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/-%20assets/Hex/hex.png?raw=true" alt="" width="200" align="center">
+</p>
+
+<br>
+
+This page has been produced by the statistics production division at UKHSA, to support and promote best practice across our analytical community. While the resources hosted here have been written with UKHSA in mind, all guidance documents are based on Government best practice principles, so the content should have appeal to a wider audience as well. 
+
 
 From here, you will be able to view our guidance documents:
 
