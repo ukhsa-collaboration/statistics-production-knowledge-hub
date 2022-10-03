@@ -32,7 +32,7 @@ SetUpReferenceList("../- assets/QPD knowledge bank.xlsx")
 
 This guidance applies to all external releases of microdata, defined as record-level data with each row defining an individual, or individual household or employer, for example^`r addRef(15)`^. 
 
-This document should be seen as a supplement to our guidance on [statistical disclosure control for aggregate data](...). Many of the same principles covered there apply to microdata as well and so shall only be repeated in brief here. As such, it is recommended that readers familiarise themselves with that guidance first.
+This document should be seen as a supplement to our guidance on [statistical disclosure control for aggregate data](https://htmlpreview.github.io/?https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/Disclosure%20control/Disclosure-control-for-aggregate-data.html). Many of the same principles covered there apply to microdata as well and so shall only be repeated in brief here. As such, it is recommended that readers familiarise themselves with that guidance first.
 
 Special data protection controls around the sharing of microdata are usually needed, such as data sharing agreements. This guidance assumes those controls are appropriately in place and they are not covered here. 
 
@@ -58,7 +58,7 @@ As with aggregate data, there is a need to balance disclosure control against ut
 
 ## Guidelines for identifying and controlling disclosure risk
 
-The steps described here are much the same as those described in our guidance on [statistical disclosure control for aggregate data](...). 
+The steps described here are much the same as those described in our guidance on [statistical disclosure control for aggregate data](https://htmlpreview.github.io/?https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/Disclosure%20control/Disclosure-control-for-aggregate-data.html). 
 Some repeated information will only be covered briefly here. 
 
 ### Steps 1 to 3: Understanding your data and conducting a risk assessment
@@ -68,7 +68,7 @@ Some repeated information will only be covered briefly here.
     a. An understanding of who your intended users are and what they intend to do with your data is important in assessing risks and in determining which disclosure control methods would be acceptable to those users. In particular, it will help you understand what information would need to be retained in order for the release to still be useful for users. 
     
 2. Understand the characteristics of the data and where disclosure risks may be present
-    a. Many of the same risk factors given in our guidance on [statistical disclosure control for aggregate data](...) will still apply here. Specifically, greater disclosure risks may be present when:
+    a. Many of the same risk factors given in our guidance on [statistical disclosure control for aggregate data](https://htmlpreview.github.io/?https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/Disclosure%20control/Disclosure-control-for-aggregate-data.html) will still apply here. Specifically, greater disclosure risks may be present when:
         * the data concerns more sensitive topics 
         * the data contains key identifying variables (for example, demographics, location, salary)
         * the data has been drawn from small populations
