@@ -142,7 +142,7 @@
      
   <div class="main">     
     <h1>Statistical Disclosure Control - Aggregate Data</h1>
-    <h2>Last updated: 29 September, 2022</h2>
+    <h2>Last updated: 03 October, 2022</h2>
     
     <p><a id="versionbutton" href="#" onclick="showHistory()">Show version history +</a></p>
     <div id="versioncontrol"><table>
@@ -156,7 +156,7 @@ Notes
 </tr>
 <tr>
 <td>
-29/09/2022
+30/09/2022
 </td>
 <td>
 Initial release
@@ -180,14 +180,14 @@ Initial release
     </ul>
     
     <p>Author: Ben Cuff</p>
-    <p>To provide any feedback on this document, or to ask for more information or support, please contact: <a href="mailto:xxx">our.team.email</a></p>
+    <p>To provide any feedback on this document, or to ask for more information or support, please contact: <a href="mailto:UKHSA_HOPSTATS@ukhsa.gov.uk">UKHSA_HOPSTATS@ukhsa.gov.uk</a></p>
     
     <div id="coverage" class="section level2">
     <h2>Coverage</h2>
     <p>This guidance applies to all external releases of aggregate numerical information.</p>
     <p>By releases, we mean publications of any kind, as well as responses to Freedom of Information (FOI) requests and ad-hoc other requests for information.</p>
     <p>By aggregate numerical information, we refer to any form in which aggregate numbers (for example, counts by demographic groups or geographical areas) are presented, including within text, tables, charts and datasets.</p>
-    <p>For disclosure control relating to individual-level (micro) data (for example, genome data), please see our separate guidance on <a href="...">statistical disclosure control for microdata</a>.</p>
+    <p>For disclosure control relating to individual-level (micro) data (for example, genome data), please see our separate guidance on <a href="https://htmlpreview.github.io/?https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/Disclosure%20control/Disclosure-control-for-microdata.html">statistical disclosure control for microdata</a>.</p>
     <p>This guidance is not necessarily intended to replace any existing policies statistics producers may have in place that outline specific approaches for their outputs. It is intended to provide general guidance on this topic, in order to inform those policies, should producers wish to create them.</p>
     </div>
     <div id="summary-of-recommendations" class="section level2">
@@ -258,7 +258,7 @@ Initial release
     <li><p>Table redesign<br>The point here is to increase the size of the populations at risk. This is usually preferred as a first option as it does not suppress or alter the underlying data in the same way that rounding or suppression would, just the manner in which it is presented<sup>5,7</sup>.<br>Groups can be collapsed (for example, across table rows or columns), leading to a higher level of aggregation. For example, age groups can be combined, categorical variables can be combined, or data could be presented at a higher geographical area<sup>2,5,7,11</sup>.<br>'Top or bottom coding' can be useful in masking outliers, by creating an 'under 10' or '60+' age category, for example<sup>2</sup>.<br>For longitudinal data, years could be combined to derive 3-year aggregates, for example, which adds uncertainty both in terms of the total value in each year and in which year each data subject appeared<sup>2</sup>.<br>A table with multiple different dimensions could be split into separate tables<sup>7</sup>, although care needs to be taken to not allow those tables to be easily re-linked, which might allow for re-calculation of original values via differencing<sup>5</sup>.</p></li>
     <li><p>Rounding/Controlled rounding<br>The purpose of rounding is to introduce uncertainty in data by rounding all values (for example, within a table) to a specified base (for example, to the nearest 3, 5 or 10).<br>Rounding to base 3 is one option, which avoids isolating individuals in counts of 1 or counts of 2 where one individual might recognise the other<sup>5</sup>. Rounding to base 5 has been advised elsewhere for greater protection<sup>2,8</sup>. In surveys, another suggestion has been given to round values to base 10 for unweighted sample bases<sup>6</sup>. Which base is chosen may depend on the level of risk involved and what would be acceptable to users.<br>Simple rounding may mean that totals no longer equal the sum of values. Controlled rounding, which is preferred if feasible<sup>5</sup>, means that the additivity of totals are preserved.<a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a><br>Care should be taken when rounding small numbers. Guidance states that zero should only be used for true zero, separated from values that are rounded to zero. However, this means that when rounding to base 5, for example, values of 1 and 2 would be easily identifiable as being the only values that round to zero. We would suggest that all small values are reported as &quot;1 to 4&quot;, &quot;fewer than 5&quot;, or similar, to avoid this scenario. Writing in words like this is also preferred to the use of symbols (for example, 0~ or &lt;5), as has been suggested elsewhere<sup>5</sup>, as symbols are not always rendered correctly by screen-readers, presenting an accessibility issue.</p></li>
     <li><p>Primary and secondary cell suppression<br>Where neither of the above methods are suitable, or where they would still lead to the presence of unsafe cells, suppression could be explored. This can involve replacing small numbers with a symbol such as 'c' (for confidential), to hide their true values<sup>7</sup>, or presenting values of less than 5 as &quot;1 to 4&quot; or &quot;fewer than 5&quot;, as above. It is important to note that the suppression of other cells in the same table (known as 'secondary suppression') may be needed to prevent disclosure by differencing<sup>2,5,7,8,11</sup>. Suppression might not lead to too much information loss when there are only a few unsafe cells but might impact on utility too much when there are a larger number<sup>2</sup>.</p></li>
-    <li><p>Other methods such as record swapping, record removal and Barnardisation (adjusting all values to introduce noise) are also suggested by some<sup>2,5,11</sup>. However, these are more destructive methods and might be more difficult to explain to users. As such, they might not be advisable in most cases. Please seek guidance from <a href="mailto:xxx">our.team.email</a> if you are considering these methods.</p></li>
+    <li><p>Other methods such as record swapping, record removal and Barnardisation (adjusting all values to introduce noise) are also suggested by some<sup>2,5,11</sup>. However, these are more destructive methods and might be more difficult to explain to users. As such, they might not be advisable in most cases. Please seek guidance from <a href="mailto:UKHSA_HOPSTATS@ukhsa.gov.uk">UKHSA_HOPSTATS@ukhsa.gov.uk</a> if you are considering these methods.</p></li>
     </ol>
     </div>
     <div id="step-5-assessing-the-outcome-and-disseminating" class="section level3">
