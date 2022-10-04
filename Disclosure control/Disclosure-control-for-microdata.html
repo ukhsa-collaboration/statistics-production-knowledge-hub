@@ -43,7 +43,9 @@
     }
     
     #versioncontrol{
+      opacity: 0;
       display: none;
+      transition: opacity 1s;
     }
     
     #references{
@@ -121,9 +123,11 @@
       el = document.getElementById("versioncontrol")
       if(window.getComputedStyle(el).display == 'none'){
         el.style.display = 'block';
+        setTimeout(function(){el.style.opacity = 1}, 100);
         bu.innerHTML = "Hide version history -";
       }else{
-        el.style.display = 'none';
+        el.style.opacity = 0;
+        setTimeout(function(){el.style.display = 'none'}, 800);
         bu.innerHTML = "Show version history +";
       }
     }
@@ -142,7 +146,7 @@
      
   <div class="main">     
     <h1>Statistical Disclosure Control - Microdata</h1>
-    <h2>Last updated: 03 October, 2022</h2>
+    <h2>Last updated: 04 October, 2022</h2>
     
     <p><a id="versionbutton" href="#" onclick="showHistory()">Show version history +</a></p>
     <div id="versioncontrol"><table>
@@ -179,6 +183,8 @@ Initial release
     
     <p>Author: Ben Cuff</p>
     <p>To provide any feedback on this document, or to ask for more information or support, please contact: <a href="mailto:UKHSA_HOPSTATS@ukhsa.gov.uk">UKHSA_HOPSTATS@ukhsa.gov.uk</a></p>
+
+    <p style="margin-bottom: 35px;"><a href="https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/README.md">↩ Back to the hub</a></p>
     
     <div id="coverage" class="section level2">
     <h2>Coverage</h2>
@@ -248,11 +254,10 @@ Initial release
     <h3>Step 4: Choosing and applying disclosure control methods</h3>
     <p>The following steps should be taken in all cases, as they would always pose a disclosure risk:</p>
     <ol style="list-style-type: lower-alpha">
-    <li>Any direct identifiers (for example, name, NHS number) should always be removed from the data as these will clearly identify an individual<sup>1,3</sup>.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></li>
+    <li><p>Any direct identifiers (for example, name, NHS number) should always be removed from the data as these will clearly identify an individual<sup>1,3</sup>.</p></li>
+    <li><p>Other indirect identifiers such as exact date of birth and postcode should be reduced in detail<sup>3</sup>. If important for users, these could be truncated rather than being removed entirely<sup>3</sup>. The level of geography might also be increased, for example by presenting location at regional level rather than giving postcodes<sup>1,5</sup>.</p></li>
     </ol>
-    <ol style="list-style-type: lower-alpha">
-    <li>Other indirect identifiers such as exact date of birth and postcode should be reduced in detail<sup>3</sup>. If important for users, these could be truncated rather than being removed entirely<sup>3</sup>. The level of geography might also be increased, for example by presenting location at regional level rather than giving postcodes<sup>1,5</sup>.</li>
-    </ol>
+    <p>Note that pseudonymisation is sometimes used to mask directly identifiable information such as name, in a way that still allows for data to be associated with a particular individual without that individual being directly identified. However, there are still risks here as data is still presented in an individual-level format and pseudonymised values may still allow some linking between datasets. This could mean that pseudonymisation might be reversed, particiularly for detailed datasets<sup>6,7</sup>. This method should therefore be employed cautiously, if at all.</p>
     <p>Other key identifying variables (age, gender, etc.) might then be addressed to reduce the amount of risk, using one or more of the following methods. Other variables that are not necessarily identifiable may not need to be controlled for when risk levels are otherwise low<sup>3</sup>. Again, it is important to pay consideration to the user requirements here, which might mean applying different levels of disclosure control to different variables<sup>1,6</sup>. For example, it might be deemed important to have the exact age of data subjects, but to compensate for this risk, other variables could be collapsed and removed to add sufficient uncertainty elsewhere.</p>
     <ol style="list-style-type: lower-alpha">
     <li>Continuous variables (such as age and height) can be banded into groups (for example, into 5-year age brackets instead of actual ages)<sup>1,3,5,6</sup>.</li>
@@ -541,12 +546,8 @@ Initial release
     <li><a href="https://www.ons.gov.uk/methodology/methodologytopicsandstatisticalconcepts/disclosurecontrol/policyonprotectingconfidentialityintablesofbirthanddeathstatistics">Policy on protecting confidentiality in tables of birth and death statistics</a></li>
     </ol>
     </div>
-    <div class="footnotes">
-    <hr />
-    <ol>
-    <li id="fn1"><p>Pseudonymisation is sometimes used to mask directly identifiable information such as name, in a way that still allows for data to be associated with a particular individual without that individual being directly identified. However, there are still risks here as data is still presented in an individual-level format and pseudonymised values may still allow some linking between datasets. This could mean that pseudonymisation might be reversed, particiularly for detailed datasets<sup>6,7</sup>. This method should therefore be employed cautiously, if at all.<a href="#fnref1">↩</a></p></li>
-    </ol>
-    </div>
+    
+     <p style="margin-bottom: 35px;"><a href="https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/README.md">↩ Back to the hub</a></p>
     
   </div>
 

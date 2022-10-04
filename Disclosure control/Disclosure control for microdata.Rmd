@@ -94,11 +94,11 @@ Some repeated information will only be covered briefly here.
 
 The following steps should be taken in all cases, as they would always pose a disclosure risk:
 
-a. Any direct identifiers (for example, name, NHS number) should always be removed from the data as these will clearly identify an individual^`r addRef(15)`,`r addRef(12)`^.[^note1] 
-
-[^note1]: Pseudonymisation is sometimes used to mask directly identifiable information such as name, in a way that still allows for data to be associated with a particular individual without that individual being directly identified. However, there are still risks here as data is still presented in an individual-level format and pseudonymised values may still allow some linking between datasets. This could mean that pseudonymisation might be reversed, particiularly for detailed datasets^`r addRef(16)`,`r addRef(35)`^. This method should therefore be employed cautiously, if at all.
+a. Any direct identifiers (for example, name, NHS number) should always be removed from the data as these will clearly identify an individual^`r addRef(15)`,`r addRef(12)`^.
 
 a. Other indirect identifiers such as exact date of birth and postcode should be reduced in detail^`r addRef(12)`^. If important for users, these could be truncated rather than being removed entirely^`r addRef(12)`^. The level of geography might also be increased, for example by presenting location at regional level rather than giving postcodes^`r addRef(15)`,`r addRef(13)`^. 
+
+Note that pseudonymisation is sometimes used to mask directly identifiable information such as name, in a way that still allows for data to be associated with a particular individual without that individual being directly identified. However, there are still risks here as data is still presented in an individual-level format and pseudonymised values may still allow some linking between datasets. This could mean that pseudonymisation might be reversed, particiularly for detailed datasets^`r addRef(16)`,`r addRef(35)`^. This method should therefore be employed cautiously, if at all.
 
 Other key identifying variables (age, gender, etc.) might then be addressed to reduce the amount of risk, using one or more of the following methods. Other variables that are not necessarily identifiable may not need to be controlled for when risk levels are otherwise low^`r addRef(12)`^. Again, it is important to pay consideration to the user requirements here, which might mean applying different levels of disclosure control to different variables^`r addRef(15)`,`r addRef(16)`^. For example, it might be deemed important to have the exact age of data subjects, but to compensate for this risk, other variables could be collapsed and removed to add sufficient uncertainty elsewhere.
 
