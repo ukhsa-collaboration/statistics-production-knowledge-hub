@@ -146,7 +146,7 @@
      
   <div class="main">     
     <h1>Statistical Disclosure Control - Aggregate Data</h1>
-    <h2>Last updated: 04 October, 2022</h2>
+    <h2>Last updated: 05 October, 2022</h2>
     
     <p><a id="versionbutton" href="#" onclick="showHistory()">Show version history +</a></p>
     <div id="versioncontrol"><table>
@@ -260,8 +260,8 @@ Initial release
     <p>The following options should be explored, in order of preference from most preferred to least preferred (examples of applying these methods are given towards the end of this document):</p>
     <ol style="list-style-type: decimal">
     <li><p>Table redesign<br>The point here is to increase the size of the populations at risk. This is usually preferred as a first option as it does not suppress or alter the underlying data in the same way that rounding or suppression would, just the manner in which it is presented<sup>5,7</sup>.<br>Groups can be collapsed (for example, across table rows or columns), leading to a higher level of aggregation. For example, age groups can be combined, categorical variables can be combined, or data could be presented at a higher geographical area<sup>2,5,7,11</sup>.<br>'Top or bottom coding' can be useful in masking outliers, by creating an 'under 10' or '60+' age category, for example<sup>2</sup>.<br>For longitudinal data, years could be combined to derive 3-year aggregates, for example, which adds uncertainty both in terms of the total value in each year and in which year each data subject appeared<sup>2</sup>.<br>A table with multiple different dimensions could be split into separate tables<sup>7</sup>, although care needs to be taken to not allow those tables to be easily re-linked, which might allow for re-calculation of original values via differencing<sup>5</sup>.</p></li>
-    <li><p>Rounding/Controlled rounding<br>The purpose of rounding is to introduce uncertainty in data by rounding all values (for example, within a table) to a specified base (for example, to the nearest 3, 5 or 10).<br>Rounding to base 3 is one option, which avoids isolating individuals in counts of 1 or counts of 2 where one individual might recognise the other<sup>5</sup>. Rounding to base 5 has been advised elsewhere for greater protection<sup>2,8</sup>. In surveys, another suggestion has been given to round values to base 10 for unweighted sample bases<sup>6</sup>. Which base is chosen may depend on the level of risk involved and what would be acceptable to users.<br>Simple rounding may mean that totals no longer equal the sum of values. Controlled rounding, which is preferred if feasible<sup>5</sup>, means that the additivity of totals are preserved.[^note6]<br>Care should be taken when rounding small numbers. Guidance states that zero should only be used for true zero, separated from values that are rounded to zero. However, this means that when rounding to base 5, for example, values of 1 and 2 would be easily identifiable as being the only values that round to zero. We would suggest that all small values are reported as &quot;1 to 4&quot;, &quot;fewer than 5&quot;, or similar, to avoid this scenario. Writing in words like this is also preferred to the use of symbols (for example, 0~ or &lt;5), as has been suggested elsewhere<sup>5</sup>, as symbols are not always rendered correctly by screen-readers, presenting an accessibility issue.</p></li>
-    <li><p>Primary and secondary cell suppression<br>Where neither of the above methods are suitable, or where they would still lead to the presence of unsafe cells, suppression could be explored. This can involve replacing small numbers with a symbol such as 'c' (for confidential), to hide their true values<sup>7</sup>, or presenting values of less than 5 as &quot;1 to 4&quot; or &quot;fewer than 5&quot;, as above. It is important to note that the suppression of other cells in the same table (known as 'secondary suppression') may be needed to prevent disclosure by differencing<sup>2,5,7,8,11</sup>. Suppression might not lead to too much information loss when there are only a few unsafe cells but might impact on utility too much when there are a larger number<sup>2</sup>.</p></li>
+    <li><p>Rounding/Controlled rounding<br>The purpose of rounding is to introduce uncertainty in data by rounding all values (for example, within a table) to a specified base (for example, to the nearest 3, 5 or 10).<br>Rounding to base 3 is one option, which avoids isolating individuals in counts of 1 or counts of 2 where one individual might recognise the other<sup>5</sup>. Rounding to base 5 has been advised elsewhere for greater protection<sup>2,8</sup>. In surveys, another suggestion has been given to round values to base 10 for unweighted sample bases<sup>6</sup>. Which base is chosen may depend on the level of risk involved and what would be acceptable to users.<br>Simple rounding may mean that totals no longer equal the sum of values. Controlled rounding, which is preferred if feasible<sup>5</sup>, means that the additivity of totals are preserved.<br>Care should be taken when rounding small numbers. Guidance states that zero should only be used for true zero, separated from values that are rounded to zero. However, this means that when rounding to base 5, for example, values of 1 and 2 would be easily identifiable as being the only values that round to zero. We would suggest that all small values are reported as '[k]' (square brackets are used to denote shorthand)<sup>12</sup>, '1 to 4' or 'fewer than 5', or similar, to avoid this scenario. Using a letter as shorthand or writing in words like this is preferred to the use of symbols (for example, 0~ or &lt;5), as has been suggested elsewhere<sup>5,12</sup>. This is because symbols are not always rendered correctly by screen-readers, presenting an accessibility issue.</p></li>
+    <li><p>Primary and secondary cell suppression<br>Where neither of the above methods are suitable, or where they would still lead to the presence of unsafe cells, suppression could be explored. This can involve replacing small numbers with a symbol such as '[c]' (for confidential; square brackets are used to denote shorthand<sup>12</sup>), to hide their true values<sup>7</sup>, or presenting values of less than 5 as '[k]', '1 to 4' or 'fewer than 5' (the same as above without other values being rounded). It is important to note that the suppression of other cells in the same table (known as 'secondary suppression') may be needed to prevent disclosure by differencing<sup>2,5,7,8,11</sup>. Suppression might not lead to too much information loss when there are only a few unsafe cells but might impact on utility too much when there are a larger number<sup>2</sup>.</p></li>
     <li><p>Other methods such as record swapping, record removal and Barnardisation (adjusting all values to introduce noise) are also suggested by some<sup>2,5,11</sup>. However, these are more destructive methods and might be more difficult to explain to users. As such, they might not be advisable in most cases. Please seek guidance from <a href="mailto:UKHSA_HOPSTATS@ukhsa.gov.uk">UKHSA_HOPSTATS@ukhsa.gov.uk</a> if you are considering these methods.</p></li>
     </ol>
     </div>
@@ -413,7 +413,7 @@ Initial release
     </tbody>
     </table>
     <p>In this table, values have been rounded to base 5. Base 5 was chosen in favour of base 3 due to the sensitive nature of the data and the fact that data subjects have increased knowledge of one another (because they attend the same clinic). The 'Total' column has also been removed to offer greater protection to the 'Treatment A' group which has a small marginal total.</p>
-    <p>As you can see, the rounding has introduced enough uncertainty as to mask the uniqueness of the aged over 30 data subject undergoing Treatment A. Note that the small value is presented as &quot;1 to 4&quot; here. This is done in favour of simply rounding to the nearest 5 as that might give greater clues as to the real value: values of 1 or 2 would round down to 0, and the advice is to identify those values as 0~ rather than true zero<sup>5</sup>, thus small numbers would be identifiable. &quot;1 to 4&quot; is also more accessible than the use of a symbol (for example, 0~), which might not always be rendered correctly by screen readers.</p>
+    <p>As you can see, the rounding has introduced enough uncertainty as to mask the uniqueness of the aged over 30 data subject undergoing Treatment A. Note that the small value is presented as '1 to 4' here. This is done in favour of simply rounding to the nearest 5 as that might give greater clues as to the real value: values of 1 or 2 would round down to 0, and the advice is to identify those values as 0~ rather than true zero<sup>5</sup>, thus small numbers would be identifiable. '1 to 4' is also more accessible than the use of a symbol (for example, 0~), which might not always be rendered correctly by screen readers.</p>
     <p>Note that it should be made clear in any reporting of this data how and why rounding has been applied.</p>
     </div>
     <div id="table-1d.-treatment-type-by-age-following-suppression" class="section level4">
@@ -430,19 +430,19 @@ Initial release
     <tbody>
     <tr class="odd">
     <td>A</td>
-    <td>c</td>
-    <td>c</td>
+    <td>[c]</td>
+    <td>[c]</td>
     <td>11</td>
     </tr>
     <tr class="even">
     <td>B</td>
-    <td>c</td>
+    <td>[c]</td>
     <td>111</td>
     <td>124</td>
     </tr>
     <tr class="odd">
     <td>C</td>
-    <td>c</td>
+    <td>[c]</td>
     <td>17</td>
     <td>32</td>
     </tr>
@@ -454,7 +454,7 @@ Initial release
     </tr>
     </tbody>
     </table>
-    <p>It might be decided that the rounding example above might be too detrimental to users, if exact totals are important. An alternative might be to suppress small values instead - in this example, to focus on the suppression of that over 30 age group receiving Treatment A. In this case, we have used 'c' (for confidential) to denote that values have been suppressed.</p>
+    <p>It might be decided that the rounding example above might be too detrimental to users, if exact totals are important. An alternative might be to suppress small values instead - in this example, to focus on the suppression of that over 30 age group receiving Treatment A. In this case, we have used '[c]' (for confidential) to denote that values have been suppressed.</p>
     <p>If we just suppressed that single value, it would be very easy to re-calculate it based on other information given in the table. As such, secondary suppression has also been applied to the 0 to 30 group to prevent that.</p>
     <p>Note that it should be made clear in any reporting of this data how and why suppression has been applied.</p>
     <p>This approach might seem more destructive than the rounding example given above, but the benefit here is that the actual values of the marginal totals are preserved. Which method is preferred may depend on why users need this information and what they intend to do with it.</p>
@@ -474,6 +474,7 @@ Initial release
     <li><a href="https://ico.org.uk/for-organisations/guide-to-freedom-of-information/refusing-a-request/">Guide to freedom of information: When can we refuse a request for information?</a></li>
     <li><a href="https://www.ukcgc.uk/duty-of-confidentiality#:~:text=The%20so%2Dcalled%20common%20law,of%20legal%20authority%20or%20justification.">The common law duty of confidentiality</a></li>
     <li><a href="https://www.ons.gov.uk/methodology/methodologytopicsandstatisticalconcepts/disclosurecontrol/policyforsocialsurveymicrodata">Policy for social survey microdata: Government Statistical Service policy for the release of social survey microdata, ensuring compliance with the Code of Practice for Official Statistics</a></li>
+    <li><a href="https://analysisfunction.civilservice.gov.uk/policy-store/symbols-in-tables-definitions-and-help/">Using symbols and shorthand</a></li>
     </ol>
     </div>
     

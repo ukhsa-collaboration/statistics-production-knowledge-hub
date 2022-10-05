@@ -146,7 +146,7 @@
      
   <div class="main">     
     <h1>Statistical Disclosure Control - Microdata</h1>
-    <h2>Last updated: 04 October, 2022</h2>
+    <h2>Last updated: 05 October, 2022</h2>
     
     <p><a id="versionbutton" href="#" onclick="showHistory()">Show version history +</a></p>
     <div id="versioncontrol"><table>
@@ -263,7 +263,7 @@ Initial release
     <li>Continuous variables (such as age and height) can be banded into groups (for example, into 5-year age brackets instead of actual ages)<sup>1,3,5,6</sup>.</li>
     <li>Categorical variables can be collapsed to reduce the level of detail<sup>1,3,5,6</sup> (for example, by presenting broader occupational classifications rather than more specific job roles).</li>
     <li>Problematic variables could be removed if they are not needed by users<sup>1,3</sup>.</li>
-    <li>Where there are individual 'combinations at risk' (in other words, where a data subject might be the only one with a certain set of characteristics), suppression could be used to hide an individual value, replacing it with 'c' (for confidential) or similar<sup>5,6</sup>. Note that it is important to apply this in such a way that the reason for suppression, and therefore the underlying value, is not made obvious <sup>5</sup>.</li>
+    <li>Where there are individual 'combinations at risk' (in other words, where a data subject might be the only one with a certain set of characteristics), suppression could be used to hide an individual value<sup>5,6</sup>, replacing it with '[c]' (for confidential; square brackets are used to denote shorthand<sup>8</sup>). Note that it is important to apply this in such a way that the reason for suppression, and therefore the underlying value, is not made obvious <sup>5</sup>.</li>
     <li>Problematic data subjects could be removed entirely<sup>2,5,6</sup>. However, you would need to consider the impact on utility here, including what effect this would have on summary counts or averages when the data is aggregated<sup>6</sup>.</li>
     </ol>
     <p>Other methods have been suggested, such as record swapping, micro-aggregation, and Barnardisation<sup>6</sup>. However, these are more destructive methods and might be more difficult to explain to users. As such, they might not be advisable in most cases. Please seek guidance from <a href="mailto:UKHSA_HOPSTATS@ukhsa.gov.uk">UKHSA_HOPSTATS@ukhsa.gov.uk</a> if you are considering these methods.</p>
@@ -271,8 +271,8 @@ Initial release
     <div id="step-5-assessing-the-outcome-and-disseminating" class="section level3">
     <h3>Step 5: Assessing the outcome and disseminating</h3>
     <p>After choosing and applying a disclosure control method, outputs should be re-assessed to ensure that risks have been successfully mitigated<sup>3</sup>. This might include re-tabulating the data to check for small table cell values, re-checking that k-anonymity thresholds are being met, and re-conducting intruder testing exercises.</p>
-    <p>It is good practice, where applicable, to explain as part of the data release that a disclosure risk has been identified and to explain what methods have been applied, including detail on the nature and extent of any modification<sup>8</sup>.</p>
-    <p>As a last resort solution, if no disclosure method would be successful in mitigating the risk (for example, because they would all be too detrimental to utility), there is the possibility of releasing potentially disclosive information under a 'Non-Disclosive Data Access Arrangement' (DAA)<sup>9</sup>. However, this should be done in very rare cases only, and only under the express permission of the <a href="mailto:UKHSA_HOPSTATS@ukhsa.gov.uk">Head of Profession for statistics</a>.</p>
+    <p>It is good practice, where applicable, to explain as part of the data release that a disclosure risk has been identified and to explain what methods have been applied, including detail on the nature and extent of any modification<sup>9</sup>.</p>
+    <p>As a last resort solution, if no disclosure method would be successful in mitigating the risk (for example, because they would all be too detrimental to utility), there is the possibility of releasing potentially disclosive information under a 'Non-Disclosive Data Access Arrangement' (DAA)<sup>10</sup>. However, this should be done in very rare cases only, and only under the express permission of the <a href="mailto:UKHSA_HOPSTATS@ukhsa.gov.uk">Head of Profession for statistics</a>.</p>
     </div>
     </div>
     <div id="example-risk-assessment-and-disclosure-control" class="section level2">
@@ -508,7 +508,7 @@ Initial release
     <td>GP</td>
     </tr>
     <tr class="even">
-    <td>c</td>
+    <td>[c]</td>
     <td>South East</td>
     <td>Unemployed</td>
     <td>A&amp;E</td>
@@ -526,7 +526,7 @@ Initial release
     <li>Name and NHS number fields were removed as they are direct identifiers.</li>
     <li>Postcodes have been transformed into regions to increase the population at risk for the geographical areas presented.</li>
     <li>Employment status has been collapsed into 2 categories rather than 3 (we can assume this would be acceptable to users).</li>
-    <li>Emir Ali's uniqueness has been masked by suppressing their age, giving a 'c' (for confidential) instead. This introduces sufficient uncertainty when presented along with the other ages assumed to be present in the full dataset.<br>Suppressing Emir's employment status or admission route instead might not have been advisable, because most unemployed 18 year olds were admitted via their GPs. It might be obvious that any suppression within these fields might have been done to mask the fact that Emir was unqiue in being unemployed and admitted via A&amp;E.</li>
+    <li>Emir Ali's uniqueness has been masked by suppressing their age, giving a '[c]' (for confidential; square brackets are used to denote shorthand<sup>8</sup>) instead. This introduces sufficient uncertainty when presented along with the other ages assumed to be present in the full dataset.<br>Suppressing Emir's employment status or admission route instead might not have been advisable, because most unemployed 18 year olds were admitted via their GPs. It might be obvious that any suppression within these fields might have been done to mask the fact that Emir was unqiue in being unemployed and admitted via A&amp;E.</li>
     </ol>
     <p>In this new table, all combinations of characteristics that are present in the data now meet the k=3 k-anonymity threshold.</p>
     <p>However, with Emir's age suppressed, there is a new risk here that users might perceive a group disclosure that all unemployed data subjects were admitted via their GPs. As such, it might be worth exploring whether the employment status field is necessary or whether it could be removed. Another option would be to present age bands instead of absolute ages, assuming that enough data subjects in the same band would be unemployed and admitted via the A&amp;E route.</p>
@@ -542,6 +542,7 @@ Initial release
     <li><a href="https://www.ons.gov.uk/methodology/methodologytopicsandstatisticalconcepts/disclosurecontrol/policyforsocialsurveymicrodata">Policy for social survey microdata: Government Statistical Service policy for the release of social survey microdata, ensuring compliance with the Code of Practice for Official Statistics</a></li>
     <li><a href="https://ico.org.uk/media/for-organisations/documents/1061/anonymisation-code.pdf">Anonymisation: managing data protection risk - code of practice</a></li>
     <li><a href="https://www.gov.uk/government/publications/better-broader-safer-using-health-data-for-research-and-analysis">The Goldacre Review: Better, broader, safer: using health data for research and analysis</a></li>
+    <li><a href="https://analysisfunction.civilservice.gov.uk/policy-store/symbols-in-tables-definitions-and-help/">Using symbols and shorthand</a></li>
     <li><a href="https://gss.civilservice.gov.uk/policy-store/gssgsr-disclosure-control-guidance-for-tables-produced-from-administrative-sources/">Disclosure control for tables produced from administrative sources</a></li>
     <li><a href="https://www.ons.gov.uk/methodology/methodologytopicsandstatisticalconcepts/disclosurecontrol/policyonprotectingconfidentialityintablesofbirthanddeathstatistics">Policy on protecting confidentiality in tables of birth and death statistics</a></li>
     </ol>
