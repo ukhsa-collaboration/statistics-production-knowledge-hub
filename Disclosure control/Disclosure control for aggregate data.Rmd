@@ -143,7 +143,7 @@ Different examples are also provided by the GSS^`r addRef(2)`,`r addRef(3)`^.
 | C              | 1       | 0        | 14       | 2        | 3        | 12      | 32    |
 | Total          | 2       | 7        | 29       | 97       | 17       | 15      | 167   |
 
-Several potential risks exist with this table. There are several small values (of less than 5) present both inindividual data points and in a marginal total. In the 0 to 10 age group, for example, anyone with knowledge of one of the data subjects would easily work out which treatment the other data subject received. Non-structural zeros are also present, such as in the 11 to 20 age group. This means that anyone with knowledge of a 11 to 20 year old undertaking treatment will know that they received Treatment A. 
+Several potential risks exist with this table. There are several small values (of less than 5) present both in individual data points and in a marginal total. In the 0 to 10 age group, for example, anyone with knowledge of one of the data subjects would easily work out which treatment the other data subject received. Non-structural zeros are also present, such as in the 11 to 20 age group. This means that anyone with knowledge of a 11 to 20 year old undertaking treatment will know that they received Treatment A. 
 
 These risks are increased by the fact that age is a key identifying variable, and the potential sensitivity of this data might increase the impact of any disclosure. The populations at risk might be small here, given the small overall numbers receiving treatment, and because data subjects are clustered within the same clinic, they would have increased knowledge of one another. 
 
@@ -181,20 +181,20 @@ Note that it should be made clear in any reporting of this data how and why roun
 
 #### Table 1d. Treatment type by age following suppression
 
-| Treatment type | 0 to 30 | Over 30   | Total |
-|----------------|---------|-----------|-------|
-| A              | [c]     | [c]       | 11    |
-| B              | [c]     | 111       | 124   |
-| C              | [c]     | 17        | 32    |
-| Total          | 38      | 129       | 167   |
+| Treatment type | 0 to 30 | Over 30   |
+|----------------|---------|-----------|
+| A              | 10      | [c]       |
+| B              | 13      | 111       |
+| C              | 15      | [c]       |
+| Total          | 38      | 129       |
 
-It might be decided that the rounding example above might be too detrimental to users, if exact totals are important. An alternative might be to suppress small values instead - in this example, to focus on the suppression of that over 30 age group receiving Treatment A. In this case, we have used '[c]' (for confidential) to denote that values have been suppressed. 
+It might be decided that the rounding example above might be too detrimental to users, if exact totals are important. An alternative might be to suppress small values instead - in this example, to focus on the suppression of that single individual in the over 30 age group receiving Treatment A. In this case, we have used '[c]' (for confidential) to denote that 2 values have been suppressed. 
 
-If we just suppressed that single value, it would be very easy to re-calculate it based on other information given in the table. As such, secondary suppression has also been applied to the 0 to 30 group to prevent that. 
+If we had just suppressed that single at-risk value, it would have been very easy to re-calculate it based on other information given in the table. As such, secondary suppression has also been applied to the over 30 group receiving Treatment C. Suppressing in this way has still allowed the message to get through that most of the over 30 group received Treatment B, and has preserved the exact total for that age group, while successfully masking the underlying value of the Treatment A group. 
+
+Whether this approach is considered less or more destructive than the rounding example above would be dependent on what information users need, and what they intend to do with it. 
 
 Note that it should be made clear in any reporting of this data how and why suppression has been applied. 
-
-This approach might seem more destructive than the rounding example given above, but the benefit here is that the actual values of the marginal totals are preserved. Which method is preferred may depend on why users need this information and what they intend to do with it.  
 
 
 ## References

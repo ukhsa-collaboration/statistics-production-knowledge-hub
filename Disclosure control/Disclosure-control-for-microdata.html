@@ -146,7 +146,7 @@
      
   <div class="main">     
     <h1>Statistical Disclosure Control - Microdata</h1>
-    <h2>Last updated: 05 October, 2022</h2>
+    <h2>Last updated: 07 October, 2022</h2>
     
     <p><a id="versionbutton" href="#" onclick="showHistory()">Show version history +</a></p>
     <div id="versioncontrol"><table>
@@ -257,7 +257,7 @@ Initial release
     <li><p>Any direct identifiers (for example, name, NHS number) should always be removed from the data as these will clearly identify an individual<sup>1,3</sup>.</p></li>
     <li><p>Other indirect identifiers such as exact date of birth and postcode should be reduced in detail<sup>3</sup>. If important for users, these could be truncated rather than being removed entirely<sup>3</sup>. The level of geography might also be increased, for example by presenting location at regional level rather than giving postcodes<sup>1,5</sup>.</p></li>
     </ol>
-    <p>Note that pseudonymisation is sometimes used to mask directly identifiable information such as name, in a way that still allows for data to be associated with a particular individual without that individual being directly identified. However, there are still risks here as data is still presented in an individual-level format and pseudonymised values may still allow some linking between datasets. This could mean that pseudonymisation might be reversed, particiularly for detailed datasets<sup>6,7</sup>. This method should therefore be employed cautiously, if at all.</p>
+    <p>Note that pseudonymisation is sometimes used to mask directly identifiable information such as name, in a way that still allows for data to be associated with a particular individual without that individual being directly identified. However, there are still risks here as data is still presented in an individual-level format and pseudonymised values may still allow some linking between datasets. This could mean that pseudonymisation might be reversed, particularly for detailed datasets<sup>6,7</sup>. This method should therefore be employed cautiously, if at all.</p>
     <p>Other key identifying variables (age, gender, etc.) might then be addressed to reduce the amount of risk, using one or more of the following methods. Other variables that are not necessarily identifiable may not need to be controlled for when risk levels are otherwise low<sup>3</sup>. Again, it is important to pay consideration to the user requirements here, which might mean applying different levels of disclosure control to different variables<sup>1,6</sup>. For example, it might be deemed important to have the exact age of data subjects, but to compensate for this risk, other variables could be collapsed and removed to add sufficient uncertainty elsewhere.</p>
     <ol style="list-style-type: lower-alpha">
     <li>Continuous variables (such as age and height) can be banded into groups (for example, into 5-year age brackets instead of actual ages)<sup>1,3,5,6</sup>.</li>
@@ -526,7 +526,7 @@ Initial release
     <li>Name and NHS number fields were removed as they are direct identifiers.</li>
     <li>Postcodes have been transformed into regions to increase the population at risk for the geographical areas presented.</li>
     <li>Employment status has been collapsed into 2 categories rather than 3 (we can assume this would be acceptable to users).</li>
-    <li>Emir Ali's uniqueness has been masked by suppressing their age, giving a '[c]' (for confidential; square brackets are used to denote shorthand<sup>8</sup>) instead. This introduces sufficient uncertainty when presented along with the other ages assumed to be present in the full dataset.<br>Suppressing Emir's employment status or admission route instead might not have been advisable, because most unemployed 18 year olds were admitted via their GPs. It might be obvious that any suppression within these fields might have been done to mask the fact that Emir was unqiue in being unemployed and admitted via A&amp;E.</li>
+    <li>Emir Ali's uniqueness has been masked by suppressing their age, giving a '[c]' (for confidential; square brackets are used to denote shorthand<sup>8</sup>) instead. This introduces sufficient uncertainty when presented along with the other ages assumed to be present in the full dataset.<br>Suppressing Emir's employment status or admission route instead might not have been advisable, because most unemployed 18 year olds were admitted via their GPs. It might be obvious that any suppression within these fields might have been done to mask the fact that Emir was unique in being unemployed and admitted via A&amp;E.</li>
     </ol>
     <p>In this new table, all combinations of characteristics that are present in the data now meet the k=3 k-anonymity threshold.</p>
     <p>However, with Emir's age suppressed, there is a new risk here that users might perceive a group disclosure that all unemployed data subjects were admitted via their GPs. As such, it might be worth exploring whether the employment status field is necessary or whether it could be removed. Another option would be to present age bands instead of absolute ages, assuming that enough data subjects in the same band would be unemployed and admitted via the A&amp;E route.</p>
