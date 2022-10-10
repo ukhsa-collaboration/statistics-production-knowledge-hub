@@ -43,7 +43,9 @@
     }
     
     #versioncontrol{
+      opacity: 0;
       display: none;
+      transition: opacity 1s;
     }
     
     #references{
@@ -121,9 +123,11 @@
       el = document.getElementById("versioncontrol")
       if(window.getComputedStyle(el).display == 'none'){
         el.style.display = 'block';
+        setTimeout(function(){el.style.opacity = 1}, 100);
         bu.innerHTML = "Hide version history -";
       }else{
-        el.style.display = 'none';
+        el.style.opacity = 0;
+        setTimeout(function(){el.style.display = 'none'}, 800);
         bu.innerHTML = "Show version history +";
       }
     }
@@ -142,7 +146,7 @@
      
   <div class="main">     
     <h1>Statistical Disclosure Control - Aggregate Data</h1>
-    <h2>Last updated: 03 October, 2022</h2>
+    <h2>Last updated: 30 September, 2022</h2>
     
     <p><a id="versionbutton" href="#" onclick="showHistory()">Show version history +</a></p>
     <div id="versioncontrol"><table>
@@ -181,6 +185,8 @@ Initial release
     
     <p>Author: Ben Cuff</p>
     <p>To provide any feedback on this document, or to ask for more information or support, please contact: <a href="mailto:UKHSA_HOPSTATS@ukhsa.gov.uk">UKHSA_HOPSTATS@ukhsa.gov.uk</a></p>
+
+    <p style="margin-bottom: 35px;"><a href="https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/README.md">↩ Back to the hub</a></p>
     
     <div id="coverage" class="section level2">
     <h2>Coverage</h2>
@@ -231,16 +237,14 @@ Initial release
     <ol style="list-style-type: lower-roman">
     <li><input type="checkbox"> Is this data of a sensitive nature?<br>More highly sensitive data could increase the likelihood of a disclosure risk as individuals may be motivated to discover the identity of data subjects. It can also increase the potential impact due to the heightened sensitivity for the data subjects concerned<sup>2,8</sup>.</li>
     <li><input type="checkbox"> Does the data contain 'key identifying variables'?<br>These are variables that make data subjects more identifiable, such as Age, sex, health condition, ethnic group, religion, marital status. The presence of these might increase the likelihood of a disclosure risk<sup>11</sup>.</li>
-    <li><input type="checkbox"> Are there any table cells or data points that have small values?<br>Values of 1 or 2 are usually considered to be 'unsafe cells'. They carry a particularly high risk of identification (both self-identification and identification by others) and may motivate intruders to try and identify data subjects because of their uniqueness or rarity<sup>2</sup>. For added protection, which may be wise when dealing with sensitive data such as health data, other guidance recommends treating any values of less than 5 as being unsafe<sup>7,8</sup>.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> <a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></li>
-    <li><input type="checkbox"> Are there any small 'populations at risk'?<br>The population at risk is defined as the underlying number of people that could have contributed to a particular data point or table cell; in other words, it is those with the same characteristics as those in that data point or cell<sup>5,8</sup>. For example, for a table cell showing the number of infections in 18-24 year old females in a particular hospital, the population at risk would be the total number of 18-24 year old females in that hospital. Smaller populations carry a greater risk of disclosure.<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a><br>Note that in most cases it may not be possible or practical to exactly determine the size of the population at risk, but estimates should be used to approximate<sup>8</sup>.</li>
-    <li><input type="checkbox"> Are there many non-structural zeros?<br>A structural zero is where it is not possible for that cell to contain values (for example, females under 5 in birth statistics). These would be considered non-disclosive and do not need attention<sup>2</sup>, but these can be presented as '-' to differentiate them from non-structural zeros.<br>A non-structural zero is where cell values or data points can theoretically appear, but there happens to be no individuals with those characteristics in the data. The problem with non-structural zeros, particularly where tables are dominated by them, is that they can lead to group disclosure: either showing that only 1 group of individuals had a certain characteristic or that nobody from a group of individuals had that characteristic, thus leading to personal disclosure for members of those groups.<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a></li>
-    <li><input type="checkbox"> Might users have other information available to them that could increase their likelihood of identifying data subjects?<br>For example, could users make use of personal knowledge, or link your data to other datasets or tables either within the same report or others?<sup>2,7,8,11</sup><br>Personal knowledge of any data subjects could help users identify those individuals. That risk is heightened if data subjects are clustered somehow (for example, within the same household or clinic) as that could increase the level of knowledge data subjects have of one another<sup>2,5</sup>.<br>Linked tables within the same report could lead to disclosure via differencing: where the underlying value of rounded or suppressed cells in one table can be determined by taking the difference between information already given and the information given in other tables<sup>5</sup>. Linkable third-party datasets that are publicly available might also increase this risk.<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a></li>
+    <li><input type="checkbox"> Are there any table cells or data points that have small values?<br>Values of 1 or 2 are usually considered to be unsafe cells<sup>5,6</sup>. They carry a particularly high risk of identification (both self-identification and identification by others) and may motivate intruders to try and identify data subjects because of their uniqueness or rarity<sup>2</sup>. While it is generally assumed that individuals are less likely to be able to identify more than 1 other individual, there may be certain situations where this does not hold true, such as where respondents are clustered in some way (for example, within the same family or clinic)<sup>5,6</sup>. For added protection, which may be particularly wise when dealing with sensitive data such as health data, other guidance recommends treating any values of less than 5 as being unsafe<sup>7,8</sup>.</li>
+    <li><input type="checkbox"> Are there any small 'populations at risk'?<br>The population at risk is defined as the underlying number of people that could have contributed to a particular data point or table cell; in other words, it is those with the same characteristics as those in that data point or cell<sup>5,8</sup>. For example, for a table cell showing the number of infections in 18-24 year old females in a particular hospital, the population at risk would be the total number of 18-24 year old females in that hospital. Smaller populations carry a greater risk of disclosure because the pool of people from which to identify individuals is smaller.<br>Note that in most cases it may not be possible or practical to exactly determine the size of the population at risk, but estimates should be used to approximate<sup>8</sup>.</li>
+    <li><input type="checkbox"> Are there many non-structural zeros?<br>A structural zero is where it is not possible for that cell to contain values (for example, females under 5 in birth statistics). These would be considered non-disclosive and do not need attention<sup>2</sup>, but these can be presented as '-' to differentiate them from non-structural zeros.<br>A non-structural zero is where cell values or data points can theoretically appear, but there happens to be no individuals with those characteristics in the data. The problem with non-structural zeros, particularly where tables are dominated by them, is that they can lead to group disclosure: either showing that only 1 group of individuals had a certain characteristic or that nobody from a group of individuals had that characteristic, thus leading to personal disclosure for members of those groups.<br>Non-structural zeros are perhaps less of an issue for social surveys based on samples, as there may be population units with that characteristic that just were not sampled - however it may still be wise to be cautious<sup>6</sup>.</li>
+    <li><input type="checkbox"> Might users have other information available to them that could increase their likelihood of identifying data subjects?<br>For example, could users make use of personal knowledge, or link your data to other datasets or tables either within the same report or others?<sup>2,7,8,11</sup><br>Personal knowledge of any data subjects could help users identify those individuals. That risk is heightened if data subjects are clustered somehow (for example, within the same household or clinic) as that could increase the level of knowledge data subjects have of one another<sup>2,5</sup>.<br>Linked tables within the same report could lead to disclosure via differencing: where the underlying value of rounded or suppressed cells in one table can be determined by taking the difference between information already given and the information given in other tables<sup>5</sup>. Linkable third-party datasets that are publicly available might also increase this risk<sup>2</sup>.</li>
     <li><input type="checkbox"> Is the data quite recent?<br>Older data might be less identifiable because populations and characteristics change over time<sup>5</sup>. Newer, more current data might be more identifiable due to its recency.</li>
     <li><input type="checkbox"> Are raw values presented?<br>For example, percentages carry lower risk as raw numbers are not know, so long as those underlying values cannot be calculated from totals<sup>2,6</sup>.<br>When survey estimates are weighted, as is also often done to account for sampling bias, this introduces uncertainty which also offers greater protection for confidentiality. Publishing unweighted survey values carries greater risk (as does the publication of weighting factors which may allow the calculation of unweighted values from weighted values)<sup>6</sup>.</li>
     </ol></li>
     </ol></li>
-    </ol>
-    <ol start="3" style="list-style-type: decimal">
     <li>Assess the likelihood and impact of a disclosure risk
     <ol style="list-style-type: lower-alpha">
     <li>Each 'yes' given in answer to the above questions may increase the number of unsafe cells in the intended output as well as the likelihood and potential impact of any accidental disclosure. Note that these are not equally weighted. For example, small cell values (particularly of 1 or 2, but also those of less than 5) pose a particular risk, and topic sensitivity particularly increases the potential impact.</li>
@@ -256,8 +260,8 @@ Initial release
     <p>The following options should be explored, in order of preference from most preferred to least preferred (examples of applying these methods are given towards the end of this document):</p>
     <ol style="list-style-type: decimal">
     <li><p>Table redesign<br>The point here is to increase the size of the populations at risk. This is usually preferred as a first option as it does not suppress or alter the underlying data in the same way that rounding or suppression would, just the manner in which it is presented<sup>5,7</sup>.<br>Groups can be collapsed (for example, across table rows or columns), leading to a higher level of aggregation. For example, age groups can be combined, categorical variables can be combined, or data could be presented at a higher geographical area<sup>2,5,7,11</sup>.<br>'Top or bottom coding' can be useful in masking outliers, by creating an 'under 10' or '60+' age category, for example<sup>2</sup>.<br>For longitudinal data, years could be combined to derive 3-year aggregates, for example, which adds uncertainty both in terms of the total value in each year and in which year each data subject appeared<sup>2</sup>.<br>A table with multiple different dimensions could be split into separate tables<sup>7</sup>, although care needs to be taken to not allow those tables to be easily re-linked, which might allow for re-calculation of original values via differencing<sup>5</sup>.</p></li>
-    <li><p>Rounding/Controlled rounding<br>The purpose of rounding is to introduce uncertainty in data by rounding all values (for example, within a table) to a specified base (for example, to the nearest 3, 5 or 10).<br>Rounding to base 3 is one option, which avoids isolating individuals in counts of 1 or counts of 2 where one individual might recognise the other<sup>5</sup>. Rounding to base 5 has been advised elsewhere for greater protection<sup>2,8</sup>. In surveys, another suggestion has been given to round values to base 10 for unweighted sample bases<sup>6</sup>. Which base is chosen may depend on the level of risk involved and what would be acceptable to users.<br>Simple rounding may mean that totals no longer equal the sum of values. Controlled rounding, which is preferred if feasible<sup>5</sup>, means that the additivity of totals are preserved.<a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a><br>Care should be taken when rounding small numbers. Guidance states that zero should only be used for true zero, separated from values that are rounded to zero. However, this means that when rounding to base 5, for example, values of 1 and 2 would be easily identifiable as being the only values that round to zero. We would suggest that all small values are reported as &quot;1 to 4&quot;, &quot;fewer than 5&quot;, or similar, to avoid this scenario. Writing in words like this is also preferred to the use of symbols (for example, 0~ or &lt;5), as has been suggested elsewhere<sup>5</sup>, as symbols are not always rendered correctly by screen-readers, presenting an accessibility issue.</p></li>
-    <li><p>Primary and secondary cell suppression<br>Where neither of the above methods are suitable, or where they would still lead to the presence of unsafe cells, suppression could be explored. This can involve replacing small numbers with a symbol such as 'c' (for confidential), to hide their true values<sup>7</sup>, or presenting values of less than 5 as &quot;1 to 4&quot; or &quot;fewer than 5&quot;, as above. It is important to note that the suppression of other cells in the same table (known as 'secondary suppression') may be needed to prevent disclosure by differencing<sup>2,5,7,8,11</sup>. Suppression might not lead to too much information loss when there are only a few unsafe cells but might impact on utility too much when there are a larger number<sup>2</sup>.</p></li>
+    <li><p>Rounding/Controlled rounding<br>The purpose of rounding is to introduce uncertainty in data by rounding all values (for example, within a table) to a specified base (for example, to the nearest 3, 5 or 10).<br>Rounding to base 3 is one option, which avoids isolating individuals in counts of 1 or counts of 2 where one individual might recognise the other<sup>5</sup>. Rounding to base 5 has been advised elsewhere for greater protection<sup>2,8</sup>. In surveys, another suggestion has been given to round values to base 10 for unweighted sample bases<sup>6</sup>. Which base is chosen may depend on the level of risk involved and what would be acceptable to users.<br>Simple rounding may mean that totals no longer equal the sum of values. Controlled rounding, which is preferred if feasible<sup>5</sup>, means that the additivity of totals are preserved.<br>Care should be taken when rounding small numbers. Guidance states that zero should only be used for true zero, separated from values that are rounded to zero. However, this means that when rounding to base 5, for example, values of 1 and 2 would be easily identifiable as being the only values that round to zero. We would suggest that all small values are reported as '[k]' (square brackets are used to denote shorthand)<sup>12</sup>, '1 to 4' or 'fewer than 5', or similar, to avoid this scenario. Using a letter as shorthand or writing in words like this is preferred to the use of symbols (for example, 0~ or &lt;5), as has been suggested elsewhere<sup>5,12</sup>. This is because symbols are not always rendered correctly by screen-readers, presenting an accessibility issue.</p></li>
+    <li><p>Primary and secondary cell suppression<br>Where neither of the above methods are suitable, or where they would still lead to the presence of unsafe cells, suppression could be explored. This can involve replacing small numbers with a symbol such as '[c]' (for confidential; square brackets are used to denote shorthand<sup>12</sup>), to hide their true values<sup>7</sup>, or presenting values of less than 5 as '[k]', '1 to 4' or 'fewer than 5' (the same as above without other values being rounded). It is important to note that the suppression of other cells in the same table (known as 'secondary suppression') may be needed to prevent disclosure by differencing<sup>2,5,7,8,11</sup>. Suppression might not lead to too much information loss when there are only a few unsafe cells but might impact on utility too much when there are a larger number<sup>2</sup>.</p></li>
     <li><p>Other methods such as record swapping, record removal and Barnardisation (adjusting all values to introduce noise) are also suggested by some<sup>2,5,11</sup>. However, these are more destructive methods and might be more difficult to explain to users. As such, they might not be advisable in most cases. Please seek guidance from <a href="mailto:UKHSA_HOPSTATS@ukhsa.gov.uk">UKHSA_HOPSTATS@ukhsa.gov.uk</a> if you are considering these methods.</p></li>
     </ol>
     </div>
@@ -330,7 +334,7 @@ Initial release
     </tr>
     </tbody>
     </table>
-    <p>Several potential risks exist with this table. There are several small values (of less than 5) present both inindividual data points and in a marginal total. In the 0 to 10 age group, for example, anyone with knowledge of one of the data subjects would easily work out which treatment the other data subject received. Non-structural zeros are also present, such as in the 11 to 20 age group. This means that anyone with knowledge of a 11 to 20 year old undertaking treatment will know that they received Treatment A.</p>
+    <p>Several potential risks exist with this table. There are several small values (of less than 5) present both in individual data points and in a marginal total. In the 0 to 10 age group, for example, anyone with knowledge of one of the data subjects would easily work out which treatment the other data subject received. Non-structural zeros are also present, such as in the 11 to 20 age group. This means that anyone with knowledge of a 11 to 20 year old undertaking treatment will know that they received Treatment A.</p>
     <p>These risks are increased by the fact that age is a key identifying variable, and the potential sensitivity of this data might increase the impact of any disclosure. The populations at risk might be small here, given the small overall numbers receiving treatment, and because data subjects are clustered within the same clinic, they would have increased knowledge of one another.</p>
     <p>Note that if zeros were structural here (for example, certain age groups were not eligible for certain treatments), then those zeros could be replaced with '-' to denote that fact.</p>
     </div>
@@ -409,7 +413,7 @@ Initial release
     </tbody>
     </table>
     <p>In this table, values have been rounded to base 5. Base 5 was chosen in favour of base 3 due to the sensitive nature of the data and the fact that data subjects have increased knowledge of one another (because they attend the same clinic). The 'Total' column has also been removed to offer greater protection to the 'Treatment A' group which has a small marginal total.</p>
-    <p>As you can see, the rounding has introduced enough uncertainty as to mask the uniqueness of the aged over 30 data subject undergoing Treatment A. Note that the small value is presented as &quot;1 to 4&quot; here. This is done in favour of simply rounding to the nearest 5 as that might give greater clues as to the real value: values of 1 or 2 would round down to 0, and the advice is to identify those values as 0~ rather than true zero<sup>5</sup>, thus small numbers would be identifiable. &quot;1 to 4&quot; is also more accessible than the use of a symbol (for example, 0~), which might not always be rendered correctly by screen readers.</p>
+    <p>As you can see, the rounding has introduced enough uncertainty as to mask the uniqueness of the aged over 30 data subject undergoing Treatment A. Note that the small value is presented as '1 to 4' here. This is done in favour of simply rounding to the nearest 5 as that might give greater clues as to the real value: values of 1 or 2 would round down to 0, and the advice is to identify those values as 0~ rather than true zero<sup>5</sup>, thus small numbers would be identifiable. '1 to 4' is also more accessible than the use of a symbol (for example, 0~), which might not always be rendered correctly by screen readers.</p>
     <p>Note that it should be made clear in any reporting of this data how and why rounding has been applied.</p>
     </div>
     <div id="table-1d.-treatment-type-by-age-following-suppression" class="section level4">
@@ -420,40 +424,35 @@ Initial release
     <th>Treatment type</th>
     <th>0 to 30</th>
     <th>Over 30</th>
-    <th>Total</th>
     </tr>
     </thead>
     <tbody>
     <tr class="odd">
     <td>A</td>
-    <td>c</td>
-    <td>c</td>
-    <td>11</td>
+    <td>10</td>
+    <td>[c]</td>
     </tr>
     <tr class="even">
     <td>B</td>
-    <td>c</td>
+    <td>13</td>
     <td>111</td>
-    <td>124</td>
     </tr>
     <tr class="odd">
     <td>C</td>
-    <td>c</td>
-    <td>17</td>
-    <td>32</td>
+    <td>15</td>
+    <td>[c]</td>
     </tr>
     <tr class="even">
     <td>Total</td>
     <td>38</td>
     <td>129</td>
-    <td>167</td>
     </tr>
     </tbody>
     </table>
-    <p>It might be decided that the rounding example above might be too detrimental to users, if exact totals are important. An alternative might be to suppress small values instead - in this example, to focus on the suppression of that over 30 age group receiving Treatment A. In this case, we have used 'c' (for confidential) to denote that values have been suppressed.</p>
-    <p>If we just suppressed that single value, it would be very easy to re-calculate it based on other information given in the table. As such, secondary suppression has also been applied to the 0 to 30 group to prevent that.</p>
+    <p>It might be decided that the rounding example above might be too detrimental to users, if exact totals are important. An alternative might be to suppress small values instead - in this example, to focus on the suppression of that single individual in the over 30 age group receiving Treatment A. In this case, we have used '[c]' (for confidential) to denote that 2 values have been suppressed.</p>
+    <p>If we had just suppressed that single at-risk value, it would have been very easy to re-calculate it based on other information given in the table. As such, secondary suppression has also been applied to the over 30 group receiving Treatment C. Suppressing in this way has still allowed the message to get through that most of the over 30 group received Treatment B, and has preserved the exact total for that age group, while successfully masking the underlying value of the Treatment A group.</p>
+    <p>Whether this approach is considered less or more destructive than the rounding example above would be dependent on what information users need, and what they intend to do with it.</p>
     <p>Note that it should be made clear in any reporting of this data how and why suppression has been applied.</p>
-    <p>This approach might seem more destructive than the rounding example given above, but the benefit here is that the actual values of the marginal totals are preserved. Which method is preferred may depend on why users need this information and what they intend to do with it.</p>
     </div>
     </div>
     <div id="references" class="section level2">
@@ -470,19 +469,11 @@ Initial release
     <li><a href="https://ico.org.uk/for-organisations/guide-to-freedom-of-information/refusing-a-request/">Guide to freedom of information: When can we refuse a request for information?</a></li>
     <li><a href="https://www.ukcgc.uk/duty-of-confidentiality#:~:text=The%20so%2Dcalled%20common%20law,of%20legal%20authority%20or%20justification.">The common law duty of confidentiality</a></li>
     <li><a href="https://www.ons.gov.uk/methodology/methodologytopicsandstatisticalconcepts/disclosurecontrol/policyforsocialsurveymicrodata">Policy for social survey microdata: Government Statistical Service policy for the release of social survey microdata, ensuring compliance with the Code of Practice for Official Statistics</a></li>
+    <li><a href="https://analysisfunction.civilservice.gov.uk/policy-store/symbols-in-tables-definitions-and-help/">Using symbols and shorthand</a></li>
     </ol>
     </div>
-    <div class="footnotes">
-    <hr />
-    <ol>
-    <li id="fn1"><p>Counts of 3 or more are generally considered safer as no single individuals are isolated and counts of 2 might mean one party identifies the other<sup>5,6</sup>. However, while it is generally assumed that individuals are less likely to be able to identify more than 1 other individual, there may be certain situations where this does not hold true, such as where respondents are clustered in some way (for example, within the same family or clinic)<sup>5,6</sup>.<a href="#fnref1">↩</a></p></li>
-    <li id="fn2"><p>In social surveys, some protection against small numbers can be added by the fact that outputs are based on samples rather than populations, making identification less likely as most users will not know who was in the sample. However, any individuals that do have knowledge of who took part in the survey (including the survey respondents themselves) may still have an increased chance of identifying data subjects<sup>6</sup>.<a href="#fnref2">↩</a></p></li>
-    <li id="fn3"><p>For larger populations at risk, the amount of effort needed to successfully identify an individual might be considered disproportionate<sup>8</sup>. As the population at risk gets smaller, for example by presenting data at a lower-level geographical area or including other breakdowns such as by sexuality, etc., the risk of disclosure becomes greater because the pool of people from which to identify individuals is smaller.<a href="#fnref3">↩</a></p></li>
-    <li id="fn4"><p>Non-structural zeros are perhaps less of an issue for social surveys based on samples, as there may be population units with that characteristic that just were not sampled - however it may still be wise to be cautious<sup>6</sup>.<a href="#fnref4">↩</a></p></li>
-    <li id="fn5"><p>To give an example, if a table of conceptions by age could be linked with a separate table on abortions, it might be possible to identify an individual that had had an abortion, via knowledge of those who had conceived, particularly when small counts are involved<sup>2</sup>.<a href="#fnref5">↩</a></p></li>
-    <li id="fn6"><p>We will be aiming to produce guidance on this in due course.<a href="#fnref6">↩</a></p></li>
-    </ol>
-    </div>
+    
+     <p style="margin-bottom: 35px;"><a href="https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/README.md">↩ Back to the hub</a></p>
     
   </div>
 

@@ -1,7 +1,7 @@
 ---
 title: "Statistical Disclosure Control - Microdata"
 author: "Ben Cuff"
-date: "`r format(Sys.time(), '%d %B, %Y')`"
+date: "30 September, 2022"    #"`r format(Sys.time(), '%d %B, %Y')`"
 draft: false
 output: 
   html_document:
@@ -94,11 +94,11 @@ Some repeated information will only be covered briefly here.
 
 The following steps should be taken in all cases, as they would always pose a disclosure risk:
 
-a. Any direct identifiers (for example, name, NHS number) should always be removed from the data as these will clearly identify an individual^`r addRef(15)`,`r addRef(12)`^.[^note1] 
-
-[^note1]: Pseudonymisation is sometimes used to mask directly identifiable information such as name, in a way that still allows for data to be associated with a particular individual without that individual being directly identified. However, there are still risks here as data is still presented in an individual-level format and pseudonymised values may still allow some linking between datasets. This could mean that pseudonymisation might be reversed, particiularly for detailed datasets^`r addRef(16)`,`r addRef(35)`^. This method should therefore be employed cautiously, if at all.
+a. Any direct identifiers (for example, name, NHS number) should always be removed from the data as these will clearly identify an individual^`r addRef(15)`,`r addRef(12)`^.
 
 a. Other indirect identifiers such as exact date of birth and postcode should be reduced in detail^`r addRef(12)`^. If important for users, these could be truncated rather than being removed entirely^`r addRef(12)`^. The level of geography might also be increased, for example by presenting location at regional level rather than giving postcodes^`r addRef(15)`,`r addRef(13)`^. 
+
+Note that pseudonymisation is sometimes used to mask directly identifiable information such as name, in a way that still allows for data to be associated with a particular individual without that individual being directly identified. However, there are still risks here as data is still presented in an individual-level format and pseudonymised values may still allow some linking between datasets. This could mean that pseudonymisation might be reversed, particularly for detailed datasets^`r addRef(16)`,`r addRef(35)`^. This method should therefore be employed cautiously, if at all.
 
 Other key identifying variables (age, gender, etc.) might then be addressed to reduce the amount of risk, using one or more of the following methods. Other variables that are not necessarily identifiable may not need to be controlled for when risk levels are otherwise low^`r addRef(12)`^. Again, it is important to pay consideration to the user requirements here, which might mean applying different levels of disclosure control to different variables^`r addRef(15)`,`r addRef(16)`^. For example, it might be deemed important to have the exact age of data subjects, but to compensate for this risk, other variables could be collapsed and removed to add sufficient uncertainty elsewhere.
 
@@ -106,7 +106,7 @@ Other key identifying variables (age, gender, etc.) might then be addressed to r
 a. Continuous variables (such as age and height) can be banded into groups (for example, into 5-year age brackets instead of actual ages)^`r addRef(15)`,`r addRef(12)`,`r addRef(13)`,`r addRef(16)`^.
 a. Categorical variables can be collapsed to reduce the level of detail^`r addRef(15)`,`r addRef(12)`,`r addRef(13)`,`r addRef(16)`^ (for example, by presenting broader occupational classifications rather than more specific job roles).
 a. Problematic variables could be removed if they are not needed by users^`r addRef(15)`,`r addRef(12)`^.
-a. Where there are individual 'combinations at risk' (in other words, where a data subject might be the only one with a certain set of characteristics), suppression could be used to hide an individual value, replacing it with 'c' (for confidential) or similar^`r addRef(13)`,`r addRef(16)`^. Note that it is important to apply this in such a way that the reason for suppression, and therefore the underlying value, is not made obvious ^`r addRef(13)`^. 
+a. Where there are individual 'combinations at risk' (in other words, where a data subject might be the only one with a certain set of characteristics), suppression could be used to hide an individual value^`r addRef(13)`,`r addRef(16)`^, replacing it with '[c]' (for confidential; square brackets are used to denote shorthand^`r addRef(54)`^). Note that it is important to apply this in such a way that the reason for suppression, and therefore the underlying value, is not made obvious ^`r addRef(13)`^. 
 a. Problematic data subjects could be removed entirely^`r addRef(10)`,`r addRef(13)`,`r addRef(16)`^. However, you would need to consider the impact on utility here, including what effect this would have on summary counts or averages when the data is aggregated^`r addRef(16)`^. 
 
 
@@ -170,7 +170,7 @@ Setting aside postcode, tabulating this data would highlight the fact that there
 | 18  | South East | Unemployed        | GP              |
 | 18  | South East | Unemployed        | GP              |
 | 18  | South East | Unemployed        | GP              |
-| c   | South East | Unemployed        | A&E             |
+| [c] | South East | Unemployed        | A&E             |
 | ... | ...        | ...               | ...             |
 
 
@@ -179,7 +179,7 @@ The following series of steps were taken to address most of the risks present in
 1. Name and NHS number fields were removed as they are direct identifiers.
 1. Postcodes have been transformed into regions to increase the population at risk for the geographical areas presented.
 1. Employment status has been collapsed into 2 categories rather than 3 (we can assume this would be acceptable to users).
-1. Emir Ali's uniqueness has been masked by suppressing their age, giving a 'c' (for confidential) instead. This introduces sufficient uncertainty when presented along with the other ages assumed to be present in the full dataset.<br>Suppressing Emir's employment status or admission route instead might not have been advisable, because most unemployed 18 year olds were admitted via their GPs. It might be obvious that any suppression within these fields might have been done to mask the fact that Emir was unqiue in being unemployed and admitted via A&E.
+1. Emir Ali's uniqueness has been masked by suppressing their age, giving a '[c]' (for confidential; square brackets are used to denote shorthand^`r addRef(54)`^) instead. This introduces sufficient uncertainty when presented along with the other ages assumed to be present in the full dataset.<br>Suppressing Emir's employment status or admission route instead might not have been advisable, because most unemployed 18 year olds were admitted via their GPs. It might be obvious that any suppression within these fields might have been done to mask the fact that Emir was unique in being unemployed and admitted via A&E.
 
 In this new table, all combinations of characteristics that are present in the data now meet the k=3 k-anonymity threshold. 
 
