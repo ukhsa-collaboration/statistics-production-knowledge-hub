@@ -16,6 +16,7 @@ From here, you will be able to view our guidance documents:
 * *Coming soon* - Statistical Disclosure Control (SDC) R package
 * *Coming soon* - Reproducible Analytical Pipelines (RAP) guidance
 * *Coming soon* - Quality assurance guidance
+* *Coming soon* - Accessible spreadsheets guidance
 
 
 <br>
