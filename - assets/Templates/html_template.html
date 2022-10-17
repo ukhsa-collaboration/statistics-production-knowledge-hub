@@ -1,7 +1,7 @@
 <head>
   
   <title>The Hub: $title$</title>
-  <link rel="icon" href="https://raw.githubusercontent.com/UKHSA-Statistics-Production/knowledge-hub/main/-%20assets/Hex/hex.png">
+  <link rel="icon" href="../-%20assets/Hex/hex.png">
   
   <style type="text/css">
     body {
@@ -70,8 +70,18 @@
       display: inline;
     }
     
-    .footnoteRef>sup::before {
-      content: "note ";
+    
+    .footnote-ref>sup{
+      vertical-align: unset !important;
+      font-size: unset !important;
+    }
+    
+    .footnote-ref>sup::before {
+      content: "[Note ";
+    }
+    
+    .footnote-ref>sup::after {
+      content: "]";
     }
     
     h1, h2, h3, h4, h5, p, li, td, th{
@@ -109,13 +119,6 @@
     
     th, td {
       padding: 10px;
-    }
-    
-    sup{
-      font-size: 0.7em;
-      vertical-align: baseline;
-      position: relative;
-      top: -0.4em;
     }
     
 
@@ -164,6 +167,8 @@
     
     <p>Author: $author$</p>
     <p>To provide any feedback on this document, or to ask for more information or support, please contact: <a href="mailto:UKHSA_HOPSTATS@ukhsa.gov.uk">UKHSA_HOPSTATS@ukhsa.gov.uk</a></p>
+    
+    <p>Throughout this document, citations are given as numbers in square brackets. They link to a full reference list which can be found at the end of this document.</p>
 
     <p style="margin-bottom: 35px;"><a href="https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/README.md">&#8617; Back to the hub</a></p>
     
