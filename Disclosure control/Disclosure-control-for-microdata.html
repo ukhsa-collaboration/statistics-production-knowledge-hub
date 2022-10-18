@@ -39,6 +39,15 @@ padding: 0 10px;
 max-width: 1000px;
 margin: auto;
 }
+#toc > ul{
+padding-inline-start: inherit;
+}
+#toc > ul > li{
+list-style-type: none;
+}
+#toc > ul > li > ul > li{
+list-style-type: disc;
+}
 #versioncontrol{
 opacity: 0;
 display: none;
@@ -133,34 +142,35 @@ padding: 10px;
     <div id="versioncontrol"><table> ¶ <tr> ¶ <th> ¶ Date ¶ </th> ¶ <th>
 ¶ Notes ¶ </th> ¶ </tr> ¶ <tr> ¶ <td> ¶ 30/09/2022 ¶ </td> ¶ <td> ¶
 Initial release ¶ </td> ¶ </tr> ¶ </table></div>
-    
-    <ul>
-    <li><a href="#coverage" id="toc-coverage">Coverage</a></li>
-    <li><a href="#summary-of-recommendations" id="toc-summary-of-recommendations">Summary of
-    recommendations</a></li>
-    <li><a href="#introduction" id="toc-introduction">Introduction</a></li>
-    <li><a href="#guidelines-for-identifying-and-controlling-disclosure-risk" id="toc-guidelines-for-identifying-and-controlling-disclosure-risk">Guidelines
-    for identifying and controlling disclosure risk</a>
-    <ul>
-    <li><a href="#steps-1-to-3-understanding-your-data-and-conducting-a-risk-assessment" id="toc-steps-1-to-3-understanding-your-data-and-conducting-a-risk-assessment">Steps
-    1 to 3: Understanding your data and conducting a risk
-    assessment</a></li>
-    <li><a href="#step-4-choosing-and-applying-disclosure-control-methods" id="toc-step-4-choosing-and-applying-disclosure-control-methods">Step
-    4: Choosing and applying disclosure control methods</a></li>
-    <li><a href="#step-5-assessing-the-outcome-and-disseminating" id="toc-step-5-assessing-the-outcome-and-disseminating">Step 5:
-    Assessing the outcome and disseminating</a></li>
-    </ul></li>
-    <li><a href="#example-risk-assessment-and-disclosure-control" id="toc-example-risk-assessment-and-disclosure-control">Example risk
-    assessment and disclosure control</a></li>
-    <li><a href="#references" id="toc-references">References</a></li>
-    </ul>
-    
+    <script>x = document.getElementById("versioncontrol"); x.innerHTML = x.innerHTML.replaceAll("¶", "")</script>
+
     <p>Author: Ben Cuff</p>
     <p>To provide any feedback on this document, or to ask for more information or support, please contact: <a href="mailto:UKHSA_HOPSTATS@ukhsa.gov.uk">UKHSA_HOPSTATS@ukhsa.gov.uk</a></p>
     
     <p>Throughout this document, citations are given as numbers in square brackets. They link to a full reference list which can be found at the end of this document.</p>
 
     <p style="margin-bottom: 35px;"><a href="https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/README.md">↩ Back to the hub</a></p>
+    
+    <h2>Contents</h2>
+    <div id="toc"><ul>
+<li><a href="#coverage" id="toc-coverage">Coverage</a></li>
+<li><a href="#summary-of-recommendations" id="toc-summary-of-recommendations">Summary of recommendations</a></li>
+<li><a href="#introduction" id="toc-introduction">Introduction</a></li>
+<li><a href="#guidelines-for-identifying-and-controlling-disclosure-risk" id="toc-guidelines-for-identifying-and-controlling-disclosure-risk">Guidelines
+for identifying and controlling disclosure risk</a>
+<ul>
+<li><a href="#steps-1-to-3-understanding-your-data-and-conducting-a-risk-assessment" id="toc-steps-1-to-3-understanding-your-data-and-conducting-a-risk-assessment">Steps
+1 to 3: Understanding your data and conducting a risk
+assessment</a></li>
+<li><a href="#step-4-choosing-and-applying-disclosure-control-methods" id="toc-step-4-choosing-and-applying-disclosure-control-methods">Step 4:
+Choosing and applying disclosure control methods</a></li>
+<li><a href="#step-5-assessing-the-outcome-and-disseminating" id="toc-step-5-assessing-the-outcome-and-disseminating">Step 5:
+Assessing the outcome and disseminating</a></li>
+</ul></li>
+<li><a href="#example-risk-assessment-and-disclosure-control" id="toc-example-risk-assessment-and-disclosure-control">Example risk
+assessment and disclosure control</a></li>
+<li><a href="#references" id="toc-references">References</a></li>
+</ul></div>
     
     <div id="coverage" class="section level2">
     <h2>Coverage</h2>
@@ -757,7 +767,7 @@ Initial release ¶ </td> ¶ </tr> ¶ </table></div>
     </ol>
     </div>
     
-     <p style="margin-bottom: 35px;"><a href="https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/README.md">↩ Back to the hub</a></p>
+    <p style="margin-bottom: 35px;"><a href="https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/README.md">↩ Back to the hub</a></p>
     
   </div>
 
