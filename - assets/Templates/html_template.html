@@ -46,6 +46,18 @@
       margin: auto;
     }
     
+    #toc > ul{
+      padding-inline-start: inherit;
+    }
+    
+    #toc > ul > li{
+      list-style-type: none;
+    }
+    
+    #toc > ul > li > ul > li{
+      list-style-type: disc;
+    }
+    
     #versioncontrol{
       opacity: 0;
       display: none;
@@ -90,10 +102,10 @@
     }
     
     h2{
-      margin-block-start: 1em;
+      margin-block-start: 1.3em;
     }
     
-    h3{
+    h3, h4{
       margin-block-start: 1.5em;
     }
     
@@ -163,8 +175,6 @@
     <p><a id="versionbutton" href="#" onclick="showHistory()">Show version history +</a></p>
     <div id="versioncontrol">$versioncontrol$</div>
     
-    $toc$
-    
     <p>Author: $author$</p>
     <p>To provide any feedback on this document, or to ask for more information or support, please contact: <a href="mailto:UKHSA_HOPSTATS@ukhsa.gov.uk">UKHSA_HOPSTATS@ukhsa.gov.uk</a></p>
     
@@ -172,9 +182,12 @@
 
     <p style="margin-bottom: 35px;"><a href="https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/README.md">&#8617; Back to the hub</a></p>
     
+    <h2>Contents</h2>
+    <div id="toc">$toc$</div>
+    
     $body$
     
-     <p style="margin-bottom: 35px;"><a href="https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/README.md">&#8617; Back to the hub</a></p>
+    <p style="margin-bottom: 35px;"><a href="https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/README.md">&#8617; Back to the hub</a></p>
     
   </div>
 
