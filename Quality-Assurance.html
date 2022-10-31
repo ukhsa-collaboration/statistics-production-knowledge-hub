@@ -131,30 +131,526 @@ top: -0.4em;
     <p><a id="versionbutton" href="#" onclick="showHistory()">Show version history +</a></p>
     <div id="versioncontrol"></div>
     
-    
+    <ul>
+    <li><a href="#coverage" id="toc-coverage">Coverage</a></li>
+    <li><a href="#summary-of-recommendations" id="toc-summary-of-recommendations">Summary of
+    recommendations</a></li>
+    <li><a href="#introduction" id="toc-introduction">Introduction</a>
+    <ul>
+    <li><a href="#what-is-quality" id="toc-what-is-quality">What is
+    quality?</a></li>
+    <li><a href="#why-do-we-need-to-assure-quality" id="toc-why-do-we-need-to-assure-quality">Why do we need to assure
+    quality?</a></li>
+    </ul></li>
+    <li><a href="#roles-and-responsibilities" id="toc-roles-and-responsibilities">Roles and
+    responsibilities</a></li>
+    <li><a href="#how-is-quality-assurance-conducted" id="toc-how-is-quality-assurance-conducted">How is Quality Assurance
+    Conducted?</a>
+    <ul>
+    <li><a href="#ensuring-data-quality" id="toc-ensuring-data-quality">Ensuring data quality</a></li>
+    <li><a href="#quality-assurance-responsibility-throughout-analysis" id="toc-quality-assurance-responsibility-throughout-analysis">Quality
+    assurance responsibility throughout analysis</a></li>
+    <li><a href="#stakeholder-engagement" id="toc-stakeholder-engagement">1. Stakeholder engagement</a></li>
+    <li><a href="#planning-analysis" id="toc-planning-analysis">2.
+    Planning analysis</a></li>
+    <li><a href="#analysis" id="toc-analysis">3. Analysis</a></li>
+    <li><a href="#delivery-of-analysis" id="toc-delivery-of-analysis">4.
+    Delivery of analysis</a></li>
+    <li><a href="#a-note-on-validation-methods" id="toc-a-note-on-validation-methods">A note on validation
+    methods</a></li>
+    </ul></li>
+    <li><a href="#references" id="toc-references">References</a></li>
+    </ul>
     
     <p>Author: Olivia Swarthout</p>
     <p>To provide any feedback on this document, or to ask for more information or support, please contact: <a href="mailto:UKHSA_HOPSTATS@ukhsa.gov.uk">UKHSA_HOPSTATS@ukhsa.gov.uk</a></p>
 
     <p style="margin-bottom: 35px;"><a href="https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/README.md">↩ Back to the hub</a></p>
     
-    <p>This is an <a href="http://rmarkdown.rstudio.com">R Markdown</a>
-    Notebook. When you execute code within the notebook, the results
-    appear beneath the code.</p>
-    <p>Try executing this chunk by clicking the <em>Run</em> button
-    within the chunk or by placing your cursor inside it and pressing
-    <em>Ctrl+Shift+Enter</em>.</p>
-    <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cars)</span></code></pre></div>
-    <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABUAAAAPACAMAAADDuCPrAAAAz1BMVEUAAAAAADoAAGYAOjoAOmYAOpAAZmYAZpAAZrY6AAA6OgA6Ojo6OmY6ZmY6ZpA6ZrY6kJA6kLY6kNtmAABmADpmOgBmOjpmZjpmZmZmZpBmkLZmkNtmtttmtv+QOgCQZgCQZjqQZmaQkGaQkLaQtraQttuQtv+Q2/+2ZgC2Zjq2kDq2kGa2tpC2tra2ttu227a229u22/+2///bkDrbkGbbtmbbtpDbtrbb25Db27bb29vb2//b/7bb////tmb/25D/27b/29v//7b//9v///+YQ9N6AAAACXBIWXMAAB2HAAAdhwGP5fFlAAAgAElEQVR4nO3df3/TVr7gcYfCXlJaupcunQxTWGYHbsOAe6EpsKRLSOs8/8e0ku04dmyS6Bv9OEfn/f6jJX4lworkD5J1dDw5AyBkMvQTAMiVgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIECShAkIACBAkoQJCAAgQJKECQgAIEdR7Q2fHH6XT66/Hnrv8i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" width="672" /></p>
-    <p>Add a new chunk by clicking the <em>Insert Chunk</em> button on
-    the toolbar or by pressing <em>Ctrl+Alt+I</em>.</p>
-    <p>When you save the notebook, an HTML file containing the code and
-    output will be saved alongside it (click the <em>Preview</em> button
-    or press <em>Ctrl+Shift+K</em> to preview the HTML file).</p>
-    <p>The preview shows you a rendered HTML copy of the contents of the
-    editor. Consequently, unlike <em>Knit</em>, <em>Preview</em> does
-    not run any R code chunks. Instead, the output of the chunk when it
-    was last run in the editor is displayed.</p>
+    <div id="coverage" class="section level2">
+    <h2>Coverage</h2>
+    <p>This guidance applies to everyone working in the production of
+    statistics or other numerical analysis, whether for internal or
+    external use.</p>
+    </div>
+    <div id="summary-of-recommendations" class="section level2">
+    <h2>Summary of recommendations</h2>
+    <ol style="list-style-type: decimal">
+    <li>Quality assurance should be considered at every step of analysis
+    by everyone involved.</li>
+    <li>Quality assurance should be planned in advance of statistical
+    analysis, with roles, responsibilities, and the extent of assurance
+    activities understood fully by the entire team.</li>
+    <li>Quality analysis should be appropriate to the scope, risks,
+    methodology, and data source of a piece of analysis.</li>
+    <li>Every step of analysis and every aspect of quality assurance
+    should be logged in detail. A designated assurer should confirm that
+    a sufficient degree and standard of assurance has been
+    conducted.</li>
+    <li>Quality concerns should be documented and communicated alongside
+    the final results of analysis in order to quantify confidence in the
+    results.</li>
+    </ol>
+    </div>
+    <div id="introduction" class="section level2">
+    <h2>Introduction</h2>
+    <div id="what-is-quality" class="section level3">
+    <h3>What is quality?</h3>
+    <p>At the most basic level, the quality of a statistical output may
+    be thought of as its fitness for purpose [<a href="#References">1</a>][<a href="#References">2</a>][<a href="#References">3</a>][<a href="#References">4</a>]. Though a
+    simple definition, ensuring fitness-for-purpose requires us to think
+    carefully about the specific needs and limitations of a project and
+    develop a framework for guaranteeing these are adequately addressed
+    [<a href="#References">4</a>]. This is no small task – approaches to
+    assuring quality must be custom tailored to each project, requiring
+    a high degree of skill and professional judgement at every step of
+    the project life cycle from conceptualisation to publication [<a href="#References">1</a>].</p>
+    </div>
+    <div id="why-do-we-need-to-assure-quality" class="section level3">
+    <h3>Why do we need to assure quality?</h3>
+    <p>While assuring quality may be a complex process, it is vital to
+    the production of all statistics: this is emphasised in a number of
+    policy and guidance documents. The ONS Code of Practice includes
+    quality as one of the three core pillars that support public
+    confidence in statistics [<a href="#References">1</a>]. Under Q3 of
+    the Quality Pillar, the Code of Practice requires all producers of
+    statistics and data to explain how they have assured that their work
+    is accurate, reliable, coherent and timely [<a href="#References">1</a>]. Similarly, a key goal of the GSS Quality
+    Strategy is to ensure our data are of sufficient quality and
+    communicate the quality implications to users [<a href="#References">5</a>].</p>
+    <p>Thus, we see that there is a requirement not only to guarantee
+    quality but to demonstrate it to users, allowing them to use
+    statistical publications with complete confidence in their validity
+    [<a href="#References">5</a>][<a href="#References">6</a>]. However,
+    ensuring high quality is also key to building trust among those who
+    are involved in policy and decision making [<a href="#References">2</a>][<a href="#References">3</a>]. Outputs that
+    attain high levels of fitness-for-purpose allow better decisions to
+    be made with greater efficiency, supporting early trend
+    identification and risk mitigation in the public health sector[<a href="#References">3</a>][<a href="#References">5</a>][<a href="#References">7</a>]. The Goldacre Review explains the very
+    material benefits of high-quality analysis, noting that “these kinds
+    of analyses deliver direct improvements in patient care by
+    identifying problems early, and improving the efficiency of services
+    for all.” [<a href="#References">5</a>] The risks posed by poor
+    quality analysis are just as immediate and can include financial and
+    legal damage, and, in extreme cases, risks to health and livelihood
+    [<a href="#References">4</a>]. It is therefore crucial that internal
+    as well as external outputs are subject to rigorous quality
+    assurance measures.</p>
+    </div>
+    </div>
+    <div id="roles-and-responsibilities" class="section level2">
+    <h2>Roles and responsibilities</h2>
+    <p>Goal 1 of the GSS Quality Strategy sets out the need for everyone
+    involved in statistical production to understand the nature and
+    importance of their role in assuring quality [<a href="#References">5</a>]. Team members should understand the exact
+    nature and extent of QA that is planned for a specific project as
+    well as their expected contributions [<a href="#References">6</a>].</p>
+    <p>HM Treasury’s Aqua Book: guidance on producing quality analysis
+    for government defines three key roles for QA of statistical
+    analysis: the commissioner, the analyst, and the assurer [<a href="#References">4</a>]. Other government publications such as
+    Government Functional Standard 010: Analysis use similar roles to
+    demonstrate the delegation of responsibility for assurance of
+    analysis [<a href="#References">7</a>]. While in practice, the exact
+    nature of roles required may differ based on project scope and
+    requirements, these provide a useful framework for considering the
+    different ways QA should be incorporated into the life cycle of a
+    project.</p>
+    <p>The roles can be summarised as follows:</p>
+    <ul>
+    <li><strong>The person commissioning analysis</strong> is
+    responsible for developing the question of interest and
+    communicating this to the analyst and assurer so that they are able
+    to identify the most appropriate methods for analysis and assurance.
+    They must communicate the available resources and time frame for the
+    analysis and ensure that they understand the full implications of
+    the results, including strengths, limitations, uncertainty, and
+    context, so that the outputs can be used appropriately.</li>
+    <li><strong>The person responsible for analysis</strong> must work
+    with the commissioner to help develop the question of interest in a
+    manner that allows it to be answered appropriately as meets the
+    needs of the commissioner. They are responsible for planning and
+    conducting analysis in a methodologically sound way and planning how
+    they will demonstrate assured quality to the commissioner and
+    assurer. As needed, the analyst may bring in third party analysts to
+    provide specialised advice and independent quality assurance. Final
+    results and records of all activities undertaken will be provided by
+    the analyst, who must communicate to the commissioner the
+    implications of their results as impacted by its strengths,
+    limitations, uncertainty, and context. In practice, there may often
+    be more than one analyst involved in a project: the use of the term
+    “the analyst” throughout this document is used for brevity’s sake
+    rather than to exclude this possibility.</li>
+    <li><strong>The person responsible for analytical assurance</strong>
+    must ensure throughout that appropriate quality assurance is taking
+    place. This person is not necessarily directly involved in
+    conducting QA and does not need to be an analyst themselves,
+    although QA may benefit from an assurer who understands the
+    analytical complexities of the project in order to identify issues
+    with the output. However, the assurer should not be one of the
+    analysts involved in conducting the actual analysis in order to
+    maintain independence. As the assurer must sign off on the QA
+    activities, they should be of sufficient seniority to take
+    responsibility for the output and advise the commissioner on whether
+    quality concerns have been sufficiently addressed and the
+    implications of any remaining risks.</li>
+    </ul>
+    <p>More information about what each of these roles entails at each
+    step of a project can be found in the next section. However, it is
+    important to emphasise that QA does not begin and end with
+    designated roles and project components. Quality can be best
+    guaranteed by continual critical thinking and open communication by
+    all members of a team. Even when not engaged in a specific project,
+    a team is responsible for thinking about how to encourage a culture
+    of transparency and accountability that is conducive to high-quality
+    output, fostering a mindset of quality that extends to all
+    activities. This includes encouraging everyone on the team to be
+    open about their mistakes and concerns without fear of repercussions
+    or dismissive responses from senior staff. When analysts are able to
+    work with confidence and support from their wider team, time and
+    resources can be allocated more effectively toward ensuring optimal
+    fitness-of-purpose for all outputs.</p>
+    </div>
+    <div id="how-is-quality-assurance-conducted" class="section level2">
+    <h2>How is Quality Assurance Conducted?</h2>
+    <p>At each stage of analysis, documentation should be produced
+    detailing QA measures that have been undertaken. This helps
+    guarantee that analysis and QA are transparent and reproducible, in
+    line with ONS Code of Practice Q3.3 [<a href="#References">1</a>],
+    thereby helping to create high-quality statistics that retain value
+    over time.</p>
+    <p>This section contains examples of questions that can guide QA
+    throughout a project and suggested items of documentation that can
+    be produced. However, the exact scale and scope of these QA
+    activities should be considered on a case-by-case basis, ensuring
+    that they are appropriate and proportionate to the needs of analysis
+    [<a href="#References">4</a>]. More rigorous QA will demand more
+    time and resources, and so the extent of QA should be justified by
+    the level of risk present [<a href="#References">4</a>][<a href="#References">6</a>]. For instance, the Office for Statistics
+    Regulation provides a toolkit for the quality assurance of
+    administrative data, which outlines three levels of assurance:
+    basic, enhanced, and comprehensive. . A quality assurance level is
+    recommended based on a combination of “risk of quality concerns” and
+    “public interest profile” for the data [<a href="#References">8</a>]. While this framework was developed
+    specifically for statistics based on administrative data, a similar
+    approach may be useful in considering the levels of QA necessary for
+    other statistics [<a href="#References">6</a>].</p>
+    <p>It is also crucial to be aware of and compliant with
+    organisational and departmental best practice policies and guidance
+    documents that relate to QA[<a href="#References">9</a>].</p>
+    <div id="ensuring-data-quality" class="section level3">
+    <h3>Ensuring data quality</h3>
+    <p>Data may come from any of a large number of sources and may even
+    be gathered by the analysts themselves. The complexities involved in
+    gathering, storing, managing, and accessing data introduce many
+    potential sources of error for a piece of analysis - before analysis
+    even commences!</p>
+    <p>Ensuring high quality as the point of data collection is an
+    extremely involved undertaking that depends on a huge number of
+    situational factors and is therefore beyond the scope of this
+    guidance. However, the validation of subsequent stages of the “data
+    lifecycle” bears discussing here as it is a key aspect of ensuring
+    high quality statistical outputs. Under Q3 of the Quality Pillar,
+    the ONS Code of Practice explains that “Statistics should be based
+    on the most appropriate data to meet intended uses. The impact of
+    any data limitations for use should be assessed, minimised and
+    explained.” [<a href="#References">1</a>]</p>
+    <p>When obtaining data from a database or other storage platform, it
+    is most preferable for the analysts themselves to access the data so
+    they can ensure the proper input parameters are used, yielding the
+    correct format and scope for their data. However, this may not be
+    possible in some circumstances due to restrictions on data access
+    permissions, and data may have to be requested from the manager of a
+    database. In this case, the data providers should keep detailed
+    records of the queries used to obtain the requested data and should
+    ideally supply information about the format and details of each
+    variable as well as the source and methodology of collection.[<a href="#References">10</a>][<a href="#References">1</a>] Analysts
+    should maintain good communication with data providers about their
+    project requirements and intended outcomes [<a href="#References">7</a>].</p>
+    <p>Any transformations applied by the data provider or analyst
+    should be carefully documented, and a degree of manual checking is
+    generally necessary in order for analysts to assess the presence of
+    any unreasonable values or distributions [<a href="#References">10</a>]. Any potential bias, uncertainty, or
+    missing values in the data should be documented alongside the
+    implications these have for the final outputs. [<a href="#References">4</a>]</p>
+    </div>
+    <div id="quality-assurance-responsibility-throughout-analysis" class="section level3">
+    <h3>Quality assurance responsibility throughout analysis</h3>
+    <p>The responsibilities described below are examples of how
+    leadership on tasks can be delegated between commissioner, analyst,
+    and assurer. No single member of a team should be responsible for a
+    task in its entirety, without any input from colleagues [<a href="#References">4</a>]. Though it may be one person’s job to lead
+    and shape outputs for a specific aspect of analysis, all team
+    members should have a thorough understanding of every stage that
+    allows them to contribute their skills and knowledge toward the
+    final product.</p>
+    </div>
+    <div id="stakeholder-engagement" class="section level3">
+    <h3>1. Stakeholder engagement</h3>
+    <p>This is usually the most preliminary stage of analysis and
+    focuses on identifying the question that the analysis should
+    address, as well as establishing key context for the analyst’s
+    work.</p>
+    <div id="suggested-documentation" class="section level4">
+    <h4>Suggested documentation:</h4>
+    <ul>
+    <li>Specification or scoping document explaining the intended
+    outcomes of the analysis, which may be edited in subsequent stages
+    as details of the requested work change [<a href="#References">4</a>]</li>
+    </ul>
+    </div>
+    <div id="responsibilities" class="section level4">
+    <h4>Responsibilities:</h4>
+    <ul>
+    <li><strong>Commissioner</strong> ensures that the intentions and
+    complexities of the problem at hand are clearly communicated and
+    that sufficient resources are secured for the analysis</li>
+    <li><strong>Analyst</strong> identifies the levels of quality,
+    certainty, and precision that are required for the analysis and
+    communicates with stakeholders to ensure that expectations are
+    aligned with what is possible to deliver</li>
+    <li><strong>Assurer</strong> challenges and tests the understanding
+    of the problem, exploring different perspectives to confirm that the
+    optimal goals and boundaries have been agreed upon</li>
+    </ul>
+    </div>
+    <div id="guiding-questions" class="section level4">
+    <h4>Guiding questions:</h4>
+    <ul>
+    <li>What is the purpose of the analysis? [<a href="#References">4</a>].</li>
+    <li>Who is the intended audience and what are their needs? [<a href="#References">4</a>]</li>
+    <li>What resources are available? What are the limits/constraints of
+    the project? [<a href="#References">4</a>]</li>
+    <li>What are areas of highest risk and how do we address these? [<a href="#References">9</a>]</li>
+    <li>How will we allocate time/resources? [<a href="#References">7</a>]</li>
+    <li>What is our data source? Is data quality-assured and appropriate
+    for our purposes? [<a href="#References">7</a>]</li>
+    </ul>
+    </div>
+    </div>
+    <div id="planning-analysis" class="section level3">
+    <h3>2. Planning analysis</h3>
+    <p>This stage requires a higher degree of technical input as the
+    commission details are converted into an analysis plan. While a
+    greater degree of responsibility may therefore fall upon the analyst
+    here, it is important for the commissioner to continually confirm
+    that their specified needs will be met by the proposed
+    methodology.</p>
+    <div id="suggested-documentation-1" class="section level4">
+    <h4>Suggested documentation:</h4>
+    <ul>
+    <li>Map of “data journey” or analytical plan that specifies inputs,
+    methodological details, and planned outputs [<a href="#References">4</a>][<a href="#References">9</a>].</li>
+    </ul>
+    </div>
+    <div id="responsibilities-1" class="section level4">
+    <h4>Responsibilities:</h4>
+    <ul>
+    <li><strong>Commissioner</strong> maintains contact with analyst and
+    assurer to continually confirm that adequate resources will be
+    available to conduct a suitable analysis</li>
+    <li><strong>Analyst</strong> produces design documentation,
+    indicating the necessary methods and resource allocation. The
+    appropriate models, software, and functions should be specified
+    along with their parameters and input. In addition to ensuring that
+    their work will be robust, accurate, and adequate to address the
+    research question, they must consider the limits and uncertainty
+    that these methods will entail and how these will be communicated in
+    the final product. They must also draw up plans for QA of their work
+    and identify suitable independent analysts who can provide QA</li>
+    <li><strong>Assurer</strong> checks that the proposed level of QA
+    for the analysis will be sufficient for the needs of the
+    project</li>
+    </ul>
+    </div>
+    <div id="guiding-questions-1" class="section level4">
+    <h4>Guiding questions:</h4>
+    <ul>
+    <li>How many manual steps are there in the process? Can this be
+    reduced/automated? [<a href="#References">9</a>][<a href="#References">11</a>]</li>
+    <li>Where automation is not possible, what risks do manual steps
+    introduce? How can these be mitigated? [<a href="#References">9</a>]</li>
+    <li>How can we ensure process is transparent and reproducible? [<a href="#References">7</a>]</li>
+    <li>Are the methods we are using best suited for the project? [<a href="#References">6</a>]</li>
+    <li>What quality issues exist in the data and how can they be
+    addressed? [<a href="#References">6</a>]</li>
+    </ul>
+    </div>
+    </div>
+    <div id="analysis" class="section level3">
+    <h3>3. Analysis</h3>
+    <p>It is crucial that analysis and QA of analysis follow written
+    plans exactly, and that any deviation from these plans is thoroughly
+    documented and communicated to the assurer and commissioner. It may
+    aid efficiency to run QA activities parallel to analysis, passing
+    outputs to assurers individually as they are produced.</p>
+    <div id="suggested-documentation-2" class="section level4">
+    <h4>Suggested documentation:</h4>
+    <ul>
+    <li>Technical documentation of methods used [<a href="#References">4</a>]
+    <ul>
+    <li>Includes documentation and commenting of code [<a href="#References">12</a>]</li>
+    <li>Records of changes made, ideally managed via version control
+    software such as Git [<a href="#References">12</a>]</li>
+    </ul></li>
+    <li>Documentation and justification of assumptions [<a href="#References">4</a>]</li>
+    <li>QA log detailing validation measures conducted [<a href="#References">4</a>]</li>
+    <li>User guide explaining in plain English how to use the model [<a href="#References">10</a>]</li>
+    </ul>
+    </div>
+    <div id="responsibilities-2" class="section level4">
+    <h4>Responsibilities:</h4>
+    <ul>
+    <li><strong>Commissioner</strong> ensures that sufficient quality
+    checking of analysis is being conducted for the needs of the
+    project</li>
+    <li><strong>Analyst</strong> collects and manages data, ensuring
+    that data formats, units, and context are understood. They should
+    record details, issues, and assumptions regarding the data and
+    ensure that any instances of missing data are appropriately
+    addressed and the consequences of missing data are recorded. As they
+    follow their analytical plan, they should make note of any changes
+    that they make to the plan as well as all QA measures that have been
+    implemented. Ideally, they should call upon other analysts who are
+    not involved in the project to conduct quality assurance. Where
+    necessary, they may also draw upon the skill of experts who can
+    provide more specialised technical advice</li>
+    <li><strong>Assurer</strong> continually confirms that quality
+    standards are being met and that the level of QA that has been
+    carried out remains sufficient for the decision being supported</li>
+    </ul>
+    </div>
+    <div id="guiding-questions-2" class="section level4">
+    <h4>Guiding questions:</h4>
+    <ul>
+    <li>Are there any anomalies or unexpected trends in the data? What
+    steps are being taken to investigate them? [<a href="#References">4</a>][<a href="#References">6</a>]</li>
+    <li>When changes are made, are they justified, well-documented, and
+    clearly communicated? [<a href="#References">12</a>]</li>
+    <li>What assumptions does our analysis rely upon? Are these
+    justified? [<a href="#References">10</a>]</li>
+    <li>What are the established best practice standards for code? [<a href="#References">10</a>][<a href="#References">12</a>]</li>
+    <li>What would an independent third party need to replicate our
+    results? [<a href="#References">10</a>]</li>
+    <li>Can our model or process be simplified without losing
+    functionality? [<a href="#References">4</a>]</li>
+    </ul>
+    </div>
+    </div>
+    <div id="delivery-of-analysis" class="section level3">
+    <h3>4. Delivery of analysis</h3>
+    <p>At this stage, it should be confirmed that the results of
+    analysis are presented in a straightforward and transparent manner
+    with all necessary context. The analysis may be approved in stages
+    and may be sent back and forth between the commissioner, analyst,
+    and assurer several times before it can be finalised.</p>
+    <div id="suggested-documentation-3" class="section level4">
+    <h4>Suggested documentation:</h4>
+    <ul>
+    <li>QA sign-off by assurer verifying that quality has been assured
+    to the required standard [<a href="#References">10</a>]</li>
+    <li>Clarification of data and analysis quality, and the implications
+    on results [<a href="#References">3</a>]</li>
+    <li>Quality and methods section of publication [<a href="#References">13</a>]</li>
+    </ul>
+    </div>
+    <div id="responsibilities-3" class="section level4">
+    <h4>Responsibilities:</h4>
+    <ul>
+    <li><strong>Commissioner</strong> passes results on to
+    decision-makers and stakeholders, ensuring that the details of
+    results as well as limitations and outstanding risks are clearly
+    communicated so that the analysis can be used appropriately</li>
+    <li><strong>Analyst</strong> ensures that results, risks, and
+    limitations are clearly communicated to the commissioner and
+    well-recorded in the final publication. They should reflect on the
+    strong and weak aspects of the analytical process and any errors
+    that were made, considering how they might apply what they have
+    learned to future analysis</li>
+    <li><strong>Assurer</strong> confirms that suitable QA has taken
+    place and that an audit trail is in place that clarifies the extent
+    of validation activities. If so, the assurer signs off on the
+    finished product. Otherwise, they should discuss concerns with the
+    analyst and commissioner and ensure these are addressed before
+    authorising delivery</li>
+    </ul>
+    </div>
+    <div id="guiding-questions-3" class="section level4">
+    <h4>Guiding questions:</h4>
+    <ul>
+    <li>Without any input from analytical team, could a third party
+    reproduce our results? [<a href="#References">10</a>]</li>
+    <li>If we repeat our processes with different software or methods,
+    will we get the same results? [<a href="#References">6</a>]</li>
+    <li>Have strengths and limitations been communicated clearly and
+    effectively to users, stakeholders, and team members? [<a href="#References">1</a>][<a href="#References">11</a>]</li>
+    <li>Are data visualisations accessible and easy to understand? [<a href="#References">13</a>]</li>
+    <li>Are sources cited and correctly linked? [<a href="#References">6</a>][<a href="#References">7</a>]</li>
+    <li>Have technical terms been defined in simple English, if
+    necessary? [<a href="#References">13</a>]</li>
+    <li>Have we mitigated risks posed by human error? [<a href="#References">9</a>]</li>
+    <li>Where errors were found, were they addressed appropriately? What
+    steps can be taken to minimise the risk of future errors? [<a href="#References">9</a>]</li>
+    <li>If any analyst involved were to leave the organisation or be
+    unavailable, could the analytical process still be repeated? [<a href="#References">10</a>]</li>
+    </ul>
+    </div>
+    </div>
+    <div id="a-note-on-validation-methods" class="section level3">
+    <h3>A note on validation methods</h3>
+    <p>The best methods to use for verifying and validating analytical
+    output depend heavily on the methodology of the analysis. There are
+    many available methods, and the best QA results will likely be
+    obtained from implementing a combination of several. Examples of
+    model validation methods that may be implemented include:</p>
+    <ul>
+    <li>Running models with alternative input data to check for
+    unexpected behaviour</li>
+    <li>Running identical models using different software or
+    platforms</li>
+    <li>Running model or pipeline elements individually and checking
+    output from each stage</li>
+    <li>Running models with (realistic) extreme data values</li>
+    <li>Internal or external peer review by experts to sense check
+    results</li>
+    </ul>
+    </div>
+    </div>
+    <div id="references" class="section level2">
+    <h2>References</h2>
+    <p><a id="References"></a></p>
+    <ol style="list-style-type: decimal">
+    <li><a href="https://code.statisticsauthority.gov.uk/the-code/">Code
+    of Practice for Statistics</a></li>
+    <li><a href="https://gss.civilservice.gov.uk/policy-store/tips-for-urgent-quality-assurance-of-data/">Tips
+    for urgent quality assurance of data</a></li>
+    <li><a href="https://www.gov.uk/government/publications/the-government-data-quality-framework/the-government-data-quality-framework-guidance">The
+    Government Data Quality Framework: guidance</a></li>
+    <li><a href="https://www.gov.uk/government/publications/the-aqua-book-guidance-on-producing-quality-analysis-for-government">The
+    Aqua Book: guidance on producing quality analysis for
+    government</a></li>
+    <li><a href="Government%20Statistical%20Service%20(GSS)%20Quality%20Strategy%20–%20Government%20Analysis%20Function%20(civilservice.gov.uk)">Government
+    Statistical Service (GSS) Quality Strategy</a></li>
+    <li><a href="https://analysisfunction.civilservice.gov.uk/policy-store/quality-statistics-in-government/">Quality
+    statistics in government</a></li>
+    <li><a href="https://www.gov.uk/government/publications/government-analysis-functional-standard--2">Government
+    Functional Standard GovS 010: Analysis</a></li>
+    <li><a href="https://osr.statisticsauthority.gov.uk/guidance/administrative-data-and-official-statistics/?1">Quality
+    Assurance of Administrative Data (QAAD): Administrative Data Quality
+    Assurance Toolkit</a></li>
+    <li><a href="https://osr.statisticsauthority.gov.uk/publication/regulatory-guidance-thinking-about-quality-when-producing-statistics/pages/2/">Regulatory
+    guidance – Thinking about quality when producing statistics</a></li>
+    <li><a href="https://www.gov.uk/government/organisations/department-for-education/about/research#quality-assurance-framework">DfE
+    Quality Assurance Framework</a></li>
+    <li><a href="https://www.gov.uk/government/publications/better-broader-safer-using-health-data-for-research-and-analysis">The
+    Goldacre Review: Better, broader, safer: using health data for
+    research and analysis</a></li>
+    <li><a href="https://best-practice-and-impact.github.io/qa-of-code-guidance/">The
+    Duck Book: Quality assurance of code for analysis and
+    research</a></li>
+    <li><a href="https://analysisfunction.civilservice.gov.uk/policy-store/communicating-quality-uncertainty-and-change/#section-11">Communicating
+    quality, uncertainty and change</a></li>
+    </ol>
+    </div>
     
      <p style="margin-bottom: 35px;"><a href="https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/README.md">↩ Back to the hub</a></p>
     

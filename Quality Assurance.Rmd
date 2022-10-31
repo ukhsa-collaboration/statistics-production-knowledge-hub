@@ -10,22 +10,184 @@ output:
     number_sections: false
     template: "C:/Users/olivia.swarthout/Documents/Quality assurance/- assets/Templates/html_template.html"
   word_document:
-    reference_docx: "../- assets/Templates/UKHSA plain document template.dotx"
+    reference_docx: "C:/Users/olivia.swarthout/Documents/Quality assurance/- assets/Templates/UKHSA plain document template.dotx"
 knit: (function(inputFile, encoding){rmarkdown::render(inputFile, envir = globalenv(), encoding = encoding, output_dir = "./", output_format = "all")})
 
 
 ---
 
-This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
 
-Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
-
-```{r}
-plot(cars)
+```{r setup, echo=F, include=F}
+library(tidyverse)
+library(ukhsaGuidanceDocs)
+knitr::opts_chunk$set(echo = F)
+SetUpReferenceList("C:/Users/olivia.swarthout/Documents/Quality assurance/- assets/QPD knowledge bank.xlsx")
 ```
 
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+## Coverage
 
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+This guidance applies to everyone working in the production of statistics or other numerical analysis, whether for internal or external use.
 
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+## Summary of recommendations
+
+1. Quality assurance should be considered at every step of analysis by everyone involved.
+2. Quality assurance should be planned in advance of statistical analysis, with roles, responsibilities, and the extent of assurance activities understood fully by the entire team. 
+3. Quality analysis should be appropriate to the scope, risks, methodology, and data source of a piece of analysis. 
+4. Every step of analysis and every aspect of quality assurance should be logged in detail. A designated assurer should confirm that a sufficient degree and standard of assurance has been conducted.
+5. Quality concerns should be documented and communicated alongside the final results of analysis in order to quantify confidence in the results.
+
+## Introduction
+
+### What is quality?
+
+At the most basic level, the quality of a statistical output may be thought of as its fitness for purpose `r addRef(1,44,37,34)`. Though a simple definition, ensuring fitness-for-purpose requires us to think carefully about the specific needs and limitations of a project and develop a framework for guaranteeing these are adequately addressed `r addRef(34)`. This is no small task – approaches to assuring quality must be custom tailored to each project, requiring a high degree of skill and professional judgement at every step of the project life cycle from conceptualisation to publication `r addRef(1)`. 
+
+### Why do we need to assure quality?
+
+While assuring quality may be a complex process, it is vital to the production of all statistics: this is emphasised in a number of policy and guidance documents. The ONS Code of Practice includes quality as one of the three core pillars that support public confidence in statistics `r addRef(1)`. Under Q3 of the Quality Pillar, the Code of Practice requires all producers of statistics and data to explain how they have assured that their work is accurate, reliable, coherent and timely `r addRef(1)`. Similarly, a key goal of the GSS Quality Strategy is to ensure our data are of sufficient quality and communicate the quality implications to users `r addRef(84)`. 
+
+Thus, we see that there is a requirement not only to guarantee quality but to demonstrate it to users, allowing them to use statistical publications with complete confidence in their validity `r addRef(84,85)`. However, ensuring high quality is also key to building trust among those who are involved in policy and decision making `r addRef(44,37)`. Outputs that attain high levels of fitness-for-purpose allow better decisions to be made with greater efficiency, supporting early trend identification and risk mitigation in the public health sector`r addRef(37, 84,32)`. The Goldacre Review explains the very material benefits of high-quality analysis, noting that “these kinds of analyses deliver direct improvements in patient care by identifying problems early, and improving the efficiency of services for all.” `r addRef(84)` The risks posed by poor quality analysis are just as immediate and can include financial and legal damage, and, in extreme cases, risks to health and livelihood `r addRef(34)`. It is therefore crucial that internal as well as external outputs are subject to rigorous quality assurance measures. 
+
+## Roles and responsibilities
+
+Goal 1 of the GSS Quality Strategy sets out the need for everyone involved in statistical production to understand the nature and importance of their role in assuring quality `r addRef(84)`. Team members should understand the exact nature and extent of QA that is planned for a specific project as well as their expected contributions `r addRef(85)`. 
+
+HM Treasury’s Aqua Book: guidance on producing quality analysis for government defines three key roles for QA of statistical analysis: the commissioner, the analyst, and the assurer `r addRef(34)`. Other government publications such as Government Functional Standard 010: Analysis use similar roles to demonstrate the delegation of responsibility for assurance of analysis `r addRef(32)`. While in practice, the exact nature of roles required may differ based on project scope and requirements, these provide a useful framework for considering the different ways QA should be incorporated into the life cycle of a project. 
+ 
+The roles can be summarised as follows:
+
+* **The person commissioning analysis** is responsible for developing the question of interest and communicating this to the analyst and assurer so that they are able to identify the most appropriate methods for analysis and assurance. They must communicate the available resources and time frame for the analysis and ensure that they understand the full implications of the results, including strengths, limitations, uncertainty, and context, so that the outputs can be used appropriately. 
+* **The person responsible for analysis** must work with the commissioner to help develop the question of interest in a manner that allows it to be answered appropriately as meets the needs of the commissioner. They are responsible for planning and conducting analysis in a methodologically sound way and planning how they will demonstrate assured quality to the commissioner and assurer. As needed, the analyst may bring in third party analysts to provide specialised advice and independent quality assurance. Final results and records of all activities undertaken will be provided by the analyst, who must communicate to the commissioner the implications of their results as impacted by its strengths, limitations, uncertainty, and context. In practice, there may often be more than one analyst involved in a project: the use of the term “the analyst” throughout this document is used for brevity’s sake rather than to exclude this possibility.
+* **The person responsible for analytical assurance** must ensure throughout that appropriate quality assurance is taking place. This person is not necessarily directly involved in conducting QA and does not need to be an analyst themselves, although QA may benefit from an assurer who understands the analytical complexities of the project in order to identify issues with the output. However, the assurer should not be one of the analysts involved in conducting the actual analysis in order to maintain independence. As the assurer must sign off on the QA activities, they should be of sufficient seniority to take responsibility for the output and advise the commissioner on whether quality concerns have been sufficiently addressed and the implications of any remaining risks.  
+
+
+More information about what each of these roles entails at each step of a project can be found in the next section. However, it is important to emphasise that QA does not begin and end with designated roles and project components. Quality can be best guaranteed by continual critical thinking and open communication by all members of a team. Even when not engaged in a specific project, a team is responsible for thinking about how to encourage a culture of transparency and accountability that is conducive to high-quality output, fostering a mindset of quality that extends to all activities. This includes encouraging everyone on the team to be open about their mistakes and concerns without fear of repercussions or dismissive responses from senior staff. When analysts are able to work with confidence and support from their wider team, time and resources can be allocated more effectively toward ensuring optimal fitness-of-purpose for all outputs. 
+
+## How is Quality Assurance Conducted?
+
+At each stage of analysis, documentation should be produced detailing QA measures that have been undertaken. This helps guarantee that analysis and QA are transparent and reproducible, in line with ONS Code of Practice Q3.3 `r addRef(1)`, thereby helping to create high-quality statistics that retain value over time. 
+
+This section contains examples of questions that can guide QA throughout a project and suggested items of documentation that can be produced. However, the exact scale and scope of these QA activities should be considered on a case-by-case basis, ensuring that they are appropriate and proportionate to the needs of analysis `r addRef(34)`. More rigorous QA will demand more time and resources, and so the extent of QA should be justified by the level of risk present `r addRef(34,85)`. For instance, the Office for Statistics Regulation provides a toolkit for the quality assurance of administrative data, which outlines three levels of assurance: basic, enhanced, and comprehensive. . A quality assurance level is recommended based on a combination of “risk of quality concerns” and “public interest profile” for the data `r addRef(8)`. While this framework was developed specifically for statistics based on administrative data, a similar approach may be useful in considering the levels of QA necessary for other statistics `r addRef(85)`. 
+
+It is also crucial to be aware of and compliant with organisational and departmental best practice policies and guidance documents that relate to QA`r addRef(46)`.
+
+### Ensuring data quality
+
+Data may come from any of a large number of sources and may even be gathered by the analysts themselves. The complexities involved in gathering, storing, managing, and accessing data introduce many potential sources of error for a piece of analysis - before analysis even commences! 
+
+Ensuring high quality as the point of data collection is an extremely involved undertaking that depends on a huge number of situational factors and is therefore beyond the scope of this guidance. However, the validation of subsequent stages of the "data lifecycle" bears discussing here as it is a key aspect of ensuring high quality statistical outputs. Under Q3 of the Quality Pillar, the ONS Code of Practice explains that "Statistics should be based on the most appropriate data to meet intended uses. The impact of any data limitations for use should be assessed, minimised and explained." `r addRef(1)` 
+
+When obtaining data from a database or other storage platform, it is most preferable for the analysts themselves to access the data so they can ensure the proper input parameters are used, yielding the correct format and scope for their data. However, this may not be possible in some circumstances due to restrictions on data access permissions, and data may have to be requested from the manager of a database. In this case, the data providers should keep detailed records of the queries used to obtain the requested data and should ideally supply information about the format and details of each variable as well as the source and methodology of collection.`r addRef(86,1)` Analysts should maintain good communication with data providers about their project requirements and intended outcomes `r addRef(32)`.
+
+Any transformations applied by the data provider or analyst should be carefully documented, and a degree of manual checking is generally necessary in order for analysts to assess the presence of any unreasonable values or distributions `r addRef(86)`. Any potential bias, uncertainty, or missing values in the data should be documented alongside the implications these have for the final outputs. `r addRef(34)`
+
+### Quality assurance responsibility throughout analysis
+
+The responsibilities described below are examples of how leadership on tasks can be delegated between commissioner, analyst, and assurer. No single member of a team should be responsible for a task in its entirety, without any input from colleagues `r addRef(34)`. Though it may be one person’s job to lead and shape outputs for a specific aspect of analysis, all team members should have a thorough understanding of every stage that allows them to contribute their skills and knowledge toward the final product. 
+
+### 1. Stakeholder engagement
+
+This is usually the most preliminary stage of analysis and focuses on identifying the question that the analysis should address, as well as establishing key context for the analyst’s work. 
+
+#### Suggested documentation:
+* Specification or scoping document explaining the intended outcomes of the analysis, which may be edited in subsequent stages as details of the requested work change `r addRef(34)`
+
+#### Responsibilities:
+* **Commissioner** ensures that the intentions and complexities of the problem at hand are clearly communicated and that sufficient resources are secured for the analysis
+*	**Analyst** identifies the levels of quality, certainty, and precision that are required for the analysis and communicates with stakeholders to ensure that expectations are aligned with what is possible to deliver
+*	**Assurer** challenges and tests the understanding of the problem, exploring different perspectives to confirm that the optimal goals and boundaries have been agreed upon
+
+#### Guiding questions:
+* What is the purpose of the analysis? `r addRef(34)`.
+* Who is the intended audience and what are their needs? `r addRef(34)`
+* What resources are available? What are the limits/constraints of the project? `r addRef(34)`
+* What are areas of highest risk and how do we address these? `r addRef(46)`
+* How will we allocate time/resources? `r addRef(32)`
+*	What is our data source? Is data quality-assured and appropriate for our purposes? `r addRef(32)`
+
+### 2. Planning analysis
+
+This stage requires a higher degree of technical input as the commission details are converted into an analysis plan. While a greater degree of responsibility may therefore fall upon the analyst here, it is important for the commissioner to continually confirm that their specified needs will be met by the proposed methodology. 
+
+#### Suggested documentation:
+* Map of “data journey” or analytical plan that specifies inputs, methodological details, and planned outputs `r addRef(34,46)`.
+
+#### Responsibilities:
+* **Commissioner** maintains contact with analyst and assurer to continually confirm that adequate resources will be available to conduct a suitable analysis
+*	**Analyst** produces design documentation, indicating the necessary methods and resource allocation. The appropriate models, software, and functions should be specified along with their parameters and input. In addition to ensuring that their work will be robust, accurate, and adequate to address the research question, they must consider the limits and uncertainty that these methods will entail and how these will be communicated in the final product. They must also draw up plans for QA of their work and identify suitable independent analysts who can provide QA
+*	**Assurer** checks that the proposed level of QA for the analysis will be sufficient for the needs of the project
+
+#### Guiding questions:
+*	How many manual steps are there in the process? Can this be reduced/automated? `r addRef(46,35)`
+*	Where automation is not possible, what risks do manual steps introduce? How can these be mitigated? `r addRef(46)`
+*	How can we ensure process is transparent and reproducible? `r addRef(32)`
+*	Are the methods we are using best suited for the project? `r addRef(85)`
+*	What quality issues exist in the data and how can they be addressed? `r addRef(85)`
+
+### 3. Analysis
+
+It is crucial that analysis and QA of analysis follow written plans exactly, and that any deviation from these plans is thoroughly documented and communicated to the assurer and commissioner. It may aid efficiency to run QA activities parallel to analysis, passing outputs to assurers individually as they are produced. 
+
+#### Suggested documentation:
+*	Technical documentation of methods used `r addRef(34)`
+    *	Includes documentation and commenting of code `r addRef(28)`
+    *	Records of changes made, ideally managed via version control software such as Git `r addRef(28)`
+*	Documentation and justification of assumptions `r addRef(34)`
+*	QA log detailing validation measures conducted `r addRef(34)`
+*	User guide explaining in plain English how to use the model `r addRef(86)`
+
+
+#### Responsibilities:
+* **Commissioner** ensures that sufficient quality checking of analysis is being conducted for the needs of the project
+*	**Analyst** collects and manages data, ensuring that data formats, units, and context are understood. They should record details, issues, and assumptions regarding the data and ensure that any instances of missing data are appropriately addressed and the consequences of missing data are recorded. As they follow their analytical plan, they should make note of any changes that they make to the plan as well as all QA measures that have been implemented. Ideally, they should call upon other analysts who are not involved in the project to conduct quality assurance. Where necessary, they may also draw upon the skill of experts who can provide more specialised technical advice
+*	**Assurer** continually confirms that quality standards are being met and that the level of QA that has been carried out remains sufficient for the decision being supported
+
+#### Guiding questions:
+* Are there any anomalies or unexpected trends in the data? What steps are being taken to investigate them? `r addRef(34,85)`
+*	When changes are made, are they justified, well-documented, and clearly communicated? `r addRef(28)`
+*	What assumptions does our analysis rely upon? Are these justified? `r addRef(86)`
+*	What are the established best practice standards for code? `r addRef(86,28)`
+*	What would an independent third party need to replicate our results? `r addRef(86)`
+*	Can our model or process be simplified without losing functionality? `r addRef(34)`
+
+
+
+### 4. Delivery of analysis
+
+At this stage, it should be confirmed that the results of analysis are presented in a straightforward and transparent manner with all necessary context. The analysis may be approved in stages and may be sent back and forth between the commissioner, analyst, and assurer several times before it can be finalised. 
+
+#### Suggested documentation:
+*	QA sign-off by assurer verifying that quality has been assured to the required standard `r addRef(86)`
+*	Clarification of data and analysis quality, and the implications on results `r addRef(37)`
+*	Quality and methods section of publication `r addRef(47)`
+
+#### Responsibilities:
+* **Commissioner** passes results on to decision-makers and stakeholders, ensuring that the details of results as well as limitations and outstanding risks are clearly communicated so that the analysis can be used appropriately
+*	**Analyst** ensures that results, risks, and limitations are clearly communicated to the commissioner and well-recorded in the final publication. They should reflect on the strong and weak aspects of the analytical process and any errors that were made, considering how they might apply what they have learned to future analysis
+*	**Assurer** confirms that suitable QA has taken place and that an audit trail is in place that clarifies the extent of validation activities. If so, the assurer signs off on the finished product. Otherwise, they should discuss concerns with the analyst and commissioner and ensure these are addressed before authorising delivery
+
+#### Guiding questions:
+* Without any input from analytical team, could a third party reproduce our results? `r addRef(86)`
+*	If we repeat our processes with different software or methods, will we get the same results? `r addRef(85)`
+*	Have strengths and limitations been communicated clearly and effectively to users, stakeholders, and team members? `r addRef(1,35)`
+*	Are data visualisations accessible and easy to understand? `r addRef(47)`
+* Are sources cited and correctly linked? `r addRef(85,32)`
+*	Have technical terms been defined in simple English, if necessary? `r addRef(47)`
+*	Have we mitigated risks posed by human error? `r addRef(46)`
+*	Where errors were found, were they addressed appropriately? What steps can be taken to minimise the risk of future errors? `r addRef(46)`
+*	If any analyst involved were to leave the organisation or be unavailable, could the analytical process still be repeated? `r addRef(86)`
+
+### A note on validation methods
+
+The best methods to use for verifying and validating analytical output depend heavily on the methodology of the analysis. There are many available methods, and the best QA results will likely be obtained from implementing a combination of several. Examples of model validation methods that may be implemented include:
+
+*	Running models with alternative input data to check for unexpected behaviour
+*	Running identical models using different software or platforms
+*	Running model or pipeline elements individually and checking output from each stage
+*	Running models with (realistic) extreme data values 
+*	Internal or external peer review by experts to sense check results 
+
+
+## References
+
+`r AddReferenceList()`
