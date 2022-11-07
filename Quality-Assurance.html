@@ -126,10 +126,12 @@ top: -0.4em;
      
   <div class="main">     
     <h1>Quality Assurance</h1>
-    <h2>Last updated: 19 October, 2022</h2>
+    <h2>Last updated: 24 October, 2022</h2>
     
     <p><a id="versionbutton" href="#" onclick="showHistory()">Show version history +</a></p>
-    <div id="versioncontrol"></div>
+    <div id="versioncontrol"><table> ¶ <tr> ¶ <th> ¶ Date ¶ </th> ¶ <th>
+¶ Notes ¶ </th> ¶ </tr> ¶ <tr> ¶ <td> ¶ 24/10/2022 ¶ </td> ¶ <td> ¶
+First draft ¶ </td> ¶ </tr> ¶ </table></div>
     
     <ul>
     <li><a href="#coverage" id="toc-coverage">Coverage</a></li>
@@ -137,10 +139,10 @@ top: -0.4em;
     recommendations</a></li>
     <li><a href="#introduction" id="toc-introduction">Introduction</a>
     <ul>
-    <li><a href="#what-is-quality" id="toc-what-is-quality">What is
-    quality?</a></li>
-    <li><a href="#why-do-we-need-to-assure-quality" id="toc-why-do-we-need-to-assure-quality">Why do we need to assure
-    quality?</a></li>
+    <li><a href="#defining-quality" id="toc-defining-quality">Defining
+    quality</a></li>
+    <li><a href="#why-we-need-quality-assurance" id="toc-why-we-need-quality-assurance">Why we need quality
+    assurance</a></li>
     </ul></li>
     <li><a href="#roles-and-responsibilities" id="toc-roles-and-responsibilities">Roles and
     responsibilities</a></li>
@@ -150,14 +152,34 @@ top: -0.4em;
     <li><a href="#ensuring-data-quality" id="toc-ensuring-data-quality">Ensuring data quality</a></li>
     <li><a href="#quality-assurance-responsibility-throughout-analysis" id="toc-quality-assurance-responsibility-throughout-analysis">Quality
     assurance responsibility throughout analysis</a></li>
-    <li><a href="#stakeholder-engagement" id="toc-stakeholder-engagement">1. Stakeholder engagement</a></li>
+    <li><a href="#commissioner-engagement" id="toc-commissioner-engagement">1. Commissioner engagement</a></li>
     <li><a href="#planning-analysis" id="toc-planning-analysis">2.
     Planning analysis</a></li>
     <li><a href="#analysis" id="toc-analysis">3. Analysis</a></li>
     <li><a href="#delivery-of-analysis" id="toc-delivery-of-analysis">4.
     Delivery of analysis</a></li>
-    <li><a href="#a-note-on-validation-methods" id="toc-a-note-on-validation-methods">A note on validation
-    methods</a></li>
+    </ul></li>
+    <li><a href="#measuring-and-proving-quality-advice-for-qa-log-books" id="toc-measuring-and-proving-quality-advice-for-qa-log-books">Measuring
+    and proving quality: advice for QA log books</a>
+    <ul>
+    <li><a href="#relevance-statistics-meet-the-needs-of-users" id="toc-relevance-statistics-meet-the-needs-of-users">Relevance:
+    Statistics meet the needs of users</a></li>
+    <li><a href="#accuracy-and-reliability-statistics-accurately-and-reliably-portray-reality" id="toc-accuracy-and-reliability-statistics-accurately-and-reliably-portray-reality">Accuracy
+    and Reliability: statistics accurately and reliably portray
+    reality</a></li>
+    <li><a href="#timeliness-and-punctuality-statistics-are-released-in-a-timely-and-punctual-manner" id="toc-timeliness-and-punctuality-statistics-are-released-in-a-timely-and-punctual-manner">Timeliness
+    and Punctuality: statistics are released in a timely and punctual
+    manner</a></li>
+    <li><a href="#coherence-and-comparability-statistics-are-consistent-internally-over-time-and-comparable-between-regions-and-countries-it-is-possible-to-combine-and-make-joint-use-of-related-data-from-different-data-sources" id="toc-coherence-and-comparability-statistics-are-consistent-internally-over-time-and-comparable-between-regions-and-countries-it-is-possible-to-combine-and-make-joint-use-of-related-data-from-different-data-sources">Coherence
+    and Comparability: statistics are consistent internally, over time
+    and comparable between regions and countries; it is possible to
+    combine and make joint use of related data from different data
+    sources</a></li>
+    <li><a href="#accessibility-and-clarity-statistics-are-presented-in-a-clear-and-understandable-form-released-in-a-suitable-and-convenient-manner-available-and-accessible-on-an-impartial-basis-with-supporting-metadata-and-guidance" id="toc-accessibility-and-clarity-statistics-are-presented-in-a-clear-and-understandable-form-released-in-a-suitable-and-convenient-manner-available-and-accessible-on-an-impartial-basis-with-supporting-metadata-and-guidance">Accessibility
+    and Clarity: statistics are presented in a clear and understandable
+    form, released in a suitable and convenient manner, available and
+    accessible on an impartial basis with supporting metadata and
+    guidance</a></li>
     </ul></li>
     <li><a href="#references" id="toc-references">References</a></li>
     </ul>
@@ -178,46 +200,59 @@ top: -0.4em;
     <ol style="list-style-type: decimal">
     <li>Quality assurance should be considered at every step of analysis
     by everyone involved.</li>
-    <li>Quality assurance should be planned in advance of statistical
-    analysis, with roles, responsibilities, and the extent of assurance
-    activities understood fully by the entire team.</li>
+    <li>Quality assurance should ideally be planned in advance of
+    statistical analysis, with roles, responsibilities, and the extent
+    of assurance activities understood fully by the entire team.</li>
     <li>Quality analysis should be appropriate to the scope, risks,
     methodology, and data source of a piece of analysis.</li>
-    <li>Every step of analysis and every aspect of quality assurance
-    should be logged in detail. A designated assurer should confirm that
-    a sufficient degree and standard of assurance has been
+    <li>Analytical and quality assurance processes should be logged in
+    detail as they are carried out. A designated assurer should confirm
+    that a sufficient degree and standard of assurance has been
     conducted.</li>
-    <li>Quality concerns should be documented and communicated alongside
-    the final results of analysis in order to quantify confidence in the
-    results.</li>
+    <li>The quality assurance process and any outstanding quality
+    concerns should be communicated alongside the final results of
+    analysis in order to quantify confidence in the results.</li>
     </ol>
     </div>
     <div id="introduction" class="section level2">
     <h2>Introduction</h2>
-    <div id="what-is-quality" class="section level3">
-    <h3>What is quality?</h3>
+    <div id="defining-quality" class="section level3">
+    <h3>Defining quality</h3>
     <p>At the most basic level, the quality of a statistical output may
-    be thought of as its fitness for purpose [<a href="#References">1</a>][<a href="#References">2</a>][<a href="#References">3</a>][<a href="#References">4</a>]. Though a
-    simple definition, ensuring fitness-for-purpose requires us to think
-    carefully about the specific needs and limitations of a project and
-    develop a framework for guaranteeing these are adequately addressed
-    [<a href="#References">4</a>]. This is no small task – approaches to
-    assuring quality must be custom tailored to each project, requiring
-    a high degree of skill and professional judgement at every step of
-    the project life cycle from conceptualisation to publication [<a href="#References">1</a>].</p>
+    be thought of as its “fitness for purpose” [<a href="#References">1</a>][<a href="#References">2</a>][<a href="#References">3</a>][<a href="#References">4</a>]. The ONS Code
+    of Practice uses the five Dimensions of Quality of the European
+    Statistical System (ESS) Code of Practice as criteria for assessing
+    fitness for purpose of statistical outputs. These five dimensions
+    are:</p>
+    <ul>
+    <li>Relevance: statistics meet the needs of users</li>
+    <li>Accuracy and Reliability: statistics accurately and reliably
+    portray reality</li>
+    <li>Timeliness and Punctuality: statistics are released in a timely
+    and punctual manner</li>
+    <li>Comparability and Coherence: statistics are consistent
+    internally, over time and comparable between regions and countries;
+    it is possible to combine and make joint use of related data from
+    different data sources</li>
+    <li>Accessibility and Clarity: statistics are presented in a clear
+    and understandable form, released in a suitable and convenient
+    manner, available and accessible on an impartial basis with
+    supporting metadata and guidance</li>
+    </ul>
+    <p>Quality assurance (QA) of a statistical output is the process of
+    ensuring that these criteria have been met during its production and
+    proving this fact to users.</p>
     </div>
-    <div id="why-do-we-need-to-assure-quality" class="section level3">
-    <h3>Why do we need to assure quality?</h3>
-    <p>While assuring quality may be a complex process, it is vital to
-    the production of all statistics: this is emphasised in a number of
-    policy and guidance documents. The ONS Code of Practice includes
-    quality as one of the three core pillars that support public
-    confidence in statistics [<a href="#References">1</a>]. Under Q3 of
-    the Quality Pillar, the Code of Practice requires all producers of
-    statistics and data to explain how they have assured that their work
-    is accurate, reliable, coherent and timely [<a href="#References">1</a>]. Similarly, a key goal of the GSS Quality
-    Strategy is to ensure our data are of sufficient quality and
-    communicate the quality implications to users [<a href="#References">5</a>].</p>
+    <div id="why-we-need-quality-assurance" class="section level3">
+    <h3>Why we need quality assurance</h3>
+    <p>The ONS Code of Practice includes quality as one of the three
+    core pillars that support public confidence in statistics [<a href="#References">1</a>]. Under Q3 of the Quality Pillar, the Code
+    of Practice requires all producers of statistics and other
+    analytical outputs to explain how they have assured that their work
+    is accurate, reliable, coherent and timely [<a href="#References">1</a>]. Similarly, a key goal of the Government
+    Statistical Service (GSS) Quality Strategy is to ensure our outputs
+    are of sufficient quality and communicate the quality implications
+    to users [<a href="#References">5</a>].</p>
     <p>Thus, we see that there is a requirement not only to guarantee
     quality but to demonstrate it to users, allowing them to use
     statistical publications with complete confidence in their validity
@@ -245,8 +280,7 @@ top: -0.4em;
     importance of their role in assuring quality [<a href="#References">5</a>]. Team members should understand the exact
     nature and extent of QA that is planned for a specific project as
     well as their expected contributions [<a href="#References">6</a>].</p>
-    <p>HM Treasury’s Aqua Book: guidance on producing quality analysis
-    for government defines three key roles for QA of statistical
+    <p>The Aqua Book defines three key roles for QA of statistical
     analysis: the commissioner, the analyst, and the assurer [<a href="#References">4</a>]. Other government publications such as
     Government Functional Standard 010: Analysis use similar roles to
     demonstrate the delegation of responsibility for assurance of
@@ -257,58 +291,55 @@ top: -0.4em;
     project.</p>
     <p>The roles can be summarised as follows:</p>
     <ul>
-    <li><strong>The person commissioning analysis</strong> is
-    responsible for developing the question of interest and
-    communicating this to the analyst and assurer so that they are able
-    to identify the most appropriate methods for analysis and assurance.
-    They must communicate the available resources and time frame for the
-    analysis and ensure that they understand the full implications of
-    the results, including strengths, limitations, uncertainty, and
-    context, so that the outputs can be used appropriately.</li>
-    <li><strong>The person responsible for analysis</strong> must work
-    with the commissioner to help develop the question of interest in a
-    manner that allows it to be answered appropriately as meets the
-    needs of the commissioner. They are responsible for planning and
-    conducting analysis in a methodologically sound way and planning how
-    they will demonstrate assured quality to the commissioner and
-    assurer. As needed, the analyst may bring in third party analysts to
-    provide specialised advice and independent quality assurance. Final
-    results and records of all activities undertaken will be provided by
-    the analyst, who must communicate to the commissioner the
-    implications of their results as impacted by its strengths,
-    limitations, uncertainty, and context. In practice, there may often
-    be more than one analyst involved in a project: the use of the term
-    “the analyst” throughout this document is used for brevity’s sake
-    rather than to exclude this possibility.</li>
+    <li><strong>The person commissioning analysis</strong> (“the
+    commissioner”) is responsible for developing the question of
+    interest and communicating this to the analyst and assurer so that
+    they are able to identify the most appropriate methods for analysis
+    and assurance. They should clearly express the needs of the project
+    and risks that are entailed so that proportionate levels of QA can
+    be decided upon by the analyst. People of all levels of seniority
+    commission analysis, and the commissioner may be acting on behalf of
+    a government decision-maker or other customer.</li>
+    <li><strong>The person responsible for analysis</strong> (“the
+    analyst”) must work with the commissioner to help develop the
+    question of interest in a manner that allows it to be answered
+    appropriately as meets the needs of the commissioner. They are
+    responsible for planning and conducting analysis in a
+    methodologically sound way and planning how they will demonstrate
+    assured quality to the commissioner, assurer, and ultimately the end
+    users of the analytical output. As needed, the analyst may bring in
+    third party analysts to provide specialised advice and independent
+    quality assurance. Final results and records of all activities
+    undertaken will be provided by the analyst, who must communicate to
+    the commissioner the implications of their results as impacted by
+    its strengths, limitations, uncertainty, and context. In practice,
+    there may often be more than one analyst involved in a project: the
+    use of the term “the analyst” throughout this document is used for
+    brevity’s sake rather than to exclude this possibility.</li>
     <li><strong>The person responsible for analytical assurance</strong>
-    must ensure throughout that appropriate quality assurance is taking
-    place. This person is not necessarily directly involved in
-    conducting QA and does not need to be an analyst themselves,
-    although QA may benefit from an assurer who understands the
-    analytical complexities of the project in order to identify issues
-    with the output. However, the assurer should not be one of the
-    analysts involved in conducting the actual analysis in order to
+    (“the assurer”) must ensure throughout that appropriate quality
+    assurance is taking place. This person is not necessarily directly
+    involved in conducting QA and does not need to be an analyst
+    themselves, although QA may benefit from an assurer who understands
+    the analytical complexities of the project in order to identify
+    issues with the output. However, the assurer should not be one of
+    the analysts involved in conducting the actual analysis in order to
     maintain independence. As the assurer must sign off on the QA
     activities, they should be of sufficient seniority to take
     responsibility for the output and advise the commissioner on whether
     quality concerns have been sufficiently addressed and the
-    implications of any remaining risks.</li>
+    implications of any remaining risks: typically, they would be a
+    senior analyst or analytical project manager.</li>
     </ul>
     <p>More information about what each of these roles entails at each
     step of a project can be found in the next section. However, it is
     important to emphasise that QA does not begin and end with
     designated roles and project components. Quality can be best
-    guaranteed by continual critical thinking and open communication by
-    all members of a team. Even when not engaged in a specific project,
-    a team is responsible for thinking about how to encourage a culture
-    of transparency and accountability that is conducive to high-quality
-    output, fostering a mindset of quality that extends to all
-    activities. This includes encouraging everyone on the team to be
-    open about their mistakes and concerns without fear of repercussions
-    or dismissive responses from senior staff. When analysts are able to
-    work with confidence and support from their wider team, time and
-    resources can be allocated more effectively toward ensuring optimal
-    fitness-of-purpose for all outputs.</p>
+    guaranteed by a culture of transparency and accountability that
+    promotes continual critical thinking and open communication by all
+    members of a team. This includes encouraging everyone on the team to
+    be open about their mistakes and concerns without fear of
+    repercussions or dismissive responses from senior staff.</p>
     </div>
     <div id="how-is-quality-assurance-conducted" class="section level2">
     <h2>How is Quality Assurance Conducted?</h2>
@@ -325,18 +356,7 @@ top: -0.4em;
     that they are appropriate and proportionate to the needs of analysis
     [<a href="#References">4</a>]. More rigorous QA will demand more
     time and resources, and so the extent of QA should be justified by
-    the level of risk present [<a href="#References">4</a>][<a href="#References">6</a>]. For instance, the Office for Statistics
-    Regulation provides a toolkit for the quality assurance of
-    administrative data, which outlines three levels of assurance:
-    basic, enhanced, and comprehensive. . A quality assurance level is
-    recommended based on a combination of “risk of quality concerns” and
-    “public interest profile” for the data [<a href="#References">8</a>]. While this framework was developed
-    specifically for statistics based on administrative data, a similar
-    approach may be useful in considering the levels of QA necessary for
-    other statistics [<a href="#References">6</a>].</p>
-    <p>It is also crucial to be aware of and compliant with
-    organisational and departmental best practice policies and guidance
-    documents that relate to QA[<a href="#References">9</a>].</p>
+    the level of risk present [<a href="#References">4</a>][<a href="#References">6</a>].</p>
     <div id="ensuring-data-quality" class="section level3">
     <h3>Ensuring data quality</h3>
     <p>Data may come from any of a large number of sources and may even
@@ -355,22 +375,27 @@ top: -0.4em;
     any data limitations for use should be assessed, minimised and
     explained.” [<a href="#References">1</a>]</p>
     <p>When obtaining data from a database or other storage platform, it
-    is most preferable for the analysts themselves to access the data so
-    they can ensure the proper input parameters are used, yielding the
-    correct format and scope for their data. However, this may not be
-    possible in some circumstances due to restrictions on data access
-    permissions, and data may have to be requested from the manager of a
-    database. In this case, the data providers should keep detailed
-    records of the queries used to obtain the requested data and should
-    ideally supply information about the format and details of each
-    variable as well as the source and methodology of collection.[<a href="#References">10</a>][<a href="#References">1</a>] Analysts
-    should maintain good communication with data providers about their
-    project requirements and intended outcomes [<a href="#References">7</a>].</p>
-    <p>Any transformations applied by the data provider or analyst
-    should be carefully documented, and a degree of manual checking is
-    generally necessary in order for analysts to assess the presence of
-    any unreasonable values or distributions [<a href="#References">10</a>]. Any potential bias, uncertainty, or
-    missing values in the data should be documented alongside the
+    is most preferable for the analysts themselves to access the data
+    themselves rather than request it from a provider. However, this may
+    not be possible in some circumstances due to restrictions on data
+    access permissions, and data may have to be requested from the
+    manager of a database. In this case, the data providers should keep
+    detailed records of the queries used to obtain the requested data.
+    Our guidance on reproducible analytical pipelines (RAP) notes that
+    software such as SQL can be used to query databases using code, thus
+    providing a record of how data was obtained. A data provider should
+    ideally also supply information about the format and details of each
+    variable as well as the source and methodology of collection.[<a href="#References">8</a>][<a href="#References">1</a>]</p>
+    <p>In line with our RAP guidance, before data cleaning begins, a
+    copy of the original data should be saved by the analyst. This
+    allows for the data cleaning process to be documented from beginning
+    to end. A degree of manual checking is generally necessary in order
+    for analysts to assess the presence of any unreasonable values or
+    distributions [<a href="#References">8</a>], but automated checks
+    can be built into the data cleaning pipeline as well. Tools such as
+    RMarkdown notebooks can be used to generate detailed summaries of
+    data and flag any potential errors. Any potential bias, uncertainty,
+    or missing values in the data should be documented alongside the
     implications these have for the final outputs. [<a href="#References">4</a>]</p>
     </div>
     <div id="quality-assurance-responsibility-throughout-analysis" class="section level3">
@@ -384,8 +409,8 @@ top: -0.4em;
     allows them to contribute their skills and knowledge toward the
     final product.</p>
     </div>
-    <div id="stakeholder-engagement" class="section level3">
-    <h3>1. Stakeholder engagement</h3>
+    <div id="commissioner-engagement" class="section level3">
+    <h3>1. Commissioner engagement</h3>
     <p>This is usually the most preliminary stage of analysis and
     focuses on identifying the question that the analysis should
     address, as well as establishing key context for the analyst’s
@@ -401,27 +426,27 @@ top: -0.4em;
     <div id="responsibilities" class="section level4">
     <h4>Responsibilities:</h4>
     <ul>
-    <li><strong>Commissioner</strong> ensures that the intentions and
-    complexities of the problem at hand are clearly communicated and
-    that sufficient resources are secured for the analysis</li>
-    <li><strong>Analyst</strong> identifies the levels of quality,
+    <li>The <strong>Commissioner</strong> ensures that the intentions
+    and complexities of the problem at hand are clearly communicated and
+    that sufficient resources are secured for the analysis, including
+    for appropriate quality assurance.</li>
+    <li>The <strong>Analyst</strong> identifies the levels of quality,
     certainty, and precision that are required for the analysis and
     communicates with stakeholders to ensure that expectations are
     aligned with what is possible to deliver</li>
-    <li><strong>Assurer</strong> challenges and tests the understanding
-    of the problem, exploring different perspectives to confirm that the
-    optimal goals and boundaries have been agreed upon</li>
+    <li>The <strong>Assurer</strong> validates the proposed levels of
+    quality and precision and signs off on the scoping document</li>
     </ul>
     </div>
     <div id="guiding-questions" class="section level4">
     <h4>Guiding questions:</h4>
     <ul>
-    <li>What is the purpose of the analysis? [<a href="#References">4</a>].</li>
-    <li>Who is the intended audience and what are their needs? [<a href="#References">4</a>]</li>
-    <li>What resources are available? What are the limits/constraints of
-    the project? [<a href="#References">4</a>]</li>
-    <li>What are areas of highest risk and how do we address these? [<a href="#References">9</a>]</li>
-    <li>How will we allocate time/resources? [<a href="#References">7</a>]</li>
+    <li>Have user needs been adequately assessed? [<a href="#References">4</a>].</li>
+    <li>Does the planned analysis align with user needs and project
+    priorities? [<a href="#References">4</a>]</li>
+    <li>Will the proposed time frames allow for adequate quality
+    assurance? [<a href="#References">4</a>]</li>
+    <li>Have areas of highest risk been identified and addressed? [<a href="#References">9</a>]</li>
     <li>What is our data source? Is data quality-assured and appropriate
     for our purposes? [<a href="#References">7</a>]</li>
     </ul>
@@ -438,72 +463,74 @@ top: -0.4em;
     <div id="suggested-documentation-1" class="section level4">
     <h4>Suggested documentation:</h4>
     <ul>
-    <li>Map of “data journey” or analytical plan that specifies inputs,
-    methodological details, and planned outputs [<a href="#References">4</a>][<a href="#References">9</a>].</li>
+    <li>QA plan that specifies steps that will be taken at each step of
+    the analysis to assure quality.[<a href="#References">4</a>][<a href="#References">9</a>].</li>
     </ul>
     </div>
     <div id="responsibilities-1" class="section level4">
     <h4>Responsibilities:</h4>
     <ul>
-    <li><strong>Commissioner</strong> maintains contact with analyst and
-    assurer to continually confirm that adequate resources will be
-    available to conduct a suitable analysis</li>
-    <li><strong>Analyst</strong> produces design documentation,
-    indicating the necessary methods and resource allocation. The
-    appropriate models, software, and functions should be specified
-    along with their parameters and input. In addition to ensuring that
-    their work will be robust, accurate, and adequate to address the
-    research question, they must consider the limits and uncertainty
-    that these methods will entail and how these will be communicated in
-    the final product. They must also draw up plans for QA of their work
-    and identify suitable independent analysts who can provide QA</li>
-    <li><strong>Assurer</strong> checks that the proposed level of QA
-    for the analysis will be sufficient for the needs of the
+    <li>The <strong>Commissioner</strong> maintains contact with the
+    analyst and assurer to continually confirm that time frames will be
+    sufficient for proposed levels of quality assurance</li>
+    <li>The <strong>Analyst</strong> must consider how they will ensure
+    that their work will be robust, accurate, and adequate to address
+    the research question, including considering the limits and
+    uncertainty that these methods will entail and how these will be
+    communicated in the final product. They must also draw up plans for
+    QA of their work and identify suitable independent analysts who can
+    provide QA</li>
+    <li>The <strong>Assurer</strong> checks that the proposed level of
+    QA for the analysis will be sufficient for the needs of the
     project</li>
     </ul>
     </div>
     <div id="guiding-questions-1" class="section level4">
     <h4>Guiding questions:</h4>
     <ul>
-    <li>How many manual steps are there in the process? Can this be
-    reduced/automated? [<a href="#References">9</a>][<a href="#References">11</a>]</li>
-    <li>Where automation is not possible, what risks do manual steps
-    introduce? How can these be mitigated? [<a href="#References">9</a>]</li>
-    <li>How can we ensure process is transparent and reproducible? [<a href="#References">7</a>]</li>
+    <li>Is the planned analytical pipeline sufficiently automated, so as
+    to reduce the risk of human error? [<a href="#References">9</a>][<a href="#References">10</a>]</li>
+    <li>Where automation is not possible, are risks of manual steps
+    sufficiently mitigated? [<a href="#References">9</a>]</li>
+    <li>Is the planned process transparent and reproducible? [<a href="#References">7</a>]</li>
     <li>Are the methods we are using best suited for the project? [<a href="#References">6</a>]</li>
-    <li>What quality issues exist in the data and how can they be
-    addressed? [<a href="#References">6</a>]</li>
+    <li>Have any potential quality issues in the data been sufficiently
+    considered and addressed? [<a href="#References">6</a>]</li>
     </ul>
     </div>
     </div>
     <div id="analysis" class="section level3">
     <h3>3. Analysis</h3>
-    <p>It is crucial that analysis and QA of analysis follow written
+    <p>It is important that analysis and QA of analysis follow written
     plans exactly, and that any deviation from these plans is thoroughly
-    documented and communicated to the assurer and commissioner. It may
-    aid efficiency to run QA activities parallel to analysis, passing
-    outputs to assurers individually as they are produced.</p>
+    documented and communicated to the assurer and commissioner. A
+    complete audit trail will allow for the sources of any issues that
+    are identified during QA to be found more quickly. Ensuring a
+    reproducible process is also a key part of aiding in peer reviews
+    and audits after analysis has been completed.</p>
+    <p>It may aid efficiency to run QA activities parallel to analysis,
+    passing outputs to assurers individually as they are produced.</p>
     <div id="suggested-documentation-2" class="section level4">
     <h4>Suggested documentation:</h4>
     <ul>
     <li>Technical documentation of methods used [<a href="#References">4</a>]
     <ul>
-    <li>Includes documentation and commenting of code [<a href="#References">12</a>]</li>
+    <li>Includes documentation and commenting of code [<a href="#References">11</a>]</li>
     <li>Records of changes made, ideally managed via version control
-    software such as Git [<a href="#References">12</a>]</li>
+    software such as Git [<a href="#References">11</a>]</li>
     </ul></li>
     <li>Documentation and justification of assumptions [<a href="#References">4</a>]</li>
-    <li>QA log detailing validation measures conducted [<a href="#References">4</a>]</li>
-    <li>User guide explaining in plain English how to use the model [<a href="#References">10</a>]</li>
+    <li>QA log detailing automated and manual validation measures
+    conducted [<a href="#References">4</a>]</li>
     </ul>
     </div>
     <div id="responsibilities-2" class="section level4">
     <h4>Responsibilities:</h4>
     <ul>
-    <li><strong>Commissioner</strong> ensures that sufficient quality
-    checking of analysis is being conducted for the needs of the
+    <li>The <strong>Commissioner</strong> ensures that sufficient
+    quality checking of analysis is being conducted for the needs of the
     project</li>
-    <li><strong>Analyst</strong> collects and manages data, ensuring
+    <li>The <strong>Analyst</strong> extracts and manages data, ensuring
     that data formats, units, and context are understood. They should
     record details, issues, and assumptions regarding the data and
     ensure that any instances of missing data are appropriately
@@ -514,7 +541,7 @@ top: -0.4em;
     not involved in the project to conduct quality assurance. Where
     necessary, they may also draw upon the skill of experts who can
     provide more specialised technical advice</li>
-    <li><strong>Assurer</strong> continually confirms that quality
+    <li>The <strong>Assurer</strong> continually confirms that quality
     standards are being met and that the level of QA that has been
     carried out remains sufficient for the decision being supported</li>
     </ul>
@@ -522,17 +549,14 @@ top: -0.4em;
     <div id="guiding-questions-2" class="section level4">
     <h4>Guiding questions:</h4>
     <ul>
-    <li>Are there any anomalies or unexpected trends in the data? What
-    steps are being taken to investigate them? [<a href="#References">4</a>][<a href="#References">6</a>]</li>
-    <li>When changes are made, are they justified, well-documented, and
-    clearly communicated? [<a href="#References">12</a>]</li>
+    <li>Are there any anomalies or unexpected trends in the data? Have
+    they been sufficiently investigated? [<a href="#References">4</a>][<a href="#References">6</a>]</li>
+    <li>When changes have been made to analysis and QA methodologies,
+    are they justified, well-documented, and clearly communicated? [<a href="#References">11</a>]</li>
     <li>What assumptions does our analysis rely upon? Are these
-    justified? [<a href="#References">10</a>]</li>
-    <li>What are the established best practice standards for code? [<a href="#References">10</a>][<a href="#References">12</a>]</li>
-    <li>What would an independent third party need to replicate our
-    results? [<a href="#References">10</a>]</li>
-    <li>Can our model or process be simplified without losing
-    functionality? [<a href="#References">4</a>]</li>
+    justified? [<a href="#References">8</a>]</li>
+    <li>Have the established best practice standards for code been
+    followed? [<a href="#References">8</a>][<a href="#References">11</a>]</li>
     </ul>
     </div>
     </div>
@@ -547,26 +571,26 @@ top: -0.4em;
     <h4>Suggested documentation:</h4>
     <ul>
     <li>QA sign-off by assurer verifying that quality has been assured
-    to the required standard [<a href="#References">10</a>]</li>
+    to the required standard [<a href="#References">8</a>]</li>
     <li>Clarification of data and analysis quality, and the implications
     on results [<a href="#References">3</a>]</li>
-    <li>Quality and methods section of publication [<a href="#References">13</a>]</li>
+    <li>Quality and methods section of publication [<a href="#References">12</a>]</li>
     </ul>
     </div>
     <div id="responsibilities-3" class="section level4">
     <h4>Responsibilities:</h4>
     <ul>
-    <li><strong>Commissioner</strong> passes results on to
+    <li>The <strong>Commissioner</strong> passes results on to
     decision-makers and stakeholders, ensuring that the details of
     results as well as limitations and outstanding risks are clearly
     communicated so that the analysis can be used appropriately</li>
-    <li><strong>Analyst</strong> ensures that results, risks, and
+    <li>The <strong>Analyst</strong> ensures that results, risks, and
     limitations are clearly communicated to the commissioner and
     well-recorded in the final publication. They should reflect on the
     strong and weak aspects of the analytical process and any errors
     that were made, considering how they might apply what they have
     learned to future analysis</li>
-    <li><strong>Assurer</strong> confirms that suitable QA has taken
+    <li>The <strong>Assurer</strong> confirms that suitable QA has taken
     place and that an audit trail is in place that clarifies the extent
     of validation activities. If so, the assurer signs off on the
     finished product. Otherwise, they should discuss concerns with the
@@ -578,40 +602,162 @@ top: -0.4em;
     <h4>Guiding questions:</h4>
     <ul>
     <li>Without any input from analytical team, could a third party
-    reproduce our results? [<a href="#References">10</a>]</li>
+    reproduce our results? [<a href="#References">8</a>]</li>
     <li>If we repeat our processes with different software or methods,
     will we get the same results? [<a href="#References">6</a>]</li>
     <li>Have strengths and limitations been communicated clearly and
-    effectively to users, stakeholders, and team members? [<a href="#References">1</a>][<a href="#References">11</a>]</li>
-    <li>Are data visualisations accessible and easy to understand? [<a href="#References">13</a>]</li>
+    effectively to users, stakeholders, and team members? [<a href="#References">1</a>][<a href="#References">10</a>]</li>
+    <li>Are data visualisations accessible and easy to understand? [<a href="#References">12</a>]</li>
     <li>Are sources cited and correctly linked? [<a href="#References">6</a>][<a href="#References">7</a>]</li>
     <li>Have technical terms been defined in simple English, if
-    necessary? [<a href="#References">13</a>]</li>
-    <li>Have we mitigated risks posed by human error? [<a href="#References">9</a>]</li>
-    <li>Where errors were found, were they addressed appropriately? What
-    steps can be taken to minimise the risk of future errors? [<a href="#References">9</a>]</li>
+    necessary? [<a href="#References">12</a>]</li>
+    <li>Is the output accurate and error-free? [<a href="#References">9</a>]</li>
+    <li>What lessons have been learned from any errors that were made?
+    [<a href="#References">9</a>]</li>
     <li>If any analyst involved were to leave the organisation or be
-    unavailable, could the analytical process still be repeated? [<a href="#References">10</a>]</li>
+    unavailable, could the analytical process still be repeated? [<a href="#References">8</a>]</li>
     </ul>
     </div>
     </div>
-    <div id="a-note-on-validation-methods" class="section level3">
-    <h3>A note on validation methods</h3>
-    <p>The best methods to use for verifying and validating analytical
-    output depend heavily on the methodology of the analysis. There are
-    many available methods, and the best QA results will likely be
-    obtained from implementing a combination of several. Examples of
-    model validation methods that may be implemented include:</p>
+    </div>
+    <div id="measuring-and-proving-quality-advice-for-qa-log-books" class="section level2">
+    <h2>Measuring and proving quality: advice for QA log books</h2>
+    <p>Providing evidence of quality in statistics should be structured
+    around the ESS quality dimensions outlined earlier in this document.
+    One of the most common formats for a QA log is a checklist in the
+    form of an Excel workbook. This is a useful format because it allows
+    QA to be broken down by different stages and quality dimensions by
+    creating different sheets within the workbook. The QA log can then
+    be shared with analysts, commissioners, and assurers to keep all
+    parties updated about the current state of QA activities and allow
+    for assurer sign-off as needed. Such workbooks can also be reused
+    and adapted for different projects, allowing a consistent QA
+    approach. The question in this section represent examples of
+    checklist elements that may be useful to include in a QA log. While
+    they do not form a complete or comprehensive list of QA concerns,
+    they are intended to provide a starting point for thinking about the
+    assurance process.</p>
+    <div id="relevance-statistics-meet-the-needs-of-users" class="section level3">
+    <h3>Relevance: Statistics meet the needs of users</h3>
+    <p>Assessing user needs can be a complex and resource-intensive task
+    but is important for ensuring the impact of statistics. A
+    description of user needs may be drawn from direct consultation,
+    usage statistics for past publications (such as web analytics), or
+    user profiling based on an understanding of the intended audience of
+    an output. This description can then help inform QA approaches. For
+    instance, QA of analysis intended for the general public may be more
+    concerned with guaranteeing accessible language and presentation
+    than QA of analysis that will be used by researchers and
+    specialists. Some examples of checklist elements that may be useful
+    to include when assuring relevance are:</p>
     <ul>
-    <li>Running models with alternative input data to check for
-    unexpected behaviour</li>
-    <li>Running identical models using different software or
-    platforms</li>
-    <li>Running model or pipeline elements individually and checking
-    output from each stage</li>
-    <li>Running models with (realistic) extreme data values</li>
-    <li>Internal or external peer review by experts to sense check
-    results</li>
+    <li>Are we using the most recent and relevant user needs data?</li>
+    <li>Have we met our priority user needs?</li>
+    <li>Have user satisfaction concerns from previous publications been
+    addressed, where applicable?</li>
+    </ul>
+    </div>
+    <div id="accuracy-and-reliability-statistics-accurately-and-reliably-portray-reality" class="section level3">
+    <h3>Accuracy and Reliability: statistics accurately and reliably
+    portray reality</h3>
+    <p>This quality dimension requires the validation of not just end
+    results of analysis, but also intermediate results and model inputs.
+    While the analyst may conduct some checks here, it is preferable for
+    other parties who are not responsible for analysis to be brought in
+    for at least some checks as this increases the chance of catching
+    errors. While automation is a very useful tool for the creation of
+    models and reports, a small proportion of the automated components
+    should be “spot-checked” to ensure that they are sensible and
+    realistic. Some examples of checklist elements that may be useful to
+    include when assuring accuracy and reliability are:</p>
+    <ul>
+    <li>Does running models with alternative input data yield expected
+    behaviour?</li>
+    <li>Does running models with input data containing (realistic)
+    extreme values yield expected behaviour?</li>
+    <li>Does running identical models using different software or
+    platforms yield expected behaviour?</li>
+    <li>Do intermediate outputs from individual model or pipeline
+    elements appear correct?</li>
+    <li>Has input data been quality assured?</li>
+    <li>Have any missing data values been adequately addressed?</li>
+    <li>How does the model output compare to other existing models?</li>
+    <li>Does the output appear realistic for the real-world behaviour
+    that is being modelled?</li>
+    <li>Does the output appear realistic for the input data that was
+    used?</li>
+    <li>Do graphs, tables, and numerical results all appear to be in
+    agreement with each other?</li>
+    <li>Do the assumptions that were made remain sensible?</li>
+    <li>Is the model actually performing the calculations defined in the
+    model specification?</li>
+    <li>Are automated components behaving as expected?</li>
+    </ul>
+    </div>
+    <div id="timeliness-and-punctuality-statistics-are-released-in-a-timely-and-punctual-manner" class="section level3">
+    <h3>Timeliness and Punctuality: statistics are released in a timely
+    and punctual manner</h3>
+    <p>Members of a team as well as end users of an output should be
+    aware of its publishing schedule. Analysts should communicate and
+    publicise when deviations from the schedule may be necessary at the
+    earliest convenience. Some examples of checklist elements that may
+    be useful to include when assuring timeliness and punctuality
+    are:</p>
+    <ul>
+    <li>What is the expected release date and time?</li>
+    <li>Has the publication been added to the release calendar?</li>
+    </ul>
+    </div>
+    <div id="coherence-and-comparability-statistics-are-consistent-internally-over-time-and-comparable-between-regions-and-countries-it-is-possible-to-combine-and-make-joint-use-of-related-data-from-different-data-sources" class="section level3">
+    <h3>Coherence and Comparability: statistics are consistent
+    internally, over time and comparable between regions and countries;
+    it is possible to combine and make joint use of related data from
+    different data sources</h3>
+    <p>While methods, presentation formats, and questions of interest
+    may change over time, it is important that these are not altered
+    arbitrarily as this harms user ability to compare statistics. This
+    extends not just to the editions of a recurring publication, but
+    also all publications produced by a team or division. While it may
+    not be feasible in all cases to apply identical practices to every
+    output, teams should work toward defining common standards for their
+    work and adhering to established conventions. Some examples of
+    checklist elements that may be useful to include when accessibility
+    and clarity are:</p>
+    <ul>
+    <li>Do results seem sensible when compared to past results?</li>
+    <li>Do results seem sensible when compared to results from other
+    regions or studies?</li>
+    <li>Have changes in methods been justified and explained?</li>
+    <li>Has the same style guide been followed as previous
+    publications?</li>
+    <li>Have standard units, formats, and labels been used?</li>
+    <li>Has version control software been used to document all
+    changes?</li>
+    </ul>
+    </div>
+    <div id="accessibility-and-clarity-statistics-are-presented-in-a-clear-and-understandable-form-released-in-a-suitable-and-convenient-manner-available-and-accessible-on-an-impartial-basis-with-supporting-metadata-and-guidance" class="section level3">
+    <h3>Accessibility and Clarity: statistics are presented in a clear
+    and understandable form, released in a suitable and convenient
+    manner, available and accessible on an impartial basis with
+    supporting metadata and guidance</h3>
+    <p>The need for accessibility and clarity applies to the contents of
+    the publication as well as to the publication itself. This means
+    that sections of content should be easy to locate and identify in
+    the document, and that the document itself should be easy to locate
+    and identify on its host platform, taking into account the
+    accessibility needs of a wide range of users.</p>
+    <ul>
+    <li>Do spreadsheets of associated data adhere to accessibility
+    guidelines?</li>
+    <li>Has data been anonymised prior to publication?</li>
+    <li>Is the methodology of the analysis clearly communicated to
+    users?</li>
+    <li>Is the quality of the analysis clearly communicated to
+    users?</li>
+    <li>Does content adhere to web accessibility guidelines?</li>
+    <li>Is metadata for the publication correct and up to date?</li>
+    <li>Is the level of technicality appropriate for the intended
+    audience?</li>
     </ul>
     </div>
     </div>
@@ -634,13 +780,10 @@ top: -0.4em;
     statistics in government</a></li>
     <li><a href="https://www.gov.uk/government/publications/government-analysis-functional-standard--2">Government
     Functional Standard GovS 010: Analysis</a></li>
-    <li><a href="https://osr.statisticsauthority.gov.uk/guidance/administrative-data-and-official-statistics/?1">Quality
-    Assurance of Administrative Data (QAAD): Administrative Data Quality
-    Assurance Toolkit</a></li>
-    <li><a href="https://osr.statisticsauthority.gov.uk/publication/regulatory-guidance-thinking-about-quality-when-producing-statistics/pages/2/">Regulatory
-    guidance – Thinking about quality when producing statistics</a></li>
     <li><a href="https://www.gov.uk/government/organisations/department-for-education/about/research#quality-assurance-framework">DfE
     Quality Assurance Framework</a></li>
+    <li><a href="https://osr.statisticsauthority.gov.uk/publication/regulatory-guidance-thinking-about-quality-when-producing-statistics/pages/2/">Regulatory
+    guidance – Thinking about quality when producing statistics</a></li>
     <li><a href="https://www.gov.uk/government/publications/better-broader-safer-using-health-data-for-research-and-analysis">The
     Goldacre Review: Better, broader, safer: using health data for
     research and analysis</a></li>
