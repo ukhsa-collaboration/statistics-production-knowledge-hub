@@ -46,6 +46,18 @@
       margin: auto;
     }
     
+    /*  Scrolling sidebar - not yet implemented
+    @media screen and (min-width: 600px) {
+     #toc_sticky{
+      position: sticky;
+      float: left;
+      top: 10px;
+      left: 10px;
+      width: 200px;
+     }
+    }
+    */
+    
     #toc > ul{
       padding-inline-start: inherit;
     }
@@ -133,6 +145,12 @@
       padding: 10px;
     }
     
+    .main img {
+      width: calc(100% - 70px);
+      padding: 20px;
+      border: 1pt solid black;
+    }
+    
 
   </style>
   
@@ -166,7 +184,15 @@
     </div>
   </div>
   
+  <!--
+  <div id="toc_sticky">
+      <h2>Contents</h2>
+      $toc$
+  </div>
+  -->
+  
   <div class="littleBanner"></div>
+  
      
   <div class="main">     
     <h1>$title$</h1>
@@ -184,8 +210,10 @@
 
     <p style="margin-bottom: 35px;"><a href="https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/README.md">&#8617; Back to the hub</a></p>
     
-    <h2>Contents</h2>
-    <div id="toc">$toc$</div>
+    <div id="toc">
+      <h2>Contents</h2>
+      $toc$
+    </div>
     
     $body$
     
