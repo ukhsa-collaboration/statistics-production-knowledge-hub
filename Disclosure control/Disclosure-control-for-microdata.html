@@ -39,6 +39,7 @@ padding: 0 10px;
 max-width: 1000px;
 margin: auto;
 }
+
 #toc > ul{
 padding-inline-start: inherit;
 }
@@ -105,6 +106,11 @@ border-bottom: 2px solid black;
 th, td {
 padding: 10px;
 }
+.main img {
+width: calc(100% - 70px);
+padding: 20px;
+border: 1pt solid black;
+}
 </style>
   
   <script>
@@ -132,16 +138,59 @@ padding: 10px;
           </div>
   </div>
   
+  <!--
+  <div id="toc_sticky">
+      <h2>Contents</h2>
+      <ul>
+      <li><a href="#coverage" id="toc-coverage">Coverage</a></li>
+      <li><a href="#summary-of-recommendations"
+      id="toc-summary-of-recommendations">Summary of recommendations</a>
+      <ul>
+      <li><a
+      href="#what-to-do-if-disclosure-of-personal-information-does-occur"
+      id="toc-what-to-do-if-disclosure-of-personal-information-does-occur">What
+      to do if disclosure of personal information does occur</a></li>
+      </ul></li>
+      <li><a href="#introduction"
+      id="toc-introduction">Introduction</a></li>
+      <li><a
+      href="#guidelines-for-identifying-and-controlling-disclosure-risk"
+      id="toc-guidelines-for-identifying-and-controlling-disclosure-risk">Guidelines
+      for identifying and controlling disclosure risk</a>
+      <ul>
+      <li><a
+      href="#steps-1-to-3-understanding-your-data-and-conducting-a-risk-assessment"
+      id="toc-steps-1-to-3-understanding-your-data-and-conducting-a-risk-assessment">Steps
+      1 to 3: Understanding your data and conducting a risk
+      assessment</a></li>
+      <li><a
+      href="#step-4-choosing-and-applying-disclosure-control-methods"
+      id="toc-step-4-choosing-and-applying-disclosure-control-methods">Step
+      4: Choosing and applying disclosure control methods</a></li>
+      <li><a href="#step-5-assessing-the-outcome-and-disseminating"
+      id="toc-step-5-assessing-the-outcome-and-disseminating">Step 5:
+      Assessing the outcome and disseminating</a></li>
+      </ul></li>
+      <li><a href="#example-risk-assessment-and-disclosure-control"
+      id="toc-example-risk-assessment-and-disclosure-control">Example
+      risk assessment and disclosure control</a></li>
+      <li><a href="#references" id="toc-references">References</a></li>
+      </ul>
+  </div>
+  -->
+  
   <div class="littleBanner"></div>
+  
      
   <div class="main">     
     <h1>Statistical Disclosure Control - Microdata</h1>
-    <h2>Last updated: 30 September 2022</h2>
+    <h2>Last updated: 30 November 2022</h2>
     
     <p><a id="versionbutton" href="#" onclick="showHistory()">Show version history +</a></p>
     <div id="versioncontrol"><table> ¶ <tr> ¶ <th> ¶ Date ¶ </th> ¶ <th>
-¶ Notes ¶ </th> ¶ </tr> ¶ <tr> ¶ <td> ¶ 30/09/2022 ¶ </td> ¶ <td> ¶
-Initial release ¶ </td> ¶ </tr> ¶ </table></div>
+¶ Notes ¶ </th> ¶ </tr> ¶ <tr> ¶ <td> ¶ 30/11/2022 ¶ </td> ¶ <td> ¶
+First release ¶ </td> ¶ </tr> ¶ </table></div>
+    <!--Below needed to fix rendering bug in markdown-->
     <script>x = document.getElementById("versioncontrol"); x.innerHTML = x.innerHTML.replaceAll("¶", "")</script>
 
     <p>Author: Ben Cuff</p>
@@ -149,36 +198,51 @@ Initial release ¶ </td> ¶ </tr> ¶ </table></div>
     
     <p>Throughout this document, citations are given as numbers in square brackets. They link to a full reference list which can be found at the end of this document.</p>
 
-    <p style="margin-bottom: 35px;"><a href="https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/README.md">↩ Back to the hub</a></p>
+    <!--<p style="margin-bottom: 35px;"><a href="https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/README.md">&#8617; Back to the hub</a></p>-->
+    <p style="margin-bottom: 35px;"><a href="https://phecloud.sharepoint.com/teams/JointBiosecurityCentre/Shared%20Documents/Forms/AllItems.aspx?ga=1&amp;id=%2Fteams%2FJointBiosecurityCentre%2FShared%20Documents%2F012%20D%20and%20DS%20Directorate%2F5%20DD%20Stats%20Production%2FGuidance%20and%20tools%2FKnowledge%20Hub%20%28shared%29%2F%2D%2D%20README%2Epdf&amp;viewid=5945640e%2Dd5e1%2D475d%2D938d%2Ddd8096e228c1&amp;parent=%2Fteams%2FJointBiosecurityCentre%2FShared%20Documents%2F012%20D%20and%20DS%20Directorate%2F5%20DD%20Stats%20Production%2FGuidance%20and%20tools%2FKnowledge%20Hub%20%28shared%29">↩ Back to the hub</a></p> 
     
-    <h2>Contents</h2>
-    <div id="toc"><ul>
-<li><a href="#coverage" id="toc-coverage">Coverage</a></li>
-<li><a href="#summary-of-recommendations" id="toc-summary-of-recommendations">Summary of recommendations</a></li>
-<li><a href="#introduction" id="toc-introduction">Introduction</a></li>
-<li><a href="#guidelines-for-identifying-and-controlling-disclosure-risk" id="toc-guidelines-for-identifying-and-controlling-disclosure-risk">Guidelines
-for identifying and controlling disclosure risk</a>
-<ul>
-<li><a href="#steps-1-to-3-understanding-your-data-and-conducting-a-risk-assessment" id="toc-steps-1-to-3-understanding-your-data-and-conducting-a-risk-assessment">Steps
-1 to 3: Understanding your data and conducting a risk
-assessment</a></li>
-<li><a href="#step-4-choosing-and-applying-disclosure-control-methods" id="toc-step-4-choosing-and-applying-disclosure-control-methods">Step 4:
-Choosing and applying disclosure control methods</a></li>
-<li><a href="#step-5-assessing-the-outcome-and-disseminating" id="toc-step-5-assessing-the-outcome-and-disseminating">Step 5:
-Assessing the outcome and disseminating</a></li>
-</ul></li>
-<li><a href="#example-risk-assessment-and-disclosure-control" id="toc-example-risk-assessment-and-disclosure-control">Example risk
-assessment and disclosure control</a></li>
-<li><a href="#references" id="toc-references">References</a></li>
-</ul></div>
+    <div id="toc">
+      <h2>Contents</h2>
+      <ul>
+      <li><a href="#coverage" id="toc-coverage">Coverage</a></li>
+      <li><a href="#summary-of-recommendations" id="toc-summary-of-recommendations">Summary of recommendations</a>
+      <ul>
+      <li><a href="#what-to-do-if-disclosure-of-personal-information-does-occur" id="toc-what-to-do-if-disclosure-of-personal-information-does-occur">What
+      to do if disclosure of personal information does occur</a></li>
+      </ul></li>
+      <li><a href="#introduction" id="toc-introduction">Introduction</a></li>
+      <li><a href="#guidelines-for-identifying-and-controlling-disclosure-risk" id="toc-guidelines-for-identifying-and-controlling-disclosure-risk">Guidelines
+      for identifying and controlling disclosure risk</a>
+      <ul>
+      <li><a href="#steps-1-to-3-understanding-your-data-and-conducting-a-risk-assessment" id="toc-steps-1-to-3-understanding-your-data-and-conducting-a-risk-assessment">Steps
+      1 to 3: Understanding your data and conducting a risk
+      assessment</a></li>
+      <li><a href="#step-4-choosing-and-applying-disclosure-control-methods" id="toc-step-4-choosing-and-applying-disclosure-control-methods">Step
+      4: Choosing and applying disclosure control methods</a></li>
+      <li><a href="#step-5-assessing-the-outcome-and-disseminating" id="toc-step-5-assessing-the-outcome-and-disseminating">Step 5:
+      Assessing the outcome and disseminating</a></li>
+      </ul></li>
+      <li><a href="#example-risk-assessment-and-disclosure-control" id="toc-example-risk-assessment-and-disclosure-control">Example
+      risk assessment and disclosure control</a></li>
+      <li><a href="#references" id="toc-references">References</a></li>
+      </ul>
+    </div>
     
     <div id="coverage" class="section level2">
     <h2>Coverage</h2>
     <p>This guidance applies to all external releases of microdata,
-    defined as record-level data, where, for example, each row defines
-    an individual, individual household or employer, for example [<a href="#References">1</a>].</p>
+    defined as record-level data, such as where each row defines an
+    individual, individual household or employer, for example [<a href="#References">1</a>].</p>
+    <p>The purpose of statistical disclosure control is to ensure that
+    confidential information about people, businesses or other relevant
+    parties (including other government departments) are not released or
+    shared with unauthorised parties.</p>
+    <p>This guidance is concerned with statistical disclosure control
+    methods only. Note that there are various other information
+    governance policies surrounding the release of data. Please also <a href="https://intranet.ukhsa.gov.uk/sites/being-safe-at-work/SitePageModern/2158/being-safe-at-work">refer
+    to and follow those policies</a> alongside this guidance.</p>
     <p>This guidance should be seen as a supplement to our guidance on
-    <a href="https://htmlpreview.github.io/?https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/Disclosure%20control/Disclosure-control-for-aggregate-data.html">statistical
+    <a href="https://phecloud.sharepoint.com/teams/JointBiosecurityCentre/_layouts/15/download.aspx?UniqueId=c13df9f3%2D15b9%2D4367%2Dbed6%2D01de3e7222c0">statistical
     disclosure control for aggregate data</a>. It is recommended that
     readers familiarise themselves with that guidance first as many of
     the same principles covered there also apply to microdata and so
@@ -195,13 +259,16 @@ assessment and disclosure control</a></li>
     </div>
     <div id="summary-of-recommendations" class="section level2">
     <h2>Summary of recommendations</h2>
-    <p>The Responsible Statistician should ensure that the following
-    steps are undertaken for all releases:</p>
+    <p>For all releases, the Responsible Statistician or Analyst (the
+    person responsible for overseeing the production of the release)
+    should ensure that the following steps are undertaken:</p>
     <ol style="list-style-type: decimal">
-    <li>Prior to any release of microdata, a risk assessment should be
-    conducted to determine the likelihood and impact of any disclosure
-    risks. K-anonymity and intruder testing are methods that can be used
-    for these purposes.</li>
+    <li>Prior to any release of microdata, an assessment should be
+    conducted to determine user requirements, to understand the data and
+    where disclosure risks may be present, and to determine the
+    likelihood and impact of any disclosure risks. K-anonymity and
+    intruder testing are methods that can be used to help identify
+    risks.</li>
     <li>Where a risk is identified, disclosure control methods should be
     applied, such as banding continuous variables, collapsing
     categorical variables, removing unnecessary variables, suppressing
@@ -212,6 +279,25 @@ assessment and disclosure control</a></li>
     re-assessed to ensure that risks have been successfully
     mitigated.</li>
     </ol>
+    <div id="what-to-do-if-disclosure-of-personal-information-does-occur" class="section level3">
+    <h3>What to do if disclosure of personal information does occur</h3>
+    <p>Disclosing personal data can cause reputational damage, impact
+    trustworthiness, and attract significant media attention. It can
+    also result in legal challenge or sanctions from the Information
+    Commissioner’s Office (ICO).</p>
+    <p>By following this guidance, any risk of accidental disclosure
+    should be low. However, if disclosure (accidental or otherwise) does
+    occur, you should, without any delay, email the data security team
+    (<a href="mailto:security@ukhsa.gov.uk">security@ukhsa.gov.uk</a>)
+    and the Head of Profession for Statistics (HoP, at <a href="mailto:UKHSA_HOPSTATS@ukhsa.gov.uk">UKHSA_HOPSTATS@ukhsa.gov.uk</a>)
+    with as much information as you have.</p>
+    <p>For official and national statistics, you will need to prepare a
+    report for the HoP as soon as possible. In these circumstances, the
+    HoP will report the issue to the Office for Statistics Regulation
+    (OSR) to help support transparency, ensure public accountability and
+    improve trustworthiness. The HoP team will guide you through that
+    process.</p>
+    </div>
     </div>
     <div id="introduction" class="section level2">
     <h2>Introduction</h2>
@@ -230,16 +316,20 @@ assessment and disclosure control</a></li>
     knowledge or linked datasets or other sources (for example,
     information found on social media platforms) [<a href="#References">1</a>].</p>
     <p>As with aggregate data, there is a need to balance disclosure
-    control against utility [<a href="#References">1</a>][<a href="#References">2</a>]. A Responsible Statistician should be in
-    place to ensure that balance is appropriately achieved [<a href="#References">1</a>]. The aim here is to reduce risk to
+    control against utility [<a href="#References">1</a>][<a href="#References">2</a>]. A Responsible Statistician or Analyst
+    should be in place to ensure that balance is appropriately achieved
+    [<a href="#References">1</a>]. The aim here is to reduce risk to
     acceptable levels (such that it would take disproportionate time,
     effort and expertise to identify data subjects), while maintaining
     utility for users [<a href="#References">1</a>].</p>
     </div>
     <div id="guidelines-for-identifying-and-controlling-disclosure-risk" class="section level2">
     <h2>Guidelines for identifying and controlling disclosure risk</h2>
+    <p>In this section, we present a number of recommended steps that
+    might be followed to conduct a risk assessment and to mitigate any
+    risks identified.</p>
     <p>The steps described here are much the same as those described in
-    our guidance on <a href="https://htmlpreview.github.io/?https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/Disclosure%20control/Disclosure-control-for-aggregate-data.html">statistical
+    our guidance on <a href="https://phecloud.sharepoint.com/teams/JointBiosecurityCentre/_layouts/15/download.aspx?UniqueId=c13df9f3%2D15b9%2D4367%2Dbed6%2D01de3e7222c0">statistical
     disclosure control for aggregate data</a>. Some repeated information
     will only be covered briefly here.</p>
     <div id="steps-1-to-3-understanding-your-data-and-conducting-a-risk-assessment" class="section level3">
@@ -265,7 +355,7 @@ assessment and disclosure control</a></li>
     <div id="step-2-understand-the-characteristics-of-the-data-and-where-disclosure-risks-may-be-present" class="section level4">
     <h4>Step 2: Understand the characteristics of the data and where
     disclosure risks may be present</h4>
-    <p>Many of the same risk factors given in our guidance on <a href="https://htmlpreview.github.io/?https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/Disclosure%20control/Disclosure-control-for-aggregate-data.html">statistical
+    <p>Many of the same risk factors given in our guidance on <a href="https://phecloud.sharepoint.com/teams/JointBiosecurityCentre/_layouts/15/download.aspx?UniqueId=c13df9f3%2D15b9%2D4367%2Dbed6%2D01de3e7222c0">statistical
     disclosure control for aggregate data</a> will still apply here.</p>
     <p>Specifically, greater disclosure risks may be present when:</p>
     <ul>
@@ -284,9 +374,17 @@ assessment and disclosure control</a></li>
     <p>Some more specific considerations might also be made in the case
     of microdata, such as:</p>
     <ul>
-    <li>the presence of direct identifiers (for example, name, postcode,
-    NHS number) - in most cases it will be crucial that these are
-    identified and removed prior to data release [<a href="#References">1</a>]</li>
+    <li>the presence of direct identifiers (for example, name, NHS
+    number) and indirect identifiers (for example, full postcode) - in
+    most cases it will be crucial that these are identified and removed
+    prior to data release [<a href="#References">1</a>]
+    <ol style="list-style-type: lower-alpha">
+    <li>The dataset should still contain some form of unique identifier,
+    such as a Case ID.</li>
+    <li>Postcode sector or region can be used instead of full
+    postcode.<br />
+    </li>
+    </ol></li>
     <li>the presence of key identifying variables (for example, age,
     sex, health condition, ethnicity, religion, martial status, among
     others) [<a href="#References">5</a>] - because microdata is
@@ -432,8 +530,7 @@ assessment and disclosure control</a></li>
     releasing potentially disclosive information under a “Non-Disclosive
     Data Access Arrangement” (DAA) [<a href="#References">10</a>].
     However, this should be done in very rare cases only, and only under
-    the express permission of the <a href="mailto:UKHSA_HOPSTATS@ukhsa.gov.uk">Head of Profession for
-    statistics</a>.</p>
+    the express permission of the Head of Profession for statistics (<a href="mailto:UKHSA_HOPSTATS@ukhsa.gov.uk">UKHSA_HOPSTATS@ukhsa.gov.uk</a>).</p>
     </div>
     </div>
     <div id="example-risk-assessment-and-disclosure-control" class="section level2">
@@ -603,6 +700,7 @@ assessment and disclosure control</a></li>
     <table>
     <thead>
     <tr class="header">
+    <th>Unique ID</th>
     <th>Age</th>
     <th>Region</th>
     <th>Employment Status</th>
@@ -611,90 +709,105 @@ assessment and disclosure control</a></li>
     </thead>
     <tbody>
     <tr class="odd">
+    <td>1</td>
     <td>18</td>
     <td>South East</td>
     <td>Employed</td>
     <td>GP</td>
     </tr>
     <tr class="even">
+    <td>2</td>
     <td>18</td>
     <td>South East</td>
     <td>Employed</td>
     <td>GP</td>
     </tr>
     <tr class="odd">
+    <td>3</td>
     <td>18</td>
     <td>South East</td>
     <td>Employed</td>
     <td>GP</td>
     </tr>
     <tr class="even">
+    <td>4</td>
     <td>18</td>
     <td>South East</td>
     <td>Employed</td>
     <td>A&amp;E</td>
     </tr>
     <tr class="odd">
+    <td>5</td>
     <td>18</td>
     <td>South East</td>
     <td>Employed</td>
     <td>A&amp;E</td>
     </tr>
     <tr class="even">
+    <td>6</td>
     <td>18</td>
     <td>South East</td>
     <td>Employed</td>
     <td>GP</td>
     </tr>
     <tr class="odd">
+    <td>7</td>
     <td>18</td>
     <td>South East</td>
     <td>Employed</td>
     <td>GP</td>
     </tr>
     <tr class="even">
+    <td>8</td>
     <td>18</td>
     <td>South East</td>
     <td>Employed</td>
     <td>A&amp;E</td>
     </tr>
     <tr class="odd">
+    <td>9</td>
     <td>18</td>
     <td>South East</td>
     <td>Unemployed</td>
     <td>GP</td>
     </tr>
     <tr class="even">
+    <td>10</td>
     <td>18</td>
     <td>South East</td>
     <td>Unemployed</td>
     <td>GP</td>
     </tr>
     <tr class="odd">
+    <td>11</td>
     <td>18</td>
     <td>South East</td>
     <td>Unemployed</td>
     <td>GP</td>
     </tr>
     <tr class="even">
+    <td>12</td>
     <td>18</td>
     <td>South East</td>
     <td>Unemployed</td>
     <td>GP</td>
     </tr>
     <tr class="odd">
+    <td>13</td>
     <td>18</td>
     <td>South East</td>
     <td>Unemployed</td>
     <td>GP</td>
     </tr>
     <tr class="even">
+    <td>14</td>
     <td>[c]</td>
     <td>South East</td>
     <td>Unemployed</td>
     <td>A&amp;E</td>
     </tr>
     <tr class="odd">
+    <td>…</td>
     <td>…</td>
     <td>…</td>
     <td>…</td>
@@ -706,7 +819,8 @@ assessment and disclosure control</a></li>
     risks present in Table 1a, to produce Table 1b:</p>
     <ol style="list-style-type: decimal">
     <li>Name and NHS number fields were removed as they are direct
-    identifiers.</li>
+    identifiers. They have been replaced by a unique ID number so that
+    the analysis does not imply false duplicates.</li>
     <li>Postcodes have been transformed into regions to increase the
     population at risk for the geographical areas presented.</li>
     <li>Employment status has been collapsed into 2 categories rather
@@ -767,7 +881,8 @@ assessment and disclosure control</a></li>
     </ol>
     </div>
     
-    <p style="margin-bottom: 35px;"><a href="https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/README.md">↩ Back to the hub</a></p>
+    <!--<p style="margin-bottom: 35px;"><a href="https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/README.md">&#8617; Back to the hub</a></p>-->
+    <p style="margin-bottom: 35px;"><a href="https://phecloud.sharepoint.com/teams/JointBiosecurityCentre/Shared%20Documents/Forms/AllItems.aspx?ga=1&amp;id=%2Fteams%2FJointBiosecurityCentre%2FShared%20Documents%2F012%20D%20and%20DS%20Directorate%2F5%20DD%20Stats%20Production%2FGuidance%20and%20tools%2FKnowledge%20Hub%20%28shared%29%2F%2D%2D%20README%2Epdf&amp;viewid=5945640e%2Dd5e1%2D475d%2D938d%2Ddd8096e228c1&amp;parent=%2Fteams%2FJointBiosecurityCentre%2FShared%20Documents%2F012%20D%20and%20DS%20Directorate%2F5%20DD%20Stats%20Production%2FGuidance%20and%20tools%2FKnowledge%20Hub%20%28shared%29">↩ Back to the hub</a></p> 
     
   </div>
 

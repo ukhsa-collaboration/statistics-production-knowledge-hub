@@ -1,7 +1,7 @@
 ---
 title: "Statistical Disclosure Control - Microdata"
 author: "Ben Cuff"
-date: "30 September 2022"    #"`r format(Sys.time(), '%d %B, %Y')`"
+date: "30 November 2022"    #"`r format(Sys.time(), '%d %B, %Y')`"
 draft: false
 output: 
   html_document:
@@ -14,7 +14,7 @@ output:
 knit: (function(inputFile, encoding){rmarkdown::render(inputFile, envir = globalenv(), encoding = encoding, output_dir = "./", output_format = "all")})
 
 
-versioncontrol: "`r ukhsaGuidanceDocs::VersionHistory(  c('30/09/2022', 'Initial release')  )`"
+versioncontrol: "`r ukhsaGuidanceDocs::VersionHistory(  c('30/11/2022', 'First release')  )`"
 ---
 
 
@@ -23,16 +23,20 @@ library(tidyverse)
 library(ukhsaGuidanceDocs)
 knitr::opts_chunk$set(echo = F)
 
-SetUpReferenceList("../- assets/QPD knowledge bank.xlsx")
+SetUpReferenceList("../../Team files/QPD/Knowledge bank/QPD knowledge bank.xlsx")
 
 ```
 
 
 ## Coverage
 
-This guidance applies to all external releases of microdata, defined as record-level data, where, for example, each row defines an individual, individual household or employer, for example `r addRef(15)`. 
+This guidance applies to all external releases of microdata, defined as record-level data, such as where each row defines an individual, individual household or employer, for example `r addRef(15)`. 
 
-This guidance should be seen as a supplement to our guidance on [statistical disclosure control for aggregate data](https://htmlpreview.github.io/?https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/Disclosure%20control/Disclosure-control-for-aggregate-data.html). It is recommended that readers familiarise themselves with that guidance first as many of the same principles covered there also apply to microdata and so shall only be repeated in brief here.
+The purpose of statistical disclosure control is to ensure that confidential information about people, businesses or other relevant parties (including other government departments) are not released or shared with unauthorised parties. 
+
+This guidance is concerned with statistical disclosure control methods only. Note that there are various other information governance policies surrounding the release of data. Please also [refer to and follow those policies](https://intranet.ukhsa.gov.uk/sites/being-safe-at-work/SitePageModern/2158/being-safe-at-work) alongside this guidance. 
+
+This guidance should be seen as a supplement to our guidance on [statistical disclosure control for aggregate data](https://phecloud.sharepoint.com/teams/JointBiosecurityCentre/_layouts/15/download.aspx?UniqueId=c13df9f3%2D15b9%2D4367%2Dbed6%2D01de3e7222c0). It is recommended that readers familiarise themselves with that guidance first as many of the same principles covered there also apply to microdata and so shall only be repeated in brief here.
 
 Special data protection controls around the sharing of microdata are usually needed, such as data sharing agreements. This guidance assumes those controls are appropriately in place and they are not covered here. 
 
@@ -41,11 +45,20 @@ This guidance is not necessarily intended to replace any existing policies stati
 
 ## Summary of recommendations
 
-The Responsible Statistician should ensure that the following steps are undertaken for all releases:
+For all releases, the Responsible Statistician or Analyst (the person responsible for overseeing the production of the release) should ensure that the following steps are undertaken:
 
-1. Prior to any release of microdata, a risk assessment should be conducted to determine the likelihood and impact of any disclosure risks. K-anonymity and intruder testing are methods that can be used for these purposes. 
+1. Prior to any release of microdata, an assessment should be conducted to determine user requirements, to understand the data and where disclosure risks may be present, and to determine the likelihood and impact of any disclosure risks. K-anonymity and intruder testing are methods that can be used to help identify risks. 
 1. Where a risk is identified, disclosure control methods should be applied, such as banding continuous variables, collapsing categorical variables, removing unnecessary variables, suppressing values, or removing unsafe records. The purpose of this is to reduce the disclosure risk to acceptable levels whilst maintaining utility of the release for users. 
 1. After applying disclosure control methods, outputs should be re-assessed to ensure that risks have been successfully mitigated.
+
+
+### What to do if disclosure of personal information does occur
+
+Disclosing personal data can cause reputational damage, impact trustworthiness, and attract significant media attention. It can also result in legal challenge or sanctions from the Information Commissioner's Office (ICO).
+
+By following this guidance, any risk of accidental disclosure should be low. However, if disclosure (accidental or otherwise) does occur, you should, without any delay, email the data security team ([security@ukhsa.gov.uk](mailto:security@ukhsa.gov.uk)) and the Head of Profession for Statistics (HoP, at [UKHSA_HOPSTATS@ukhsa.gov.uk](mailto:UKHSA_HOPSTATS@ukhsa.gov.uk)) with as much information as you have. 
+
+For official and national statistics, you will need to prepare a report for the HoP as soon as possible. In these circumstances, the HoP will report the issue to the Office for Statistics Regulation (OSR) to help support transparency, ensure public accountability and improve trustworthiness. The HoP team will guide you through that process.
 
 
 ## Introduction
@@ -54,13 +67,16 @@ While data is more commonly released in aggregated formats, individual-level (mi
 
 As with aggregate data, if personal information is accidentally disclosed, that can cause harm and distress to data subjects, as well as lead to reputational damage and legal implications for UKHSA `r addRef(14)`. Disclosure could occur both spontaneously or through motivated attacks, via the use of personal knowledge or linked datasets or other sources (for example, information found on social media platforms) `r addRef(15)`.
 
-As with aggregate data, there is a need to balance disclosure control against utility `r addRef(15, 10)`. A Responsible Statistician should be in place to ensure that balance is appropriately achieved `r addRef(15)`. The aim here is to reduce risk to acceptable levels (such that it would take disproportionate time, effort and expertise to identify data subjects), while maintaining utility for users `r addRef(15)`. 
+As with aggregate data, there is a need to balance disclosure control against utility `r addRef(15, 10)`. A Responsible Statistician or Analyst should be in place to ensure that balance is appropriately achieved `r addRef(15)`. The aim here is to reduce risk to acceptable levels (such that it would take disproportionate time, effort and expertise to identify data subjects), while maintaining utility for users `r addRef(15)`. 
 
 
 ## Guidelines for identifying and controlling disclosure risk
 
-The steps described here are much the same as those described in our guidance on [statistical disclosure control for aggregate data](https://htmlpreview.github.io/?https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/Disclosure%20control/Disclosure-control-for-aggregate-data.html). 
+In this section, we present a number of recommended steps that might be followed to conduct a risk assessment and to mitigate any risks identified. 
+
+The steps described here are much the same as those described in our guidance on [statistical disclosure control for aggregate data](https://phecloud.sharepoint.com/teams/JointBiosecurityCentre/_layouts/15/download.aspx?UniqueId=c13df9f3%2D15b9%2D4367%2Dbed6%2D01de3e7222c0). 
 Some repeated information will only be covered briefly here. 
+
 
 ### Steps 1 to 3: Understanding your data and conducting a risk assessment
 
@@ -77,7 +93,7 @@ An understanding of who your intended users are and what they intend to do with 
     
 #### Step 2: Understand the characteristics of the data and where disclosure risks may be present
 
-Many of the same risk factors given in our guidance on [statistical disclosure control for aggregate data](https://htmlpreview.github.io/?https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/Disclosure%20control/Disclosure-control-for-aggregate-data.html) will still apply here. 
+Many of the same risk factors given in our guidance on [statistical disclosure control for aggregate data](https://phecloud.sharepoint.com/teams/JointBiosecurityCentre/_layouts/15/download.aspx?UniqueId=c13df9f3%2D15b9%2D4367%2Dbed6%2D01de3e7222c0) will still apply here. 
 
 Specifically, greater disclosure risks may be present when:
 
@@ -90,9 +106,12 @@ Specifically, greater disclosure risks may be present when:
         
 Some more specific considerations might also be made in the case of microdata, such as:
 
-* the presence of direct identifiers (for example, name, postcode, NHS number) - in most cases it will be crucial that these are identified and removed prior to data release `r addRef(15)`
+* the presence of direct identifiers (for example, name, NHS number) and indirect identifiers (for example, full postcode) - in most cases it will be crucial that these are identified and removed prior to data release `r addRef(15)`
+    a. The dataset should still contain some form of unique identifier, such as a Case ID. 
+    b. Postcode sector or region can be used instead of full postcode.  
 * the presence of key identifying variables (for example, age, sex, health condition, ethnicity, religion, martial status, among others) `r addRef(13)` - because microdata is presented at the level of individuals, these variables becomes all the more important, particularly when some combinations of characteristics might be rare or unique `r addRef(15)` 
 * the presence of longitudinal data, which might increase risk levels where changing characteristics might be disclosive `r addRef(15)`.
+
 
 #### Step 3: Assess the likelihood and impact of a disclosure 
 
@@ -141,7 +160,7 @@ After choosing and applying a disclosure control method, outputs should be re-as
 
 It is good practice, where applicable, to explain as part of the data release that a disclosure risk has been identified and to explain what methods have been applied, including detail on the nature and extent of any modification `r addRef(2)`.
 
-As a last resort solution, if no disclosure method would be successful in mitigating the risk (for example, because they would all be too detrimental to utility), there is the possibility of releasing potentially disclosive information under a "Non-Disclosive Data Access Arrangement" (DAA) `r addRef(5)`. However, this should be done in very rare cases only, and only under the express permission of the [Head of Profession for statistics](mailto:UKHSA_HOPSTATS@ukhsa.gov.uk).
+As a last resort solution, if no disclosure method would be successful in mitigating the risk (for example, because they would all be too detrimental to utility), there is the possibility of releasing potentially disclosive information under a "Non-Disclosive Data Access Arrangement" (DAA) `r addRef(5)`. However, this should be done in very rare cases only, and only under the express permission of the Head of Profession for statistics ([UKHSA_HOPSTATS@ukhsa.gov.uk](mailto:UKHSA_HOPSTATS@ukhsa.gov.uk)).
 
 
 ## Example risk assessment and disclosure control
@@ -177,28 +196,28 @@ Setting aside postcode, tabulating this data would highlight the fact that there
 
 #### Table 1b. Hospital admissions - disclosure control applied
 
-| Age | Region     | Employment Status | Admission route |
-|-----|------------|-------------------|-----------------|
-| 18  | South East | Employed          | GP              |
-| 18  | South East | Employed          | GP              |
-| 18  | South East | Employed          | GP              |
-| 18  | South East | Employed          | A&E             |
-| 18  | South East | Employed          | A&E             |
-| 18  | South East | Employed          | GP              |
-| 18  | South East | Employed          | GP              |
-| 18  | South East | Employed          | A&E             |
-| 18  | South East | Unemployed        | GP              |
-| 18  | South East | Unemployed        | GP              |
-| 18  | South East | Unemployed        | GP              |
-| 18  | South East | Unemployed        | GP              |
-| 18  | South East | Unemployed        | GP              |
-| [c] | South East | Unemployed        | A&E             |
-| ... | ...        | ...               | ...             |
+| Unique ID | Age | Region     | Employment Status | Admission route |
+|-----------|-----|------------|-------------------|-----------------|
+| 1         | 18  | South East | Employed          | GP              |
+| 2         | 18  | South East | Employed          | GP              |
+| 3         | 18  | South East | Employed          | GP              |
+| 4         | 18  | South East | Employed          | A&E             |
+| 5         | 18  | South East | Employed          | A&E             |
+| 6         | 18  | South East | Employed          | GP              |
+| 7         | 18  | South East | Employed          | GP              |
+| 8         | 18  | South East | Employed          | A&E             |
+| 9         | 18  | South East | Unemployed        | GP              |
+| 10        | 18  | South East | Unemployed        | GP              |
+| 11        | 18  | South East | Unemployed        | GP              |
+| 12        | 18  | South East | Unemployed        | GP              |
+| 13        | 18  | South East | Unemployed        | GP              |
+| 14        | [c] | South East | Unemployed        | A&E             |
+| ...       | ... | ...        | ...               | ...             |
 
 
 The following series of steps were taken to address most of the risks present in Table 1a, to produce Table 1b:
 
-1. Name and NHS number fields were removed as they are direct identifiers.
+1. Name and NHS number fields were removed as they are direct identifiers. They have been replaced by a unique ID number so that the analysis does not imply false duplicates. 
 1. Postcodes have been transformed into regions to increase the population at risk for the geographical areas presented.
 1. Employment status has been collapsed into 2 categories rather than 3 (we can assume this would be acceptable to users).
 1. Emir Ali's uniqueness has been masked by suppressing their age, giving a "[c]" (for confidential; square brackets are used to denote shorthand `r addRef(54)`) instead. This introduces sufficient uncertainty when presented along with the other ages assumed to be present in the full dataset.<br>Suppressing Emir's employment status or admission route instead might not have been advisable, because most unemployed 18 year olds were admitted via their GPs. It might be obvious that any suppression within these fields might have been done to mask the fact that Emir was unique in being unemployed and admitted via A&E.

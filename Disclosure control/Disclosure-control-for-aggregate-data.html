@@ -40,6 +40,7 @@ padding: 0 10px;
 max-width: 1000px;
 margin: auto;
 }
+
 #toc > ul{
 padding-inline-start: inherit;
 }
@@ -106,6 +107,11 @@ border-bottom: 2px solid black;
 th, td {
 padding: 10px;
 }
+.main img {
+width: calc(100% - 70px);
+padding: 20px;
+border: 1pt solid black;
+}
 </style>
   
   <script>
@@ -133,16 +139,64 @@ padding: 10px;
           </div>
   </div>
   
+  <!--
+  <div id="toc_sticky">
+      <h2>Contents</h2>
+      <ul>
+      <li><a href="#coverage" id="toc-coverage">Coverage</a></li>
+      <li><a href="#summary-of-recommendations"
+      id="toc-summary-of-recommendations">Summary of recommendations</a>
+      <ul>
+      <li><a
+      href="#what-to-do-if-disclosure-of-personal-information-does-occur"
+      id="toc-what-to-do-if-disclosure-of-personal-information-does-occur">What
+      to do if disclosure of personal information does occur</a></li>
+      </ul></li>
+      <li><a href="#introduction" id="toc-introduction">Introduction</a>
+      <ul>
+      <li><a
+      href="#a-note-on-freedom-of-information-foi-requests-and-parliamentary-questions-pqs"
+      id="toc-a-note-on-freedom-of-information-foi-requests-and-parliamentary-questions-pqs">A
+      note on Freedom of Information (FOI) requests and Parliamentary
+      Questions (PQs)</a></li>
+      </ul></li>
+      <li><a
+      href="#guidelines-for-identifying-and-controlling-disclosure-risk"
+      id="toc-guidelines-for-identifying-and-controlling-disclosure-risk">Guidelines
+      for identifying and controlling disclosure risk</a>
+      <ul>
+      <li><a
+      href="#steps-1-to-3-understanding-your-data-and-conducting-a-risk-assessment"
+      id="toc-steps-1-to-3-understanding-your-data-and-conducting-a-risk-assessment">Steps
+      1 to 3: Understanding your data and conducting a risk
+      assessment</a></li>
+      <li><a
+      href="#step-4-choosing-and-applying-disclosure-control-methods"
+      id="toc-step-4-choosing-and-applying-disclosure-control-methods">Step
+      4: Choosing and applying disclosure control methods</a></li>
+      <li><a href="#step-5-assessing-the-outcome-and-disseminating"
+      id="toc-step-5-assessing-the-outcome-and-disseminating">Step 5:
+      Assessing the outcome and disseminating</a></li>
+      </ul></li>
+      <li><a href="#example-risk-assessment-and-disclosure-control"
+      id="toc-example-risk-assessment-and-disclosure-control">Example
+      risk assessment and disclosure control</a></li>
+      <li><a href="#references" id="toc-references">References</a></li>
+      </ul>
+  </div>
+  -->
+  
   <div class="littleBanner"></div>
+  
      
   <div class="main">     
     <h1>Statistical Disclosure Control - Aggregate Data</h1>
-    <h2>Last updated: 30 September 2022</h2>
+    <h2>Last updated: 30 November 2022</h2>
     
     <p><a id="versionbutton" href="#" onclick="showHistory()">Show version history +</a></p>
     <div id="versioncontrol"><table> ¶ <tr> ¶ <th> ¶ Date ¶ </th> ¶ <th>
-¶ Notes ¶ </th> ¶ </tr> ¶ <tr> ¶ <td> ¶ 30/09/2022 ¶ </td> ¶ <td> ¶
-Initial release ¶ </td> ¶ </tr> ¶ </table></div>
+¶ Notes ¶ </th> ¶ </tr> ¶ <tr> ¶ <td> ¶ 30/11/2022 ¶ </td> ¶ <td> ¶
+First release ¶ </td> ¶ </tr> ¶ </table></div>
     <!--Below needed to fix rendering bug in markdown-->
     <script>x = document.getElementById("versioncontrol"); x.innerHTML = x.innerHTML.replaceAll("¶", "")</script>
 
@@ -151,46 +205,63 @@ Initial release ¶ </td> ¶ </tr> ¶ </table></div>
     
     <p>Throughout this document, citations are given as numbers in square brackets. They link to a full reference list which can be found at the end of this document.</p>
 
-    <p style="margin-bottom: 35px;"><a href="https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/README.md">↩ Back to the hub</a></p>
+    <!--<p style="margin-bottom: 35px;"><a href="https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/README.md">&#8617; Back to the hub</a></p>-->
+    <p style="margin-bottom: 35px;"><a href="https://phecloud.sharepoint.com/teams/JointBiosecurityCentre/Shared%20Documents/Forms/AllItems.aspx?ga=1&amp;id=%2Fteams%2FJointBiosecurityCentre%2FShared%20Documents%2F012%20D%20and%20DS%20Directorate%2F5%20DD%20Stats%20Production%2FGuidance%20and%20tools%2FKnowledge%20Hub%20%28shared%29%2F%2D%2D%20README%2Epdf&amp;viewid=5945640e%2Dd5e1%2D475d%2D938d%2Ddd8096e228c1&amp;parent=%2Fteams%2FJointBiosecurityCentre%2FShared%20Documents%2F012%20D%20and%20DS%20Directorate%2F5%20DD%20Stats%20Production%2FGuidance%20and%20tools%2FKnowledge%20Hub%20%28shared%29">↩ Back to the hub</a></p> 
     
-    <h2>Contents</h2>
-    <div id="toc"><ul>
-<li><a href="#coverage" id="toc-coverage">Coverage</a></li>
-<li><a href="#summary-of-recommendations" id="toc-summary-of-recommendations">Summary of recommendations</a></li>
-<li><a href="#introduction" id="toc-introduction">Introduction</a>
-<ul>
-<li><a href="#a-note-on-freedom-of-information-foi-requests" id="toc-a-note-on-freedom-of-information-foi-requests">A note on Freedom
-of Information (FOI) requests</a></li>
-</ul></li>
-<li><a href="#guidelines-for-identifying-and-controlling-disclosure-risk" id="toc-guidelines-for-identifying-and-controlling-disclosure-risk">Guidelines
-for identifying and controlling disclosure risk</a>
-<ul>
-<li><a href="#steps-1-to-3-understanding-your-data-and-conducting-a-risk-assessment" id="toc-steps-1-to-3-understanding-your-data-and-conducting-a-risk-assessment">Steps
-1 to 3: Understanding your data and conducting a risk
-assessment</a></li>
-<li><a href="#step-4-choosing-and-applying-disclosure-control-methods" id="toc-step-4-choosing-and-applying-disclosure-control-methods">Step 4:
-Choosing and applying disclosure control methods</a></li>
-<li><a href="#step-5-assessing-the-outcome-and-disseminating" id="toc-step-5-assessing-the-outcome-and-disseminating">Step 5:
-Assessing the outcome and disseminating</a></li>
-</ul></li>
-<li><a href="#example-risk-assessment-and-disclosure-control" id="toc-example-risk-assessment-and-disclosure-control">Example risk
-assessment and disclosure control</a></li>
-<li><a href="#references" id="toc-references">References</a></li>
-</ul></div>
+    <div id="toc">
+      <h2>Contents</h2>
+      <ul>
+      <li><a href="#coverage" id="toc-coverage">Coverage</a></li>
+      <li><a href="#summary-of-recommendations" id="toc-summary-of-recommendations">Summary of recommendations</a>
+      <ul>
+      <li><a href="#what-to-do-if-disclosure-of-personal-information-does-occur" id="toc-what-to-do-if-disclosure-of-personal-information-does-occur">What
+      to do if disclosure of personal information does occur</a></li>
+      </ul></li>
+      <li><a href="#introduction" id="toc-introduction">Introduction</a>
+      <ul>
+      <li><a href="#a-note-on-freedom-of-information-foi-requests-and-parliamentary-questions-pqs" id="toc-a-note-on-freedom-of-information-foi-requests-and-parliamentary-questions-pqs">A
+      note on Freedom of Information (FOI) requests and Parliamentary
+      Questions (PQs)</a></li>
+      </ul></li>
+      <li><a href="#guidelines-for-identifying-and-controlling-disclosure-risk" id="toc-guidelines-for-identifying-and-controlling-disclosure-risk">Guidelines
+      for identifying and controlling disclosure risk</a>
+      <ul>
+      <li><a href="#steps-1-to-3-understanding-your-data-and-conducting-a-risk-assessment" id="toc-steps-1-to-3-understanding-your-data-and-conducting-a-risk-assessment">Steps
+      1 to 3: Understanding your data and conducting a risk
+      assessment</a></li>
+      <li><a href="#step-4-choosing-and-applying-disclosure-control-methods" id="toc-step-4-choosing-and-applying-disclosure-control-methods">Step
+      4: Choosing and applying disclosure control methods</a></li>
+      <li><a href="#step-5-assessing-the-outcome-and-disseminating" id="toc-step-5-assessing-the-outcome-and-disseminating">Step 5:
+      Assessing the outcome and disseminating</a></li>
+      </ul></li>
+      <li><a href="#example-risk-assessment-and-disclosure-control" id="toc-example-risk-assessment-and-disclosure-control">Example
+      risk assessment and disclosure control</a></li>
+      <li><a href="#references" id="toc-references">References</a></li>
+      </ul>
+    </div>
     
     <div id="coverage" class="section level2">
     <h2>Coverage</h2>
     <p>This guidance applies to all external releases of aggregate
     numerical information.</p>
     <p>By releases, we mean publications of any kind, as well as
-    responses to Freedom of Information (FOI) requests and ad-hoc other
-    requests for information.</p>
+    responses to Parliamentary Questions (PQs), Freedom of Information
+    (FOI) requests and ad hoc requests for information.</p>
+    <p>The purpose of statistical disclosure control is to ensure that
+    confidential information about people, businesses or other relevant
+    parties (including other government departments) are not released or
+    shared with unauthorised parties.</p>
+    <p>This guidance is concerned with statistical disclosure control
+    methods only. Note that there are various other information
+    governance policies surrounding the release of data. Please also <a href="https://intranet.ukhsa.gov.uk/sites/being-safe-at-work/SitePageModern/2158/being-safe-at-work">refer
+    to and follow those policies</a> alongside this guidance.</p>
     <p>By aggregate numerical information, we refer to any form in which
     aggregate numbers (for example, counts by demographic groups or
     geographical areas) are presented. This includes numbers presented
     within text, tables, charts and datasets.</p>
     <p>For disclosure control relating to individual-level (micro) data
-    (for example, genome data), please see our separate guidance on <a href="https://htmlpreview.github.io/?https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/Disclosure%20control/Disclosure-control-for-microdata.html">statistical
+    (such as where each row defines an individual, individual household
+    or employer, for example), please see our separate guidance on <a href="https://phecloud.sharepoint.com/teams/JointBiosecurityCentre/_layouts/15/download.aspx?UniqueId=bc05a8fb%2D0177%2D4440%2Db2b5%2D36e247ea5956">statistical
     disclosure control for microdata</a>.</p>
     <p>This guidance is not necessarily intended to replace any existing
     policies statistics producers may have in place that outline
@@ -200,12 +271,14 @@ assessment and disclosure control</a></li>
     </div>
     <div id="summary-of-recommendations" class="section level2">
     <h2>Summary of recommendations</h2>
-    <p>The Responsible Statistician should ensure that the following
-    steps are undertaken for all releases:</p>
+    <p>For all releases, the Responsible Statistician or Analyst (the
+    person responsible for overseeing the production of the release)
+    should ensure that the following steps are undertaken:</p>
     <ol style="list-style-type: decimal">
-    <li>Prior to any release of numerical information, a risk assessment
-    should be conducted to determine the likelihood and impact of any
-    disclosure risks.</li>
+    <li>Prior to any release of numerical information, an assessment
+    should be conducted to determine user requirements, to understand
+    the data and where disclosure risks may be present, and to determine
+    the likelihood and impact of any disclosure risks.</li>
     <li>Where a risk is identified, disclosure control methods such as
     table redesign, rounding or suppression should be employed. The
     purpose of this is to reduce the disclosure risk to acceptable
@@ -214,6 +287,25 @@ assessment and disclosure control</a></li>
     re-assessed to ensure that risks have been successfully
     mitigated.</li>
     </ol>
+    <div id="what-to-do-if-disclosure-of-personal-information-does-occur" class="section level3">
+    <h3>What to do if disclosure of personal information does occur</h3>
+    <p>Disclosing personal data can cause reputational damage, impact
+    trustworthiness, and attract significant media attention. It can
+    also result in legal challenge or sanctions from the Information
+    Commissioner’s Office (ICO).</p>
+    <p>By following this guidance, any risk of accidental disclosure
+    should be low. However, if disclosure (accidental or otherwise) does
+    occur, you should, without any delay, email the data security team
+    (<a href="mailto:security@ukhsa.gov.uk">security@ukhsa.gov.uk</a>)
+    and the Head of Profession for Statistics (HoP, at <a href="mailto:UKHSA_HOPSTATS@ukhsa.gov.uk">UKHSA_HOPSTATS@ukhsa.gov.uk</a>)
+    with as much information as you have.</p>
+    <p>For official and national statistics, you will need to prepare a
+    report for the HoP as soon as possible. In these circumstances, the
+    HoP will report the issue to the Office for Statistics Regulation
+    (OSR) to help support transparency, ensure public accountability and
+    improve trustworthiness. The HoP team will guide you through that
+    process.</p>
+    </div>
     </div>
     <div id="introduction" class="section level2">
     <h2>Introduction</h2>
@@ -223,9 +315,10 @@ assessment and disclosure control</a></li>
     cause harm and distress to individuals, cause reputational damage
     for UKHSA, and lead to legal implications such as those described by
     various Acts of Parliament [<a href="#References">1</a>][<a href="#References">2</a>].</p>
-    <p>For Official and National Statistics, and for voluntary adopters
-    of the same principles, the need for appropriate disclosure control
-    is also required under The Code of Practice for Statistics [<a href="#References">3</a>], under Principle T6.4 of the
+    <p>For official statistics, and for voluntary adopters of the Code
+    of Practice for Statistics, the need for appropriate disclosure
+    control is also required under The Code of Practice for Statistics
+    [<a href="#References">3</a>], under Principle T6.4 of the
     Trustworthiness Pillar.</p>
     <p>Disclosure may occur inadvertently (where a user spontaneously
     recognises a data subject) or in a motivated manner (where a user
@@ -238,8 +331,9 @@ assessment and disclosure control</a></li>
     seen as an afterthought - rather, the principles outlined throughout
     this guidance should be built into standard ways of working, as part
     of usual quality assurance processes. To help with this, every
-    publication should have a Responsible Statistician who is
-    responsible for ensuring confidentiality protection [<a href="#References">5</a>].</p>
+    release of data should have a Responsible Statistician or Analyst
+    who is responsible for overseeing the production of the release and
+    ensuring confidentiality protection [<a href="#References">5</a>].</p>
     <p>While disclosure control is highly important, it is usually not
     possible to completely remove all risk. It is also important that
     disclosure control does not unnecessarily limit the usefulness of a
@@ -258,8 +352,9 @@ assessment and disclosure control</a></li>
     provide analysts with a tool set for conducting risk assessments on
     numerical information prior to their release, and for addressing any
     risks in a way that achieves the above balance.</p>
-    <div id="a-note-on-freedom-of-information-foi-requests" class="section level3">
-    <h3>A note on Freedom of Information (FOI) requests</h3>
+    <div id="a-note-on-freedom-of-information-foi-requests-and-parliamentary-questions-pqs" class="section level3">
+    <h3>A note on Freedom of Information (FOI) requests and
+    Parliamentary Questions (PQs)</h3>
     <p>Individuals have the right to access information held by public
     authorities through Freedom of Information (FOI) requests. However,
     the confidentiality of data subjects should still be protected,
@@ -275,10 +370,21 @@ assessment and disclosure control</a></li>
     information received from outside UKHSA that can apply to deceased
     individuals [<a href="#References">9</a>]. The common law duty of
     confidentiality also applies to deceased individuals [<a href="#References">10</a>].</p>
+    <p>Parliamentary Questions (PQs) are questions MPs or Peers put
+    formally to a government minister, either orally or in writing.
+    Analysts are often asked to help provide data to support the answers
+    to those questions. Legislation around PQs is less clearly stated
+    than it is for FOIs, but <a href="https://www.parliament.uk/site-information/data-protection/commons-data-protection-information/">data
+    provided to the House of Commons is still processed in line with the
+    same data protection laws</a>. Confidentiality should therefore
+    still be protected in the same way as it is for FOIs.</p>
     </div>
     </div>
     <div id="guidelines-for-identifying-and-controlling-disclosure-risk" class="section level2">
     <h2>Guidelines for identifying and controlling disclosure risk</h2>
+    <p>In this section, we present a number of recommended steps that
+    might be followed to conduct a risk assessment and to mitigate any
+    risks identified.</p>
     <p>The key source of guidance on this topic comes from the
     Government Statistical Service (GSS) publication: disclosure control
     for tables produced from administrative sources [<a href="#References">5</a>]. An associated publication also covers
@@ -297,9 +403,9 @@ assessment and disclosure control</a></li>
     <div id="steps-1-to-3-understanding-your-data-and-conducting-a-risk-assessment" class="section level3">
     <h3>Steps 1 to 3: Understanding your data and conducting a risk
     assessment</h3>
-    <p>When preparing numerical information for publication, a number of
-    steps should be taken to assess the risk of accidental disclosure
-    (based on those outlined by the GSS [<a href="#References">5</a>]).</p>
+    <p>When preparing numerical information for publication, we
+    recommend the following steps to assess the risk of accidental
+    disclosure (based on those outlined by the GSS [<a href="#References">5</a>]).</p>
     <div id="step-1-determine-user-requirements" class="section level4">
     <h4>Step 1: Determine user requirements</h4>
     <p>The following questions might be considered:</p>
@@ -557,8 +663,7 @@ assessment and disclosure control</a></li>
     releasing potentially disclosive information under a “Non-Disclosive
     Data Access Arrangement” (DAA) [<a href="#References">7</a>].
     However, this should be done in very rare cases only, and only under
-    the express permission of the <a href="mailto:UKHSA_HOPSTATS@ukhsa.gov.uk">Head of Profession for
-    statistics</a>.</p>
+    the express permission of the Head of Profession for statistics (<a href="mailto:UKHSA_HOPSTATS@ukhsa.gov.uk">UKHSA_HOPSTATS@ukhsa.gov.uk</a>).</p>
     </div>
     </div>
     <div id="example-risk-assessment-and-disclosure-control" class="section level2">
@@ -847,7 +952,8 @@ assessment and disclosure control</a></li>
     </ol>
     </div>
     
-    <p style="margin-bottom: 35px;"><a href="https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/README.md">↩ Back to the hub</a></p>
+    <!--<p style="margin-bottom: 35px;"><a href="https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/README.md">&#8617; Back to the hub</a></p>-->
+    <p style="margin-bottom: 35px;"><a href="https://phecloud.sharepoint.com/teams/JointBiosecurityCentre/Shared%20Documents/Forms/AllItems.aspx?ga=1&amp;id=%2Fteams%2FJointBiosecurityCentre%2FShared%20Documents%2F012%20D%20and%20DS%20Directorate%2F5%20DD%20Stats%20Production%2FGuidance%20and%20tools%2FKnowledge%20Hub%20%28shared%29%2F%2D%2D%20README%2Epdf&amp;viewid=5945640e%2Dd5e1%2D475d%2D938d%2Ddd8096e228c1&amp;parent=%2Fteams%2FJointBiosecurityCentre%2FShared%20Documents%2F012%20D%20and%20DS%20Directorate%2F5%20DD%20Stats%20Production%2FGuidance%20and%20tools%2FKnowledge%20Hub%20%28shared%29">↩ Back to the hub</a></p> 
     
   </div>
 
