@@ -100,6 +100,8 @@ border: 1px solid;
 }
 table {
 border-collapse: collapse;
+width: calc(100% - 70px);
+margin-bottom: 50px;
 }
 th {
 border-bottom: 2px solid black;
@@ -146,6 +148,7 @@ border: 1pt solid black;
       <li><a href="#standards-of-rap"
       id="toc-standards-of-rap">Standards of RAP</a>
       <ul>
+      <li><a href="#overview" id="toc-overview">Overview</a></li>
       <li><a href="#the-bronze-standard"
       id="toc-the-bronze-standard">The Bronze standard</a></li>
       <li><a href="#the-silver-standard"
@@ -170,9 +173,9 @@ standards</h1>
     
     <p><a id="versionbutton" href="#" onclick="showHistory()">Show version history +</a></p>
     <div id="versioncontrol"><table> ¶ <tr> ¶ <th> ¶ Date ¶ </th> ¶ <th>
-¶ Notes ¶ </th> ¶ </tr> ¶ <tr> ¶ <td> ¶ 10/11/2022 ¶ </td> ¶ <td> ¶
-Second draft ¶ </td> ¶ </tr> ¶ <tr> ¶ <td> ¶ 03/11/2022 ¶ </td> ¶ <td> ¶
-First draft ¶ </td> ¶ </tr> ¶ </table></div>
+¶ Notes ¶ </th> ¶ </tr> ¶ <tr> ¶ <td> ¶ 05/12/2022 ¶ </td> ¶ <td> ¶
+Added overview table ¶ </td> ¶ </tr> ¶ <tr> ¶ <td> ¶ 10/11/2022 ¶ </td>
+¶ <td> ¶ First release ¶ </td> ¶ </tr> ¶ </table></div>
     <!--Below needed to fix rendering bug in markdown-->
     <script>x = document.getElementById("versioncontrol"); x.innerHTML = x.innerHTML.replaceAll("¶", "")</script>
 
@@ -181,13 +184,15 @@ First draft ¶ </td> ¶ </tr> ¶ </table></div>
     
     <p>Throughout this document, citations are given as numbers in square brackets. They link to a full reference list which can be found at the end of this document.</p>
 
-    <p style="margin-bottom: 35px;"><a href="https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/README.md">↩ Back to the hub</a></p>
+    <!--<p style="margin-bottom: 35px;"><a href="https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/README.md">&#8617; Back to the hub</a></p>-->
+    <p style="margin-bottom: 35px;"><a href="https://phecloud.sharepoint.com/teams/JointBiosecurityCentre/Shared%20Documents/Forms/AllItems.aspx?ga=1&amp;id=%2Fteams%2FJointBiosecurityCentre%2FShared%20Documents%2F012%20D%20and%20DS%20Directorate%2F5%20DD%20Stats%20Production%2FGuidance%20and%20tools%2FKnowledge%20Hub%20%28shared%29%2F%2D%2D%20README%2Epdf&amp;viewid=5945640e%2Dd5e1%2D475d%2D938d%2Ddd8096e228c1&amp;parent=%2Fteams%2FJointBiosecurityCentre%2FShared%20Documents%2F012%20D%20and%20DS%20Directorate%2F5%20DD%20Stats%20Production%2FGuidance%20and%20tools%2FKnowledge%20Hub%20%28shared%29">↩ Back to the hub</a></p> 
     
     <div id="toc">
       <h2>Contents</h2>
       <ul>
       <li><a href="#standards-of-rap" id="toc-standards-of-rap">Standards of RAP</a>
       <ul>
+      <li><a href="#overview" id="toc-overview">Overview</a></li>
       <li><a href="#the-bronze-standard" id="toc-the-bronze-standard">The Bronze standard</a></li>
       <li><a href="#the-silver-standard" id="toc-the-silver-standard">The Silver standard</a></li>
       <li><a href="#the-gold-standard" id="toc-the-gold-standard">The
@@ -204,8 +209,8 @@ First draft ¶ </td> ¶ </tr> ¶ </table></div>
     <p>The purpose of this document is to outline a number of standards
     to work towards when developing and improving upon a Reproducible
     Analytical Pipeline (RAP). For an introduction on what RAP is, and
-    what benefits it can bring, please see our other guidance: “<a href="...">Introduction to Reproducible Analytical Pipelines
-    (RAP)</a>”.</p>
+    what benefits it can bring, please see our other guidance: “<a href="https://phecloud.sharepoint.com/teams/JointBiosecurityCentre/_layouts/15/download.aspx?UniqueId=2ea98fa7%2Da685%2D4b4a%2Db193%2D0fe2e7198caf">Introduction
+    to Reproducible Analytical Pipelines (RAP)</a>”.</p>
     <p>In this document, we present bronze, silver and gold standards,
     offering major benchmarks to work towards, with each subsequent
     standard reflecting a more transparent, reproducible and robust
@@ -230,16 +235,76 @@ First draft ¶ </td> ¶ </tr> ¶ </table></div>
     wherever possible, as any “black-box” processes conducted in
     extracting and preparing data for analysis might undermine some of
     the benefits of RAP [<a href="#References">5</a>].)</p>
-    <p>We will be implementing a “RAP register” alongside our guidance
-    to map different our analytical pipelines against these standards,
-    to measure progress, to map knowledge (so that it can be shared!),
-    and to celebrate our successes! The RAP register is available to
-    internal UKSHA colleagues only. Those colleagues can contact <a href="mailto:UKHSA.RAP@ukhsa.gov.uk">UKHSA.RAP@ukhsa.gov.uk</a> for
-    a link. For non-UKHSA people, <a href="https://github.com/UKHSA-Statistics-Production/knowledge-hub/tree/main/RAP">the
-    example template can be found on our GitHub repository</a>.</p>
+    <p>We will be implementing a “<a href="https://phecloud.sharepoint.com/:x:/r/teams/JointBiosecurityCentre/_layouts/15/Doc.aspx?sourcedoc=%7B912EBC44-13D7-4593-8A38-AD3A43DA2EEA%7D&amp;file=RAP%20register%20template.ods&amp;action=default&amp;mobileredirect=true">RAP
+    register</a>” alongside our guidance to map different analytical
+    pipelines against these standards, to measure progress, to map
+    knowledge (so that it can be shared!), and to celebrate our
+    successes!</p>
     <p>For more support on how to meet these standards, including
     information on how to join our helpful UKHSA RAP community, please
     contact <a href="mailto:UKHSA.RAP@ukhsa.gov.uk">UKHSA.RAP@ukhsa.gov.uk</a>.</p>
+    <div id="overview" class="section level3">
+    <h3>Overview</h3>
+    <p>The following table gives a quick overview of the principles that
+    form each standard. More detailed explanations are given in the
+    sections to follow.</p>
+    <table>
+    <colgroup>
+    <col width="33%" />
+    <col width="33%" />
+    <col width="33%" />
+    </colgroup>
+    <thead>
+    <tr class="header">
+    <th>The Bronze standard</th>
+    <th>The Silver standard</th>
+    <th>The Gold standard</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="odd">
+    <td>Have minimal manual steps for data extraction and analysis</td>
+    <td>Meet the Bronze standard</td>
+    <td>Meet the Silver standard</td>
+    </tr>
+    <tr class="even">
+    <td>Use open source analytical software</td>
+    <td>Have minimal manual steps for the production of outputs</td>
+    <td>Have unit testing</td>
+    </tr>
+    <tr class="odd">
+    <td>Integrate quality assurance checks throughout the analysis</td>
+    <td>Use functions as reusable blocks of code</td>
+    <td>Have error handling for functions</td>
+    </tr>
+    <tr class="even">
+    <td>Have well-commented code and documentation</td>
+    <td>Adhere to a common code style</td>
+    <td>Include documentation for functions</td>
+    </tr>
+    <tr class="odd">
+    <td>Make code available to other analysts</td>
+    <td>Have automated input data validation</td>
+    <td>Use packaging</td>
+    </tr>
+    <tr class="even">
+    <td>Use peer review to ensure reproducibility</td>
+    <td>Use version control software</td>
+    <td>Log data and analysis checks</td>
+    </tr>
+    <tr class="odd">
+    <td>-</td>
+    <td>-</td>
+    <td>Implement continuous integration</td>
+    </tr>
+    <tr class="even">
+    <td>-</td>
+    <td>-</td>
+    <td>Implement dependency management</td>
+    </tr>
+    </tbody>
+    </table>
+    </div>
     <div id="the-bronze-standard" class="section level3">
     <h3>The Bronze standard</h3>
     <p>The checkboxes in the following lists are there for you to use
@@ -255,9 +320,9 @@ First draft ¶ </td> ¶ </tr> ¶ </table></div>
     (preferably R or Python)</p></li>
     <li><p><input type="checkbox"> integrate quality assurance checks
     throughout the analysis, automated where appropriate, supplemented
-    with semi-automated and manual checks (<a href="https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/README.md">we
-    will be producing further guidance on this in due
-    course</a>)</p></li>
+    with semi-automated and manual checks (we will be producing further
+    guidance on this in due course on <a href="https://phecloud.sharepoint.com/teams/JointBiosecurityCentre/Shared%20Documents/Forms/AllItems.aspx?ga=1&amp;id=%2Fteams%2FJointBiosecurityCentre%2FShared%20Documents%2F012%20D%20and%20DS%20Directorate%2F5%20DD%20Stats%20Production%2FGuidance%20and%20tools%2FKnowledge%20Hub%20%28shared%29%2F%2D%2D%20README%2Epdf&amp;viewid=5945640e%2Dd5e1%2D475d%2D938d%2Ddd8096e228c1&amp;parent=%2Fteams%2FJointBiosecurityCentre%2FShared%20Documents%2F012%20D%20and%20DS%20Directorate%2F5%20DD%20Stats%20Production%2FGuidance%20and%20tools%2FKnowledge%20Hub%20%28shared%29">the
+    hub</a>)</p></li>
     <li><p><input type="checkbox"> have well-commented code and
     documentation embedded as part of the project, rather than being
     saved elsewhere</p></li>
@@ -303,7 +368,7 @@ First draft ¶ </td> ¶ </tr> ¶ </table></div>
     principles outlined in the Aqua Book [<a href="#References">10</a>]
     and the Code of Practice for Statistics [<a href="#References">11</a>] for those who have adopted the code. We
     are currently producing further guidance on quality assurance, which
-    will be available on <a href="https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/README.md">the
+    will be available on <a href="https://phecloud.sharepoint.com/teams/JointBiosecurityCentre/Shared%20Documents/Forms/AllItems.aspx?ga=1&amp;id=%2Fteams%2FJointBiosecurityCentre%2FShared%20Documents%2F012%20D%20and%20DS%20Directorate%2F5%20DD%20Stats%20Production%2FGuidance%20and%20tools%2FKnowledge%20Hub%20%28shared%29%2F%2D%2D%20README%2Epdf&amp;viewid=5945640e%2Dd5e1%2D475d%2D938d%2Ddd8096e228c1&amp;parent=%2Fteams%2FJointBiosecurityCentre%2FShared%20Documents%2F012%20D%20and%20DS%20Directorate%2F5%20DD%20Stats%20Production%2FGuidance%20and%20tools%2FKnowledge%20Hub%20%28shared%29">the
     knowledge hub</a> soon.</p>
     <p>Having good quality documentation accompanying your code is
     important for reproducibility. The simplest form of documentation is
@@ -437,7 +502,9 @@ First draft ¶ </td> ¶ </tr> ¶ </table></div>
     needed to produce an output, rather than the full underlying dataset
     [<a href="#References">8</a>][<a href="#References">2</a>]) at some
     point in the pipeline to keep a record of the data used, and so that
-    it can also be reused in other projects [<a href="#References">2</a>].</p>
+    it can also be reused in other projects [<a href="#References">2</a>]. Please adhere to proper information
+    governance procedures when doing this, however, avoiding saving
+    copies of anything that might be considered sensitive.</p>
     </div>
     <div id="the-gold-standard" class="section level3">
     <h3>The Gold standard</h3>
@@ -451,7 +518,7 @@ First draft ¶ </td> ¶ </tr> ¶ </table></div>
     functions</p></li>
     <li><p><input type="checkbox"> include documentation of functions
     (usually included as part of a package)</p></li>
-    <li><p><input type="checkbox"> be wrapped up in a package</p></li>
+    <li><p><input type="checkbox"> use packaging</p></li>
     <li><p><input type="checkbox"> log data and analysis checks</p></li>
     <li><p><input type="checkbox"> implement continuous
     integration</p></li>
@@ -485,16 +552,18 @@ First draft ¶ </td> ¶ </tr> ¶ </table></div>
     preferred place to include this documentation would be within
     package help files and vignettes.</p>
     <p>A package more formally captures all the code and documentation
-    required for a project in one place [<a href="#References">8</a>].
-    It also allows for easier sharing of the whole pipeline and version
-    control for the overall project (via package version numbers).</p>
+    required for a project or collection of functions in one place [<a href="#References">8</a>]. It also allows for easier sharing of all
+    the functions needed for a pipeline, or indeed the whole pipeline
+    itself, as well as enhanced version control for the project (via
+    package version numbers).</p>
     <p>Producing logs of data and analysis checks can help analysts,
     users and quality assurers to understand whether anything is going
     wrong with the pipeline, and to understand how and where to respond
     to any issues. These logs might include, for example, the outputs of
     any input data validation, unit tests, other checks, messages and
-    warnings, as well as more manual checks. Please see our <a href="...">guidance on quality assurance</a> for more information.
-    The Office for National Statistics are also planning to produce a
+    warnings, as well as more manual checks. Please see our <a href="https://phecloud.sharepoint.com/teams/JointBiosecurityCentre/Shared%20Documents/Forms/AllItems.aspx?ga=1&amp;id=%2Fteams%2FJointBiosecurityCentre%2FShared%20Documents%2F012%20D%20and%20DS%20Directorate%2F5%20DD%20Stats%20Production%2FGuidance%20and%20tools%2FKnowledge%20Hub%20%28shared%29%2F%2D%2D%20README%2Epdf&amp;viewid=5945640e%2Dd5e1%2D475d%2D938d%2Ddd8096e228c1&amp;parent=%2Fteams%2FJointBiosecurityCentre%2FShared%20Documents%2F012%20D%20and%20DS%20Directorate%2F5%20DD%20Stats%20Production%2FGuidance%20and%20tools%2FKnowledge%20Hub%20%28shared%29">guidance
+    on quality assurance</a> (coming soon) for more information. The
+    Office for National Statistics are also planning to produce a
     chapter on this in the Duck Book [<a href="#References">12</a>].</p>
     <p>Continuous Integration (CI) describes the managed process of
     accepting and integrating changes made by individual analysts into a
@@ -600,7 +669,8 @@ First draft ¶ </td> ¶ </tr> ¶ </table></div>
     <p><br></p>
     </div>
     
-    <p style="margin-bottom: 35px;"><a href="https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/README.md">↩ Back to the hub</a></p>
+    <!--<p style="margin-bottom: 35px;"><a href="https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/README.md">&#8617; Back to the hub</a></p>-->
+    <p style="margin-bottom: 35px;"><a href="https://phecloud.sharepoint.com/teams/JointBiosecurityCentre/Shared%20Documents/Forms/AllItems.aspx?ga=1&amp;id=%2Fteams%2FJointBiosecurityCentre%2FShared%20Documents%2F012%20D%20and%20DS%20Directorate%2F5%20DD%20Stats%20Production%2FGuidance%20and%20tools%2FKnowledge%20Hub%20%28shared%29%2F%2D%2D%20README%2Epdf&amp;viewid=5945640e%2Dd5e1%2D475d%2D938d%2Ddd8096e228c1&amp;parent=%2Fteams%2FJointBiosecurityCentre%2FShared%20Documents%2F012%20D%20and%20DS%20Directorate%2F5%20DD%20Stats%20Production%2FGuidance%20and%20tools%2FKnowledge%20Hub%20%28shared%29">↩ Back to the hub</a></p> 
     
   </div>
 
