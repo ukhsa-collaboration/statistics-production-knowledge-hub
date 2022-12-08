@@ -8,12 +8,12 @@ output:
     toc: true
     toc_depth: 3
     number_sections: false
-    template: "- assets/Templates/html_template.html"
+    template: "../- assets/Templates/html_template.html"
   word_document:
-    reference_docx: "- assets/Templates/UKHSA plain document template.dotx"
+    reference_docx: "../- assets/Templates/UKHSA plain document template.dotx"
 knit: (function(inputFile, encoding){rmarkdown::render(inputFile, envir = globalenv(), encoding = encoding, output_dir = "./", output_format = "all")})
 
-versioncontrol: "`r ukhsaGuidanceDocs::VersionHistory(  c('24/10/2022', 'First draft')  )`"
+versioncontrol: "`r ukhsaGuidanceDocs::VersionHistory(  c('06/12/2022', 'First draft')  )`"
 ---
 
 
@@ -29,6 +29,8 @@ SetUpReferenceList("../../Team files/QPD/Knowledge bank/QPD knowledge bank.xlsx"
 ## Coverage
 
 This guidance applies to everyone working in the production of statistics or other numerical analysis, whether for internal or external use.
+
+This guidance reflects quality assurance best practice. The Data Science Quality Assurance team has also produced separate guidance on “QA in a hurry”, outlining how to prepare for producing high-quality analysis in time sensitive situations. If you have access, you can find this on the Test and Trace Confluence area.  Otherwise, you can email [email address??]. 
 
 ## Summary of recommendations
 
@@ -82,7 +84,7 @@ People of all levels of seniority commission analysis. The commissioner may be a
 
 * working with the commissioner to help develop the question of interest in a way that allows it to be answered appropriately and meet the needs of the commissioner
 * planning how they will demonstrate assured quality to the commissioner, assurer, and end users of their analytical output
-* as needed, bringing in third party analysts to provide specialised advice and  quality assurance. 
+* as needed, bringing in third party analysts to provide specialised advice and  quality assurance
 * providing final results and records of all work they have done
 * communicating to the commissioner the implications of their results, including strengths, limitations, uncertainty, and context
 

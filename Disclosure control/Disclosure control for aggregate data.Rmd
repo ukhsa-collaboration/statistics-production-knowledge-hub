@@ -1,7 +1,7 @@
 ---
 title: "Statistical Disclosure Control - Aggregate Data"
 author: "Ben Cuff"
-date: "30 September 2022"    #"`r format(Sys.time(), '%d %B, %Y')`"
+date: "30 November 2022"    #"`r format(Sys.time(), '%d %B, %Y')`"
 draft: false
 output: 
   html_document:
@@ -14,7 +14,7 @@ output:
 knit: (function(inputFile, encoding){rmarkdown::render(inputFile, envir = globalenv(), encoding = encoding, output_dir = "./", output_format = "all")})
 
 
-versioncontrol: "`r ukhsaGuidanceDocs::VersionHistory(  c('30/09/2022', 'Initial release')  )`"
+versioncontrol: "`r ukhsaGuidanceDocs::VersionHistory(  c('30/11/2022', 'First release')  )`"
 ---
 
 
@@ -24,7 +24,7 @@ library(tidyverse)
 library(ukhsaGuidanceDocs)
 knitr::opts_chunk$set(echo = F)
 
-SetUpReferenceList("../- assets/QPD knowledge bank.xlsx")
+SetUpReferenceList("../../Team files/QPD/Knowledge bank/QPD knowledge bank.xlsx")
 
 ```
 
@@ -33,44 +33,60 @@ SetUpReferenceList("../- assets/QPD knowledge bank.xlsx")
 
 This guidance applies to all external releases of aggregate numerical information. 
 
-By releases, we mean publications of any kind, as well as responses to Freedom of Information (FOI) requests and ad-hoc other requests for information. 
+By releases, we mean publications of any kind, as well as responses to Parliamentary Questions (PQs), Freedom of Information (FOI) requests and ad hoc requests for information. 
+
+The purpose of statistical disclosure control is to ensure that confidential information about people, businesses or other relevant parties (including other government departments) are not released or shared with unauthorised parties. 
+
+This guidance is concerned with statistical disclosure control methods only. Note that there are various other information governance policies surrounding the release of data. Please also [refer to and follow those policies](https://intranet.ukhsa.gov.uk/sites/being-safe-at-work/SitePageModern/2158/being-safe-at-work) alongside this guidance. 
 
 By aggregate numerical information, we refer to any form in which aggregate numbers (for example, counts by demographic groups or geographical areas) are presented. This includes numbers presented within text, tables, charts and datasets. 
 
-For disclosure control relating to individual-level (micro) data (for example, genome data), please see our separate guidance on [statistical disclosure control for microdata](https://htmlpreview.github.io/?https://github.com/UKHSA-Statistics-Production/knowledge-hub/blob/main/Disclosure%20control/Disclosure-control-for-microdata.html). 
+For disclosure control relating to individual-level (micro) data (such as where each row defines an individual, individual household or employer, for example), please see our separate guidance on [statistical disclosure control for microdata](https://phecloud.sharepoint.com/teams/JointBiosecurityCentre/_layouts/15/download.aspx?UniqueId=bc05a8fb%2D0177%2D4440%2Db2b5%2D36e247ea5956). 
 
 This guidance is not necessarily intended to replace any existing policies statistics producers may have in place that outline specific approaches for their outputs. It is intended to provide general guidance on this topic, in order to inform those policies, should producers wish to create them. 
 
 
 ## Summary of recommendations
 
-The Responsible Statistician should ensure that the following steps are undertaken for all releases:
+For all releases, the Responsible Statistician or Analyst (the person responsible for overseeing the production of the release) should ensure that the following steps are undertaken:
 
-1. Prior to any release of numerical information, a risk assessment should be conducted to determine the likelihood and impact of any disclosure risks.
+1. Prior to any release of numerical information, an assessment should be conducted to determine user requirements, to understand the data and where disclosure risks may be present, and to determine the likelihood and impact of any disclosure risks. 
 1. Where a risk is identified, disclosure control methods such as table redesign, rounding or suppression should be employed. The purpose of this is to reduce the disclosure risk to acceptable levels whilst maintaining utility of the release for users. 
 1. After applying disclosure control methods, outputs should be re-assessed to ensure that risks have been successfully mitigated.
+
+
+### What to do if disclosure of personal information does occur
+
+Disclosing personal data can cause reputational damage, impact trustworthiness, and attract significant media attention. It can also result in legal challenge or sanctions from the Information Commissioner's Office (ICO).
+
+By following this guidance, any risk of accidental disclosure should be low. However, if disclosure (accidental or otherwise) does occur, you should, without any delay, email the data security team ([security@ukhsa.gov.uk](mailto:security@ukhsa.gov.uk)) and the Head of Profession for Statistics (HoP, at [UKHSA_HOPSTATS@ukhsa.gov.uk](mailto:UKHSA_HOPSTATS@ukhsa.gov.uk)) with as much information as you have. 
+
+For official and national statistics, you will need to prepare a report for the HoP as soon as possible. In these circumstances, the HoP will report the issue to the Office for Statistics Regulation (OSR) to help support transparency, ensure public accountability and improve trustworthiness. The HoP team will guide you through that process.
 
 
 ## Introduction
 
 Disclosure control is the protection of individuals' confidentiality through the careful presentation of numerical information. Accidental disclosure of personal information could cause harm and distress to individuals, cause reputational damage for UKHSA, and lead to legal implications such as those described by various Acts of Parliament `r addRef(16, 14)`. 
 
-For Official and National Statistics, and for voluntary adopters of the same principles, the need for appropriate disclosure control is also required under The Code of Practice for Statistics `r addRef(1)`, under Principle T6.4 of the Trustworthiness Pillar. 
+For official statistics, and for voluntary adopters of the Code of Practice for Statistics, the need for appropriate disclosure control is also required under The Code of Practice for Statistics `r addRef(1)`, under Principle T6.4 of the Trustworthiness Pillar. 
 
 Disclosure may occur inadvertently (where a user spontaneously recognises a data subject) or in a motivated manner (where a user deliberately seeks to identify a data subject). Health data in particular is vulnerable to disclosure in a motivated manner because of its often sensitive nature, so extra care is often needed `r addRef(14)`.
 
-To protect against these risks, the Data Protection Act (2018) `r addRef(4)` highlights the need for "data protection by design and default". Disclosure control should not be seen as an afterthought - rather, the principles outlined throughout this guidance should be built into standard ways of working, as part of usual quality assurance processes. To help with this, every publication should have a Responsible Statistician who is responsible for ensuring confidentiality protection `r addRef(2)`. 
+To protect against these risks, the Data Protection Act (2018) `r addRef(4)` highlights the need for "data protection by design and default". Disclosure control should not be seen as an afterthought - rather, the principles outlined throughout this guidance should be built into standard ways of working, as part of usual quality assurance processes. To help with this, every release of data should have a Responsible Statistician or Analyst who is responsible for overseeing the production of the release and ensuring confidentiality protection `r addRef(2)`. 
 
 While disclosure control is highly important, it is usually not possible to completely remove all risk. It is also important that disclosure control does not unnecessarily limit the usefulness of a release for users, as this would limit the public good the release is intended to have. A careful balance should be sought between the need for good disclosure control against the need for good utility `r addRef(2, 3, 5, 12)`. In practice, this means applying methods to reduce risk to acceptable levels, whilst not removing too much information that would be important for users. It is often better to err on the side of caution - releasing too little information tends to be less damaging than releasing too much, and while more information can always be released later on, already released information cannot be easily withdrawn `r addRef(12)`.
 
 It is not possible to provide one-size-fits-all rules for the application of disclosure control. Instead, this guidance seeks to provide analysts with a tool set for conducting risk assessments on numerical information prior to their release, and for addressing any risks in a way that achieves the above balance. 
 
-### A note on Freedom of Information (FOI) requests
+### A note on Freedom of Information (FOI) requests and Parliamentary Questions (PQs)
 
 Individuals have the right to access information held by public authorities through Freedom of Information (FOI) requests. However, the confidentiality of data subjects should still be protected, meaning you should not contravene other laws in favour of releasing information under an FOI `r addRef(2, 11)`. For this reason, various exemptions exist in the Freedom of Information Act. For example, Section 40(2) outlines an exemption stating that personal data should be protected wherever complying with the FOI request would result in a breach of the UK General Data Protection Act `r addRef(11)`. Note that this particular exemption only offers protection for living individuals `r addRef(11)`. Section 41, however, offers more general confidentiality protection for information received from outside UKHSA that can apply to deceased individuals `r addRef(11)`. The common law duty of confidentiality also applies to deceased individuals `r addRef(17)`. 
 
+Parliamentary Questions (PQs) are questions MPs or Peers put formally to a government minister, either orally or in writing. Analysts are often asked to help provide data to support the answers to those questions. Legislation around PQs is less clearly stated than it is for FOIs, but [data provided to the House of Commons is still processed in line with the same data protection laws](https://www.parliament.uk/site-information/data-protection/commons-data-protection-information/). Confidentiality should therefore still be protected in the same way as it is for FOIs. 
 
 ## Guidelines for identifying and controlling disclosure risk
+
+In this section, we present a number of recommended steps that might be followed to conduct a risk assessment and to mitigate any risks identified. 
 
 The key source of guidance on this topic comes from the Government Statistical Service (GSS) publication: disclosure control for tables produced from administrative sources `r addRef(2)`. An associated publication also covers some specific guidance relating to social surveys: disclosure control for tables produced from surveys `r addRef(3)`, although much of the same principles are used. Both of these publications include some case studies that can offer useful exemplification of this guidance. Some examples are also given in the "example risk assessment and disclosure control" section at the end of this document. 
 
@@ -79,7 +95,7 @@ The Office for National Statistics (ONS) has also published more specific guidan
 
 ### Steps 1 to 3: Understanding your data and conducting a risk assessment
 
-When preparing numerical information for publication, a number of steps should be taken to assess the risk of accidental disclosure (based on those outlined by the GSS `r addRef(2)`).
+When preparing numerical information for publication, we recommend the following steps to assess the risk of accidental disclosure (based on those outlined by the GSS `r addRef(2)`).
 
 #### Step 1: Determine user requirements
 
@@ -157,7 +173,7 @@ After choosing and applying a disclosure control method, outputs should be re-as
 
 It is good practice, where applicable, to explain as part of the release that a disclosure risk has been identified and to explain what methods have been applied, including detail on the nature and extent of any modification `r addRef(2)`.
 
-As a last resort solution, if no disclosure method would be successful in mitigating the risk (for example, because they would all be too detrimental to utility), there is the possibility of releasing potentially disclosive information under a "Non-Disclosive Data Access Arrangement" (DAA) `r addRef(5)`. However, this should be done in very rare cases only, and only under the express permission of the [Head of Profession for statistics](mailto:UKHSA_HOPSTATS@ukhsa.gov.uk). 
+As a last resort solution, if no disclosure method would be successful in mitigating the risk (for example, because they would all be too detrimental to utility), there is the possibility of releasing potentially disclosive information under a "Non-Disclosive Data Access Arrangement" (DAA) `r addRef(5)`. However, this should be done in very rare cases only, and only under the express permission of the Head of Profession for statistics ([UKHSA_HOPSTATS@ukhsa.gov.uk](mailto:UKHSA_HOPSTATS@ukhsa.gov.uk)). 
 
 
 ## Example risk assessment and disclosure control
