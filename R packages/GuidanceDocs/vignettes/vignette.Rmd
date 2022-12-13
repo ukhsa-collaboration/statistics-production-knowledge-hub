@@ -1,0 +1,41 @@
+---
+title: "Adding version history and references to a guidance document using guidanceDocsUKHSA"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Adding version history and references to a guidance document using guidanceDocsUKHSA}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+## Creating a version history table
+
+The `VersionHistory()` function will create a simple HTML table. In our guidance documents, this will result in a collapsible formatted table in your HTML output detailing a version history.
+
+Add the following line of code at the bottom of your main YAML in the RMarkdown script. Each version should be passed to the function call as a new list, containing a date and a release note. 
+
+>versioncontrol: "`` `r "\u0060r guidanceDocs::VersionHistory( c('15/10/2022', 'Second release'), c('30/09/2022', 'Initial release')  )\u0060"` ``"
+
+Within the HTML document template, `<div id="versioncontrol">$versioncontrol$</div>` is then used to render the table. This is already in our HTML template (found in our guidance documents repository), if you are using that. 
+
+
+## Adding in-text citations and populating a reference list
+
+Somewhere near the start of your RMarkdown document, in a code chunk you need to call `SetUpReferenceList(.path="path/myspreadsheet.xlsx", .sheet=1)`, passing the filepath and sheet number to where your reference list is stored. We would recommend that this is called as part of your setup chunk.
+
+Note that this spreadsheet must be formatted such that there is a list of titles in Column A, a list of URLs in Column B, and a list of row number IDs in Column C. Rows do not need to be in any particular order but each ID should be unique.
+
+Within your text, wherever you want to add a citation, you should call `` `r "\u0060r addRef(n)\u0060"` ``, replacing the 'n' with a row number ID from the spreadsheet. If you want to cite more than one source, separate each number with a comma like this: `` `r "\u0060r addRef(n, n)\u0060"` ``.
+
+For example:
+
+>This is a piece of text where I want to cite references found in rows 5 and 12 of the spreadsheet `` `r "\u0060r addRef(5, 12)\u0060"` ``. I would then carry on with more text here, perhaps ending with another citation `` `r "\u0060r addRef(6)\u0060"` ``.
+
+At the end of your RMarkdown document (or wherever you want the reference list to appear), simply call `` `r "\u0060r AddReferenceList()\u0060"` `` to add the formatted reference list. This will also create an anchor which the citation links will point to. 

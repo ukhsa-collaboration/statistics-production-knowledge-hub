@@ -1,0 +1,19 @@
+Package: ukhsaGuidanceDocs
+Type: Package
+Title: Simple version control and reference manager functions used to create our guidance documents
+Version: 0.1.1
+Authors@R: person("Ben", "Cuff", email = "ben.cuff@ukhsa.gov.uk", role = c("aut", "cre"))
+Description: For populating the version control table at the start of the document and the reference list at the end.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    readxl (>= 1.4.0),
+    readODS (>= 1.7.0),
+    readr (>= 2.1.2)
+Suggests:
+    knitr,
+    rmarkdown
+VignetteBuilder:
+    knitr
+RoxygenNote: 7.2.1
