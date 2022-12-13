@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to the UKHSA statistics production team hub!</h1>
+<h1 align="center">Welcome to the UKHSA statistics production knowledge hub!</h1>
 
 
 <p align="center">
