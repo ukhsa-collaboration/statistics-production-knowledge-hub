@@ -36,7 +36,7 @@ The purpose of statistical disclosure control is to ensure that confidential inf
 
 This guidance is concerned with statistical disclosure control methods only. Note that there are various other information governance policies surrounding the release of data. Please also [refer to and follow those policies](https://intranet.ukhsa.gov.uk/sites/being-safe-at-work/SitePageModern/2158/being-safe-at-work) alongside this guidance. 
 
-This guidance should be seen as a supplement to our guidance on [statistical disclosure control for aggregate data](https://phecloud.sharepoint.com/teams/JointBiosecurityCentre/_layouts/15/download.aspx?UniqueId=c13df9f3%2D15b9%2D4367%2Dbed6%2D01de3e7222c0). It is recommended that readers familiarise themselves with that guidance first as many of the same principles covered there also apply to microdata and so shall only be repeated in brief here.
+This guidance should be seen as a supplement to our guidance on [statistical disclosure control for aggregate data](https://htmlpreview.github.io/?https://github.com/ukhsa-collaboration/statistics-production-knowledge-hub/blob/main/Disclosure%20control/Disclosure-control-for-aggregate-data.html). It is recommended that readers familiarise themselves with that guidance first as many of the same principles covered there also apply to microdata and so shall only be repeated in brief here.
 
 Special data protection controls around the sharing of microdata are usually needed, such as data sharing agreements. This guidance assumes those controls are appropriately in place and they are not covered here. 
 
@@ -74,8 +74,7 @@ As with aggregate data, there is a need to balance disclosure control against ut
 
 In this section, we present a number of recommended steps that might be followed to conduct a risk assessment and to mitigate any risks identified. 
 
-The steps described here are much the same as those described in our guidance on [statistical disclosure control for aggregate data](https://phecloud.sharepoint.com/teams/JointBiosecurityCentre/_layouts/15/download.aspx?UniqueId=c13df9f3%2D15b9%2D4367%2Dbed6%2D01de3e7222c0). 
-Some repeated information will only be covered briefly here. 
+The steps described here are much the same as those described in our guidance on [statistical disclosure control for aggregate data](https://htmlpreview.github.io/?https://github.com/ukhsa-collaboration/statistics-production-knowledge-hub/blob/main/Disclosure%20control/Disclosure-control-for-aggregate-data.html). Some repeated information will only be covered briefly here. 
 
 
 ### Steps 1 to 3: Understanding your data and conducting a risk assessment
@@ -93,7 +92,7 @@ An understanding of who your intended users are and what they intend to do with 
     
 #### Step 2: Understand the characteristics of the data and where disclosure risks may be present
 
-Many of the same risk factors given in our guidance on [statistical disclosure control for aggregate data](https://phecloud.sharepoint.com/teams/JointBiosecurityCentre/_layouts/15/download.aspx?UniqueId=c13df9f3%2D15b9%2D4367%2Dbed6%2D01de3e7222c0) will still apply here. 
+Many of the same risk factors given in our guidance on [statistical disclosure control for aggregate data](https://htmlpreview.github.io/?https://github.com/ukhsa-collaboration/statistics-production-knowledge-hub/blob/main/Disclosure%20control/Disclosure-control-for-aggregate-data.html) will still apply here. 
 
 Specifically, greater disclosure risks may be present when:
 

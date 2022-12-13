@@ -41,7 +41,7 @@ This guidance is concerned with statistical disclosure control methods only. Not
 
 By aggregate numerical information, we refer to any form in which aggregate numbers (for example, counts by demographic groups or geographical areas) are presented. This includes numbers presented within text, tables, charts and datasets. 
 
-For disclosure control relating to individual-level (micro) data (such as where each row defines an individual, individual household or employer, for example), please see our separate guidance on [statistical disclosure control for microdata](https://phecloud.sharepoint.com/teams/JointBiosecurityCentre/_layouts/15/download.aspx?UniqueId=bc05a8fb%2D0177%2D4440%2Db2b5%2D36e247ea5956). 
+For disclosure control relating to individual-level (micro) data (such as where each row defines an individual, individual household or employer, for example), please see our separate guidance on [statistical disclosure control for microdata](https://htmlpreview.github.io/?https://github.com/ukhsa-collaboration/statistics-production-knowledge-hub/blob/main/Disclosure%20control/Disclosure-control-for-microdata.html). 
 
 This guidance is not necessarily intended to replace any existing policies statistics producers may have in place that outline specific approaches for their outputs. It is intended to provide general guidance on this topic, in order to inform those policies, should producers wish to create them. 
 

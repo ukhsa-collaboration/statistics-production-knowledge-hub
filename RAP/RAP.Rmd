@@ -37,7 +37,7 @@ This guidance applies to any projects involving the analysis of data.
 ## Summary of recommendations
 
 1. All analysts should aim towards "Reproducible Analytical Pipelines (RAP) by default" ways of working, as part of broader Government aims.
-1. Iterative improvements should be made to analytical pipelines to work towards our [Bronze, Silver and Gold standards of RAP](https://phecloud.sharepoint.com/teams/JointBiosecurityCentre/_layouts/15/download.aspx?UniqueId=4f1b5317%2Deaf8%2D4731%2D8406%2Dd3fd254b9914).
+1. Iterative improvements should be made to analytical pipelines to work towards our [Bronze, Silver and Gold standards of RAP](https://htmlpreview.github.io/?https://github.com/ukhsa-collaboration/statistics-production-knowledge-hub/blob/main/RAP/RAP-standards.html).
 1. A cultural change should be supported at all levels in the organisation to encourage the enhanced roll-out of RAP, ensuring that analysts have the tools, time and resources needed to develop and implement the necessary skills. 
 
 
@@ -133,13 +133,13 @@ RAP also does require more time at the start of an analytical project to write t
 
 ## Standards of RAP
 
-We have developed [Bronze, Silver and Gold standards of RAP](https://phecloud.sharepoint.com/teams/JointBiosecurityCentre/_layouts/15/download.aspx?UniqueId=4f1b5317%2Deaf8%2D4731%2D8406%2Dd3fd254b9914) to provide major benchmarks for analytical teams to work towards, based upon the "Minimum" and "further" standards of RAP developed by the Government Analysis Function `r addRef(18)`. 
+We have developed [Bronze, Silver and Gold standards of RAP](https://htmlpreview.github.io/?https://github.com/ukhsa-collaboration/statistics-production-knowledge-hub/blob/main/RAP/RAP-standards.html) to provide major benchmarks for analytical teams to work towards, based upon the "Minimum" and "further" standards of RAP developed by the Government Analysis Function `r addRef(18)`. 
 
 We would like all analytical teams to start working towards these standards. However, it is important to stress that RAP does not need to be an all or nothing exercise. Even implementing just some of these principles will bring about improvements to your processes and outputs `r addRef(41, 31)`. Trying to achieve all of these standards in one go may be too daunting a task and so incremental improvements are the suggested way to go. 
 
-We will be implementing a "[RAP register](https://phecloud.sharepoint.com/:x:/r/teams/JointBiosecurityCentre/_layouts/15/Doc.aspx?sourcedoc=%7B912EBC44-13D7-4593-8A38-AD3A43DA2EEA%7D&file=RAP%20register%20template.ods&action=default&mobileredirect=true)" alongside our guidance to map different analytical pipelines against these standards, to measure progress, to map knowledge (so that it can be shared!), and to celebrate our successes! 
+We will be implementing a "RAP register" alongside our guidance to map different analytical pipelines against these standards, to measure progress, to map knowledge (so that it can be shared!), and to celebrate our successes! 
 
-`r #The live RAP register is available to internal UKSHA colleagues only. Those colleagues can contact [UKHSA.RAP@ukhsa.gov.uk](mailto:UKHSA.RAP@ukhsa.gov.uk) for a link. For non-UKHSA people, [the example template can be found on our GitHub repository](https://github.com/UKHSA-Statistics-Production/knowledge-hub/tree/main/RAP).` 
+The live RAP register is available to internal UKSHA colleagues only. Those colleagues can contact [UKHSA.RAP@ukhsa.gov.uk](mailto:UKHSA.RAP@ukhsa.gov.uk) for a link. For non-UKHSA people, [the example template can be found on our GitHub repository](https://github.com/ukhsa-collaboration/statistics-production-knowledge-hub/blob/main/RAP/RAP%20register%20template.ods). 
 
 UKHSA colleagues are also encouraged to join our RAP network to seek more support from our helpful community, and to share best practice. Please contact [UKHSA.RAP@ukhsa.gov.uk](mailto:UKHSA.RAP@ukhsa.gov.uk) for a link. 
 
