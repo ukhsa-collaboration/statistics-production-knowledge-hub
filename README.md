@@ -7,14 +7,15 @@
 
 <br>
 
-This page has been produced by the Statistics Production division at UKHSA, to support and promote best practice across our analytical community. While the resources hosted here have been written with UKHSA in mind, all guidance documents are based on Government best practice principles, so the content should have appeal to a wider audience as well. 
+This page is being developed by the Statistics Production division at UKHSA, to support and promote best practice across our analytical community. While the resources hosted here have been written with UKHSA in mind, all guidance documents are based on Government best practice principles, so the content should have appeal to a wider audience as well. 
+
+This site is currently in development. To access any our draft resources listed below, or indeed for any other support, please send an email to [UKHSA_HOPSTATS@ukhsa.gov.uk](mailto:UKHSA_HOPSTATS@ukhsa.gov.uk). 
 
 
 From here, you will be able to view our guidance documents:
 
-* Statistical disclosure control for [aggregate data](https://htmlpreview.github.io/?https://github.com/ukhsa-collaboration/statistics-production-knowledge-hub/blob/main/Disclosure%20control/Disclosure-control-for-aggregate-data.html) or [microdata](https://htmlpreview.github.io/?https://github.com/ukhsa-collaboration/statistics-production-knowledge-hub/blob/main/Disclosure%20control/Disclosure-control-for-microdata.html) 
-
-* *Draft for feedback* - Reproducible Analytical Pipelines (RAP): [An introduction to RAP](https://htmlpreview.github.io/?https://github.com/ukhsa-collaboration/statistics-production-knowledge-hub/blob/main/RAP/RAP.html), [standards of RAP](https://htmlpreview.github.io/?https://github.com/ukhsa-collaboration/statistics-production-knowledge-hub/blob/main/RAP/RAP-standards.html), and our [template RAP register](https://github.com/ukhsa-collaboration/statistics-production-knowledge-hub/blob/main/RAP/RAP%20register%20template.ods)
+* *Draft ready for feedback* - Statistical disclosure control for aggregate data or microdata
+* *Draft ready for feedback* - Reproducible Analytical Pipelines (RAP): An introduction to RAP, standards of RAP, and our template RAP register
 
 * *Coming soon* - Statistical Disclosure Control (SDC) R package
 * *Coming soon* - Quality assurance guidance
