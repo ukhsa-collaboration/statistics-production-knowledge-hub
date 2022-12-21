@@ -1,0 +1,8 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.docx
+*.Rproj
+*other*files*not*tracked/
+*QPD*knowledge*bank.xlsx
